@@ -3,3 +3,12 @@ hebeH, yuqingW, roshaniS, justinZ -- 2022-03-06 20:43
     
 hebeH -- 2022-03-06 22:07
     - Set up project stubs and updated README
+    
+hebeH, yuqingW, roshaniS, justinZ -- 2022-03-07 09:31
+    - Collaborated on making changes to the design doc for our project
+    - Changes:
+        - Fixed template for the profile page 
+        - Deleted "/create" since it was the same as "/register"
+        - Elaborated on moving obstacles in JS
+        - Added item type to the stored database
+        - Elaborated on background images so that it is clear that the character and obstacles won't blend into the background
