@@ -2,7 +2,7 @@
 Our project is an infinite runner game, similar to the offline dinosaur game. It features a keyboard-controlled character that will duck and jump to avoid obstacles as well as a store and a leaderboard.
 
 ### Devos:
-Hebe Huang (PM)
+Hebe Huang (PM)  
 Yuqing Wu  
 Roshani Shrestha  
 Justin Zou
