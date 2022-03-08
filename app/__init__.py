@@ -7,6 +7,7 @@ from os import urandom
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
 import sqlite3
+from database import *
 
 app = Flask(__name__)
 app.secret_key = urandom(32)
@@ -28,12 +29,12 @@ def authenticate():
 
     # Get vs Post
     if method == 'GET':
-        return redirect(url_for('disp_home'))
+        return redirect(url_for('hello_world'))
 
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        return redirect(url_for('disp_home'))
+        return redirect(url_for('hello_world'))
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -97,9 +98,9 @@ def logout():
     try:
         session.pop('username')
     except KeyError:
-        return redirect(url_for('disp_home'))
+        return redirect(url_for('hello_world'))
     # Redirect to login page
-    return redirect(url_for('disp_home'))
+    return redirect(url_for('hello_world'))
 
 
 @app.route("/create")
