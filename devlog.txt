@@ -12,3 +12,6 @@ hebeH, yuqingW, roshaniS, justinZ -- 2022-03-07 09:31
         - Elaborated on moving obstacles in JS
         - Added item type to the stored database
         - Elaborated on background images so that it is clear that the character and obstacles won't blend into the background
+
+justinZ -- 2022-03-08 09:23
+    - Worked on integrating previous login and register code during class
