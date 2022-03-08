@@ -15,3 +15,6 @@ hebeH, yuqingW, roshaniS, justinZ -- 2022-03-07 09:31
 
 justinZ -- 2022-03-08 09:23
     - Worked on integrating previous login and register code during class
+
+hebeH, yuqingW -- 2022-03-08 09:29
+    - Worked on basic js animation
