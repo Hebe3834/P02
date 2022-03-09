@@ -23,18 +23,20 @@ var playGame = () => {
     requestID = window.requestAnimationFrame(playGame);
 
     clear();
-
-
+    //ctx.fillStyle = "white";
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0,levels[1]+50, c.clientWidth, c.clientWidth);
 
     if(generate == true){
     console.log("generating . . .");
     var start = 300;
     var num_obs = 10;
     for (i=0;i<num_obs;i++){
-      var block_len = Math.floor(Math.random() * 100 + 30);
-      var lv = Math.floor(Math.random()*levels.length);
-      start += block_len;
-      rects.push([start,levels[lv], block_len, 20]);
+      var block_len = Math.floor(Math.random() * 20 + 10);
+      var block_height = Math.floor(Math.random()*80 + 10)
+      var lv = 1;//Math.floor(Math.random()*levels.length);
+      start += block_len + Math.floor(Math.random() * 100) + 50;
+      rects.push([start,levels[lv], block_len, 50]);
       //ctx.fillRect(start,levels[lv],block_len, 20);
     }
     generate = false;
