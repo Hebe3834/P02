@@ -23,4 +23,7 @@ yuqingW -- 2022-03-08 09:58
     - Basic generating and moving rectangular obstacles (now the program infinitely generates rectangles with different lengths and moves them towards where the character will be standing). However, no guarantee that the rectangles would be reachable.
 
 roshaniS -- 2022-03-08 10:16
-    - Worked on creating the items owned database during class
+    - Created the items owned database during class
+
+roshaniS -- 2022-03-08 20:26
+    - Added a function to database.py that adds entries to the items owned database
