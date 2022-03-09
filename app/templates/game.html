@@ -17,12 +17,18 @@
     </head>
 
     <body>
+        {% if session['username'] %}
+        <form action="/logout" method='GET'>
+            <button type="submit" class="btn btn-danger" formaction="/logout">Logout</button>
+        </form>
+        {% else %}
         <form action="/login" method='GET'>
             <button type="submit" class="btn btn-info" formaction="/login">Login</button>
         </form>
+        {% endif %}
 
         <div class="container">
-            <h1> {{ msg }} </h1>
+            <h1> {{ session['username'] }} </h1>
         </div>
         <canvas width="500" height="300" id="main_game"></canvas>
 

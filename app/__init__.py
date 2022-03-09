@@ -26,7 +26,6 @@ def authenticate():
     method = request.method
     username = request.form.get('username')
     password = request.form.get('password')
-
     # Get vs Post
     if method == 'GET':
         return redirect(url_for('hello_world'))
@@ -74,10 +73,10 @@ def rAuthenticate():
         # error when no password is inputted
         elif len(password0) == 0:
             return render_template('register.html', given="password")
-        elif len(password0) < 8:
-            return render_template('register.html', given="password greater than 8 characters")
-        # a username and password is inputted
-        # a username and password is inputted
+        # elif len(password0) < 8:
+        #     return render_template('register.html', given="password greater than 8 characters")
+        # # a username and password is inputted
+        # # a username and password is inputted
         else:
             # if the 2 passwords given don't match, will display error saying so
             if password0 != password1:
