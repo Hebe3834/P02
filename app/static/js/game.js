@@ -32,10 +32,10 @@ var playGame = () => {
     var start = 300;
     var num_obs = 10;
     for (i=0;i<num_obs;i++){
-      var block_len = Math.floor(Math.random() * 20 + 10);
+      var block_len = Math.floor(Math.random() * 40 + 10);
       var block_height = Math.floor(Math.random()*80 + 10)
       var lv = 1;
-      start += block_len + Math.floor(Math.random() * 100) + 50;
+      start += block_len + Math.floor(Math.random() * 100) + 150;
       rects.push([start,levels[lv] - block_height, block_len, block_height]);
     }
     generate = false;
