@@ -34,3 +34,5 @@ justinZ -- 2022-03-09 09:23
 roshaniS -- 2022-03-09 09:39
     - Worked on store.html
     - Added sprites and some functions for animations (crouch and run)
+yuqingW -- 2022-03-09 09:45
+    - Worked on making the rectangles looking like the dinosaur game. Make the rectangles jumpable and with variable height and distance. 
