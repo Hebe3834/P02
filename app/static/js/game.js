@@ -16,6 +16,56 @@ var clear = (e) => {
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
 };
 
+var counter = 0;
+var one = new Image(100);
+one.src = 'sprites/tile001.png';
+var two = new Image(100);
+two.src = 'sprites/tile002.png';
+
+var run = () => {
+  console.log("run invoked...")
+  clear();
+  window.cancelAnimationFrame(requestID);
+  if (counter <= 10) {
+    ctx.drawImage(one, 150, 150);
+  }
+  else if (counter <= 20) {
+    ctx.drawImage(two, 150, 150);
+  }
+  else {
+    counter = 0;
+  }
+  counter++;
+  requestID = window.requestAnimationFrame(run);
+};
+
+var zero = new Image(100);
+zero.src = 'sprites/tile000.png';
+var three = new Image(100);
+three.src = 'sprites/tile003.png';
+var four = new Image(100);
+four.src = 'sprites/tile004.png';
+
+var crouch = () => {
+  console.log("crouch invoked...")
+  clear();
+  window.cancelAnimationFrame(requestID);
+  if (counter <= 10) {
+    ctx.drawImage(zero, 150, 150);
+  }
+  else if (counter <= 20) {
+    ctx.drawImage(three, 150, 165);
+  }
+  else if (counter <= 30) {
+    ctx.drawImage(four, 150, 180);
+  }
+  else {
+    counter = 0;
+  }
+  counter++;
+  requestID = window.requestAnimationFrame(crouch);
+};
+
 var playGame = () => {
   console.log("playGame invoked...")
 
