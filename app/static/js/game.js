@@ -13,6 +13,7 @@ var levels = [50,200,250];
 var rects = [];
 var generate = true;
 var crouchBtn = document.getElementById("crouchBtn");
+var r = true;
 crouchBtn.addEventListener("click", crouch);
 
 var clear = (e) => {
@@ -22,56 +23,44 @@ var clear = (e) => {
 
 var counter = 0;
 var one = new Image(100);
-one.src = 'sprites/tile001.png';
+one.src = 'static/sprites/tile001.png';
 var two = new Image(100);
-two.src = 'sprites/tile002.png';
-
-one.onload = function(){
-  ctx.drawImage(this,150,150);
-}
-
-var run = () => {
-  console.log("run invoked...")
-  clear();
-  window.cancelAnimationFrame(requestID1);
-  if (counter <= 10) {
-    ctx.drawImage(one, 150, 150);
-  }
-  else if (counter <= 20) {
-    ctx.drawImage(two, 150, 150);
-  }
-  else {
-    counter = 0;
-  }
-  counter++;
-  requestID1 = window.requestAnimationFrame(run);
-};
+two.src = 'static/sprites/tile002.png';
 
 var zero = new Image(100);
-zero.src = 'sprites/tile000.png';
+zero.src = 'static/sprites/tile000.png';
 var three = new Image(100);
-three.src = 'sprites/tile003.png';
+three.src = 'static/sprites/tile003.png';
 var four = new Image(100);
-four.src = 'sprites/tile004.png';
-
-var crouch = () => {
-  console.log("crouch invoked...")
-  clear();
-  window.cancelAnimationFrame(requestID2);
+four.src = 'static/sprites/tile004.png';
+var run = () =>{
+  console.log("crouch invoked...");
   if (counter <= 10) {
-    ctx.drawImage(zero, 150, 150);
+    ctx.drawImage(one, 30, 60);
   }
   else if (counter <= 20) {
-    ctx.drawImage(three, 150, 165);
-  }
-  else if (counter <= 30) {
-    ctx.drawImage(four, 150, 180);
+    ctx.drawImage(two, 30, 60);
   }
   else {
     counter = 0;
   }
   counter++;
-  requestID2 = window.requestAnimationFrame(crouch);
+};
+var crouch = () => {
+  console.log("crouch invoked...");
+  if (counter <= 10) {
+    ctx.drawImage(zero, 30, 60);
+  }
+  else if (counter <= 20) {
+    ctx.drawImage(three, 30, 75);
+  }
+  else if (counter <= 30) {
+    ctx.drawImage(four, 30, 60);
+  }
+  else {
+    counter = 0;
+  }
+  counter++;
 };
 
 var playGame = () => {
@@ -81,7 +70,7 @@ var playGame = () => {
   requestID = window.requestAnimationFrame(playGame);
 
   clear();
-  //ctx.fillStyle = "white";
+
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels[1], c.clientWidth, c.clientWidth);
 
@@ -128,8 +117,22 @@ var playGame = () => {
   if(rects.length < 1){
     alert("aHHHHHH");
   }
-
+if(r){
+run();
+}else{
+crouch();
 }
-
+}
 playGame();
-zero.onload = run();
+document.body.addEventListener('keydown', function(event) {
+            var key = event.key;
+            if(key=="ArrowDown"){
+              r = false;
+            }
+        });
+document.body.addEventListener('keyup', function(event) {
+            var key = event.key;
+            if(key=="ArrowDown"){
+              r = true;
+            }
+        });
