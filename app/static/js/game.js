@@ -14,7 +14,7 @@ var rects = [];
 var generate = true;
 var crouchBtn = document.getElementById("crouchBtn");
 var r = true;
-var j = false;
+var jmp = false;
 var img = [30,60];
 
 var counter = 0;
@@ -141,8 +141,11 @@ run();
 crouch();
 }
 
-if(j){
-  jump();
+if(jmp && img[1] < 60+80){
+  img[1] += 1;
+  if(img[1]>60){
+    img[1] = 60;
+  }
 }
 }
 playGame();
@@ -151,8 +154,9 @@ document.body.addEventListener('keydown', function(event) {
             if(key=="ArrowDown"){
               r = false;
             }
-            if(key == "ArrowUp" && img[1]>60-80){
-              img[1] -= 80;
+            if(key == "ArrowUp" && jmp == false){
+              img[1] = 60-80;
+              jmp = true;
             }
         });
 
@@ -162,6 +166,7 @@ document.body.addEventListener('keyup', function(event) {
               r = true;
             }
             if(key=="ArrowUp"){
-              img[1] += 80;
+              img[1] = 60;
+              jmp = false;
             }
         });
