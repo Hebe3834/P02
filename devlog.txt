@@ -40,3 +40,6 @@ yuqingW -- 2022-03-09 09:45
     
 yuqingW, roshaniS -- 2022-03-10 09:37
     - Fixed sprites animation, adding on pressing arrow down to make character crouch. 
+
+yuqingW -- 2022-03-10 10:28
+    - The character is now able to jump and the jump will auto fall due to gravity. 
