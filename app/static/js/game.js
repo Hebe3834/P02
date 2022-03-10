@@ -14,6 +14,7 @@ var rects = [];
 var generate = true;
 var crouchBtn = document.getElementById("crouchBtn");
 var r = true;
+
 crouchBtn.addEventListener("click", crouch);
 
 var clear = (e) => {
@@ -48,6 +49,7 @@ var run = () =>{
 };
 var crouch = () => {
   console.log("crouch invoked...");
+  /** // I comment out this part because we might need to do this to be able to hold the crouch
   if (counter <= 10) {
     ctx.drawImage(zero, 30, 60);
   }
@@ -61,6 +63,9 @@ var crouch = () => {
     counter = 0;
   }
   counter++;
+  **/
+  ctx.drawImage(four, 30, 90);
+
 };
 
 var playGame = () => {
