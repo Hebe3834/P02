@@ -15,8 +15,9 @@ var generate = true;
 var crouchBtn = document.getElementById("crouchBtn");
 var r = true;
 var jmp = false;
+var up = false;
 var img = [30,60];
-
+var jmp_cnt = 0;
 var counter = 0;
 var one = new Image(100);
 one.src = 'static/sprites/tile001.png';
@@ -141,11 +142,29 @@ run();
 crouch();
 }
 
-if(jmp && img[1] < 60+80){
-  img[1] += 1;
+// if you want smooth animation, set jmp_cnt < 0, but then it's very hard to get pass obstacles.
+if(img[1] == 60-80 && jmp_cnt <5){
+  jmp_cnt++;
+}
+
+else if(jmp && !up){
+  img[1] += 5;
   if(img[1]>60){
     img[1] = 60;
+    jmp = false;
   }
+jmp_cnt = 0;;
+}
+
+else if(up && jmp){
+  img[1]-=5;
+  if(img[1]<60-80){
+    img[1] = 60-80;
+    up = false;
+  }
+  jmp_cnt = 0;
+}else{
+  jmp_cnt = 0;
 }
 }
 playGame();
@@ -155,7 +174,7 @@ document.body.addEventListener('keydown', function(event) {
               r = false;
             }
             if(key == "ArrowUp" && jmp == false){
-              img[1] = 60-80;
+              up = true;
               jmp = true;
             }
         });
@@ -165,8 +184,5 @@ document.body.addEventListener('keyup', function(event) {
             if(key=="ArrowDown"){
               r = true;
             }
-            if(key=="ArrowUp"){
-              img[1] = 60;
-              jmp = false;
-            }
+
         });
