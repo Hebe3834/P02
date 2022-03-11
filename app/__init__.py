@@ -113,12 +113,20 @@ def leaderboard():
 @app.route("/store")
 def store():
     powerups = []
-    query = "SELECT item FROM store WHERE item_type = 'powerup;'"
+    query = "SELECT item FROM store WHERE item_type = \'powerup\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
         powerups.append(row[0])
-    return render_template('store.html', powerups = powerups)
+
+    skins = []
+    query = "SELECT item FROM store WHERE item_type = \'skin\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        skins.append(row[0])
+
+    return render_template('store.html', powerups = powerups, skins = skins)
 
 @app.route("/profile")
 def profile():
