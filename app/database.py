@@ -8,7 +8,7 @@ def create_db():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT, score INTEGER);")
     c.execute("CREATE TABLE IF NOT EXISTS items (player TEXT, item_type TEXT, item_owned TEXT);")
 
     db.close()
@@ -53,15 +53,20 @@ def create_user(username, password):
     if username in users:
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?, ?);", (username, password))
+        c.execute("INSERT INTO users(usernames,passwords) VALUES (?, ?);", (username, password))
         db.commit()
         return True
 
 
 
-def Score():
-    pass
-
+def updateScore(value):
+    '''
+    Update the score value of the user
+    '''
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("INSERT INTO users(score) VALUES(?);",(value))
+    db.commit()
 
 def insert_item(user, itemType, item):
     '''
@@ -75,3 +80,4 @@ def insert_item(user, itemType, item):
     db.commit()
 
 create_db()
+updateScore(34)
