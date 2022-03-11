@@ -46,3 +46,9 @@ yuqingW, roshaniS -- 2022-03-10 09:37
 
 yuqingW -- 2022-03-10 10:28
     - The character is now able to jump and the jump will auto fall due to gravity. 
+
+hebeH, yuqingW, roshaniS, justinZ -- 2022-03-10 22:19
+    - Collaborated on making changes to the design doc for our project
+    - Changes:
+        - Removed the tasks and APIs related to implementing music into the game
+        - Adjusted the timeline and target ship date to correspond with the deadline
