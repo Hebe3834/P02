@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <!-- 
+    <!--
     Optimistic Dinosaurs -- Hebe Huang, Yuqing Wu, Roshani Shrestha, Justin Zou
     SoftDev
     P02 -- Run for Your Life
@@ -17,6 +17,23 @@
     </head>
 
     <body>
+
+      <h1>Powers owned:</h1>
+      <div class="container">
+        {% for power in powerups %}
+          <div class="container">{{power}}</div>
+          <br>
+        {% endfor %}
+      </div>
+
+      <h1>Skins owned:</h1
+      <div class="container">
+        {% for skin in skins %}
+          <div class="container">{{skin}}</div>
+          <br>
+        {% endfor %}
+      </div>
+
 
     </body>
 

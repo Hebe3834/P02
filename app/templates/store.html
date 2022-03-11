@@ -27,7 +27,7 @@
           <br>
         {% endfor %}
         </select>
-        <input class="btn btn-dark" type="submit" name="buypowerups" value="Submit">
+        <input class="btn btn-dark" type="button" id="buypowerups"  value="Submit">
 
         <h2>SKINS</h2>
         <select class="form-select form-select-lg" id="skins" name="skins">
@@ -36,9 +36,10 @@
             <br>
           {% endfor %}
         </select>
-        <input class="btn btn-dark" type="submit" name="buyskins" value="Submit">
+        <input class="btn btn-dark" type="submit" id="buyskins" value="Submit">
       </div>
     </body>
     <!-- will use this form input to buy and insert into items owned db -->
 
+    <script src="../static/js/Store.js"></script>
 </html>

@@ -10,7 +10,7 @@ def create_db():
 
     c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT, score INTEGER);")
     c.execute("CREATE TABLE IF NOT EXISTS items (player TEXT, item_type TEXT, item_owned TEXT);")
-    c.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, item_type TEXT, price INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, item_type TEXT, price INTEGER, UNIQUE(item));")
 
 
     db.close()
@@ -87,17 +87,17 @@ def restock_store():
     '''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("MAGNET", "powerup", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("SLOW", "powerup", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("REVIVAL", "powerup", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("COIN_DOUBLER", "powerup", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("INVINCIBILITY", "powerup", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("MAGNET", "powerup", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("SLOW", "powerup", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("REVIVAL", "powerup", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("COIN_DOUBLER", "powerup", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("INVINCIBILITY", "powerup", 500))
 
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("S1", "skin", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("S2", "skin", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S3', "skin", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S4', "skin", 500))
-    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S5', "skin", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("S1", "skin", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("S2", "skin", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ('S3', "skin", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ('S4', "skin", 500))
+    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ('S5', "skin", 500))
 
     db.commit()
 
