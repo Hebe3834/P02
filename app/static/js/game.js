@@ -16,7 +16,7 @@ var crouchBtn = document.getElementById("crouchBtn");
 var r = true;
 var jmp = false;
 var up = false;
-var img = [30,60];
+var img = [30,95];
 var jmp_cnt = 0;
 var counter = 0;
 var one = new Image(100);
@@ -40,12 +40,12 @@ var clear = (e) => {
 };
 
 var run = () =>{
-  console.log("crouch invoked...");
+  console.log("run invoked...");
   if (counter <= 10) {
-    ctx.drawImage(one, img[0], img[1]);
+    ctx.drawImage(one, img[0], img[1], 150, 150);
   }
   else if (counter <= 20) {
-    ctx.drawImage(two, img[0], img[1]);
+    ctx.drawImage(two, img[0], img[1], 150, 150);
   }
   else {
     counter = 0;
@@ -70,7 +70,7 @@ var crouch = () => {
   }
   counter++;
   **/
-  ctx.drawImage(four, img[0], img[1] + 70,200,130);
+  ctx.drawImage(four, img[0], img[1] + 50,150,100);
 
 };
 var jump = () =>{
@@ -98,10 +98,10 @@ var playGame = () => {
     var start = 300;
     var num_obs = 10;
     for (i=0;i<num_obs;i++){
-      var block_len = Math.floor(Math.random() * 40 + 10);
-      var block_height = Math.floor(Math.random()*80 + 10);
+      var block_len = Math.floor(Math.random() * 30 + 10);
+      var block_height = Math.floor(Math.random()*50 + 20);
       var lv = 1;
-      start += block_len + Math.floor(Math.random() * 100) + 150;
+      start += block_len + Math.floor(Math.random() * 250) + 250;
       rects.push([start,levels[lv] - block_height, block_len, block_height]);
     }
     generate = false;
@@ -111,7 +111,7 @@ var playGame = () => {
   for(i=0;i<rects.length;i++){
     ctx.fillStyle = "red";
     ctx.fillRect(rects[i][0],rects[i][1],rects[i][2],rects[i][3]);
-    rects[i][0]-=1;
+    rects[i][0]-=6;
     if(rects[i][0] > last_rect){
       last_rect = rects[i][0];
     }
@@ -128,38 +128,37 @@ var playGame = () => {
     }
   }
 
-  if(last_rect < 400){
+  if(last_rect < 300){
     generate = true;
   }
 
   console.log(rects.length);
-  if(rects.length < 1){
-    alert("aHHHHHH");
+ 
+  if(r){
+    run();
   }
-if(r){
-run();
-}else{
-crouch();
-}
+  else{
+    crouch();
+  }
 
 // if you want smooth animation, set jmp_cnt < 0, but then it's very hard to get pass obstacles.
-if(img[1] == 60-80 && jmp_cnt <5){
+if(img[1] == 95-90 && jmp_cnt <0){
   jmp_cnt++;
 }
 
 else if(jmp && !up){
   img[1] += 5;
-  if(img[1]>60){
-    img[1] = 60;
+  if(img[1]>95){
+    img[1] = 95;
     jmp = false;
   }
-jmp_cnt = 0;;
+jmp_cnt = 0;
 }
 
 else if(up && jmp){
   img[1]-=5;
-  if(img[1]<60-80){
-    img[1] = 60-80;
+  if(img[1]<-10){ // -10 because of empty space in image
+    img[1] = -10;
     up = false;
   }
   jmp_cnt = 0;
