@@ -15,7 +15,7 @@ var levels = [50,200,250];
 var rects = [];
 var generate = true;
 var r = true;
-var jmp = false;
+var jmp = false; 
 var up = false;
 var img = [30,95];
 var jmp_cnt = 0;
@@ -133,7 +133,7 @@ var playGame = () => {
   }
 
   console.log(rects.length);
- 
+
   if(r){
     run();
   }
