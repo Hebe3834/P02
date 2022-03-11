@@ -10,6 +10,8 @@ def create_db():
 
     c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT, score INTEGER);")
     c.execute("CREATE TABLE IF NOT EXISTS items (player TEXT, item_type TEXT, item_owned TEXT);")
+    c.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, item_type TEXT, price INTEGER);")
+
 
     db.close()
 
@@ -59,13 +61,13 @@ def create_user(username, password):
 
 
 
-def updateScore(value):
+def updateScore(value, user):
     '''
     Update the score value of the user
     '''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("INSERT INTO users(score) VALUES(?);",(value))
+    c.execute("UPDATE users SET score = (?) WHERE usernames = (?);",(value, user))
     db.commit()
 
 def insert_item(user, itemType, item):
@@ -79,5 +81,26 @@ def insert_item(user, itemType, item):
     c.execute("INSERT INTO items VALUES (?, ?, ?);", (user, itemType, item))
     db.commit()
 
+def restock_store():
+    '''
+    Adds initial items to the store.
+    '''
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("MAGNET", "powerup", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("SLOW", "powerup", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("REVIVAL", "powerup", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("COIN_DOUBLER", "powerup", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("INVINCIBILITY", "powerup", 500))
+
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("S1", "skin", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ("S2", "skin", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S3', "skin", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S4', "skin", 500))
+    c.execute("INSERT INTO store VALUES (?, ?, ?);", ('S5', "skin", 500))
+
+    db.commit()
+
 create_db()
-updateScore(34)
+# updateScore(34)
+restock_store()

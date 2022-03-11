@@ -27,11 +27,19 @@
         </form>
         {% endif %}
 
+        <form action="/store" method='GET'>
+            <button type="submit" class="btn btn-danger" formaction="/store">Store</button>
+        </form>
+        
+        <form action="/profile" method='GET'>
+            <button type="submit" class="btn btn-danger" formaction="/profile">Profile</button>
+        </form>
+
         <div class="container">
             <h1> {{ session['username'] }} </h1>
         </div>
-        <canvas width="500" height="300" id="main_game"></canvas>
-        <button id="crouchBtn">crouch</button>
+        <h3 id="usrScore">SCORE: 00000</h3>
+        <canvas width="700" height="300" id="main_game"></canvas>
 
         <script src="../static/js/game.js"></script>
 

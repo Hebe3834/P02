@@ -12,6 +12,10 @@ from database import *
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
+DB_FILE = "discobandit.db"
+db = sqlite3.connect(DB_FILE, check_same_thread=False)
+c = db.cursor()
+
 @app.route("/")
 def hello_world():
     return render_template('game.html', msg="I don't speak cheese!")
@@ -102,21 +106,23 @@ def logout():
     return redirect(url_for('hello_world'))
 
 
-@app.route("/create")
-def create():
-    pass
-
 @app.route("/leaderboard")
 def leaderboard():
     pass
 
 @app.route("/store")
 def store():
-    pass
+    powerups = []
+    query = "SELECT item FROM store WHERE item_type = 'powerup;'"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        powerups.append(row[0])
+    return render_template('store.html', powerups = powerups)
 
 @app.route("/profile")
 def profile():
-    pass
+    return render_template('profile.html')
 
 if __name__ == "__main__":
     app.debug = True

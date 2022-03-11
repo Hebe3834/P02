@@ -5,6 +5,8 @@
 
 var c = document.getElementById("main_game");
 var ctx = c.getContext("2d");
+var scoreEle = document.getElementById("usrScore");
+var score = 0;
 var requestID;  //init global var for use with animation frames
 var requestID1;
 var requestID2;
@@ -12,7 +14,6 @@ var radius = 1;
 var levels = [50,200,250];
 var rects = [];
 var generate = true;
-var crouchBtn = document.getElementById("crouchBtn");
 var r = true;
 var jmp = false;
 var up = false;
@@ -32,7 +33,6 @@ var four = new Image(100);
 four.src = 'static/sprites/tile004.png';
 
 
-crouchBtn.addEventListener("click", crouch);
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -141,31 +141,37 @@ var playGame = () => {
     crouch();
   }
 
-// if you want smooth animation, set jmp_cnt < 0, but then it's very hard to get pass obstacles.
-if(img[1] == 95-90 && jmp_cnt <0){
-  jmp_cnt++;
+  // if you want smooth animation, set jmp_cnt < 0, but then it's very hard to get pass obstacles.
+  if(img[1] == 95-90 && jmp_cnt <0){
+    jmp_cnt++;
+  }
+
+  else if(jmp && !up){ // falling down
+    img[1] += 5;
+    if(img[1]>95){
+      img[1] = 95;
+      jmp = false;
+    }
+  jmp_cnt = 0;
+  }
+
+  else if(up && jmp){ // jumping up
+    img[1]-=8;
+    if(img[1]<-10){ // -10 because of empty space in image
+      img[1] = -10;
+      up = false;
+    }
+    jmp_cnt = 0;
+  }
+  else{
+    jmp_cnt = 0;
+  }
+
+  score ++;
+  scoreEle.innerHTML = "SCORE: " + score;
 }
 
-else if(jmp && !up){
-  img[1] += 5;
-  if(img[1]>95){
-    img[1] = 95;
-    jmp = false;
-  }
-jmp_cnt = 0;
-}
 
-else if(up && jmp){
-  img[1]-=5;
-  if(img[1]<-10){ // -10 because of empty space in image
-    img[1] = -10;
-    up = false;
-  }
-  jmp_cnt = 0;
-}else{
-  jmp_cnt = 0;
-}
-}
 playGame();
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;

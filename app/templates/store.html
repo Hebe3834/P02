@@ -20,7 +20,14 @@
       <div style="text-align: center;">
         <h1>STORE</h1>
         <h2>POWERUPS</h2>
-      <select class="form-select form-select-lg" id="powerups" name="powerups">
+
+        <select class="form-select form-select-lg" id="powerups" name="powerups">
+
+        {% for power in powerups %}
+          <option value="{{power}}">{{power}}</option>
+          <br>
+        {% endfor %}
+
         <option value="p1">Magnet</option>
         <option value="p2">Slow</option>
         <option value="p3">Revival</option>
