@@ -71,8 +71,9 @@ var crouch = () => {
   counter++;
   **/
   ctx.drawImage(four, img[0], img[1] + 50,150,100);
-
 };
+
+
 var jump = () =>{
   if (counter <= 10) {
   img[1] -= 10;
