@@ -34,7 +34,6 @@ Game Tasks:
 - Making the character jump/duck (Roshani)
 - Detect game ends (Roshani)
 - Power-ups/skills (Yuqing)
-- Musics (Yuqing)
 
 ## API Cards:
 
