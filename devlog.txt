@@ -63,3 +63,7 @@ hebeH -- 2022-03-10 22:38
 
 justinZ -- 2022-03-11 09:24
     - did a basic part of the store buying for powerups and skins
+
+yuqingW -- 2022-03-11 18:45
+    - added circles obstacles to the game so the character has to crouch sometimes. 
+    - cleaned up some code
