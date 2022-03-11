@@ -63,10 +63,10 @@ def updateScore(value):
     '''
     Update the score value of the user
     '''
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-    c.execute("INSERT INTO users(score) VALUES(?);",(value))
-    db.commit()
+    # db = sqlite3.connect(DB_FILE)
+    # c = db.cursor()
+    # c.execute("INSERT INTO users(score) VALUES(?);",(value))
+    # db.commit()
 
 def insert_item(user, itemType, item):
     '''
