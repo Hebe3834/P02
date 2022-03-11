@@ -34,5 +34,15 @@ justinZ -- 2022-03-09 09:23
 roshaniS -- 2022-03-09 09:39
     - Worked on store.html
     - Added sprites and some functions for animations (crouch and run)
+    
+hebeH -- 2022-03-10 05:33
+    - Fixed problem of infinitely adding obstacles to array. Tried to make sprites show up
+
 yuqingW -- 2022-03-09 09:45
     - Worked on making the rectangles looking like the dinosaur game. Make the rectangles jumpable and with variable height and distance. 
+    
+yuqingW, roshaniS -- 2022-03-10 09:37
+    - Fixed sprites animation, adding on pressing arrow down to make character crouch. 
+
+yuqingW -- 2022-03-10 10:28
+    - The character is now able to jump and the jump will auto fall due to gravity. 
