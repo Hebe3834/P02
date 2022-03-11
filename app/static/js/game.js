@@ -41,40 +41,6 @@ var run = () =>{
     counter = 0;
   }
   counter++;
-<<<<<<< HEAD
-};
-
-var crouch = () => {
-  console.log("crouch invoked...");
-  /** // I comment out this part because we might need to do this to be able to hold the crouch
-  if (counter <= 10) {
-    ctx.drawImage(zero, 30, 60);
-  }
-  else if (counter <= 20) {
-    ctx.drawImage(three, 30, 75);
-  }
-  else if (counter <= 30) {
-    ctx.drawImage(four, 30, 60);
-  }
-  else {
-    counter = 0;
-  }
-  counter++;
-  **/
-  ctx.drawImage(four, img[0], img[1] + 50,150,100);
-};
-
-
-var jump = () =>{
-  if (counter <= 10) {
-  img[1] -= 10;
-  }
-  else if (counter <= 20) {
-    img[1]+=10;
-  }
-  counter++;
-=======
->>>>>>> b8db6f673dcebbb19d64eee235101fd49cbf11b4
 }
 
 var jump = () =>{

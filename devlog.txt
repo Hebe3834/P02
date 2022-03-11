@@ -53,7 +53,13 @@ hebeH, yuqingW, roshaniS, justinZ -- 2022-03-10 22:19
         - Removed the tasks and APIs related to implementing music into the game
         - Adjusted the timeline and target ship date to correspond with the deadline
 
+justinZ -- 2022-03-10 21:38
+    - made small changes to css files and database
+
 hebeH -- 2022-03-10 22:38
     - Edited obstacle and character sizes/placement/speed so player can jump over obstacles
     - Created store database for powerups and skins
     - Added simple score counter
+
+justinZ -- 2022-03-11 09:24
+    - did a basic part of the store buying for powerups and skins
