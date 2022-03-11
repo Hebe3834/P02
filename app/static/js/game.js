@@ -11,6 +11,7 @@ var requestID;  //init global var for use with animation frames
 var radius = 1;
 var levels = 200;
 var rects = [];
+var circs = [];
 var generate = true;
 var r = true;
 var jmp = false;
@@ -68,37 +69,65 @@ var generate_rect = () =>{
     var start = 300;
     var num_obs = 10;
     for (i=0;i<num_obs;i++){
+      var circ_rect = Math.floor(Math.random()*3);
+      // 0,1 is rectangle, 2 is circle
+      if(score < 100){
+        circ_rect = 0;
+      }
+      console.log(circ_rect);
+      if(circ_rect<2){
       var block_len = Math.floor(Math.random() * 30 + 10);
       var block_height = Math.floor(Math.random()*50 + 20);
-      var lv = 1;
       start += block_len + Math.floor(Math.random() * 250) + 250;
       rects.push([start,levels - block_height, block_len, block_height]);
+      }
+      else{
+        var rad = Math.floor(Math.random() * 10 + 20);
+        var circ_y = Math.floor(Math.random() * -60 + levels - 30);
+        start += 2*rad + Math.floor(Math.random() * 250) + 250;
+        circs.push([start,circ_y,rad]);
+        console.log(circs);
+
+      }
     }
     generate = false;
   }
 
-  var last_rect = 0;
-  for(i=0;i<rects.length;i++){
-    ctx.fillStyle = "red";
-    ctx.fillRect(rects[i][0],rects[i][1],rects[i][2],rects[i][3]);
-    rects[i][0]-=6;
-    if(rects[i][0] > last_rect){
-      last_rect = rects[i][0];
+
+var last = 0;
+for(i=0;i<rects.length;i++){
+  ctx.fillStyle = "red";
+  ctx.fillRect(rects[i][0],rects[i][1],rects[i][2],rects[i][3]);
+  rects[i][0]-=6;
+  if(rects[i][0] > last){
+    last = rects[i][0];
+  }
+}
+  for(i=0;i<circs.length;i++){
+    ctx.fillStyle = "purple";
+    ctx.beginPath();
+    ctx.arc(circs[i][0], circs[i][1], circs[i][2], 0, 2*Math.PI);
+    ctx.fill();
+    circs[i][0]-=6;
+    if(circs[i][0] > last){
+      last = circs[i][0];
     }
   }
 
-  console.log(rects[0][0]);
   while(true){
-    if(rects[0][0] < -250){
+    if(rects.length > 0 && rects[0][0] < -250){
       console.log(rects[0][0]);
       rects.shift();
+    }
+    else if (circs.length > 0 && circs[0][0] < -250){
+      circs.shift();
     }
     else{
       break;
     }
   }
 
-  if(last_rect < 300){
+  if(last < 300){
     generate = true;
   }
 };
