@@ -130,7 +130,22 @@ def store():
 
 @app.route("/profile")
 def profile():
-    return render_template('profile.html')
+    user = session['username']
+    powerups = []
+    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'powerup\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        powerups.append(row[0])
+
+    skins = []
+    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'skin\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        skins.append(row[0])
+
+    return render_template('profile.html', powerups = powerups, skins = skins)
 
 if __name__ == "__main__":
     app.debug = True

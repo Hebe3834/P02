@@ -8,31 +8,21 @@ var ctx = c.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var score = 0;
 var requestID;  //init global var for use with animation frames
-var requestID1;
-var requestID2;
 var radius = 1;
-var levels = [50,200,250];
+var levels = 200;
 var rects = [];
 var generate = true;
 var r = true;
 var jmp = false;
 var up = false;
 var img = [30,95];
-var jmp_cnt = 0;
 var counter = 0;
 var one = new Image(100);
 one.src = 'static/sprites/tile001.png';
 var two = new Image(100);
 two.src = 'static/sprites/tile002.png';
-
-var zero = new Image(100);
-zero.src = 'static/sprites/tile000.png';
-var three = new Image(100);
-three.src = 'static/sprites/tile003.png';
 var four = new Image(100);
 four.src = 'static/sprites/tile004.png';
-
-
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -51,6 +41,7 @@ var run = () =>{
     counter = 0;
   }
   counter++;
+<<<<<<< HEAD
 };
 
 var crouch = () => {
@@ -82,18 +73,30 @@ var jump = () =>{
     img[1]+=10;
   }
   counter++;
+=======
+>>>>>>> b8db6f673dcebbb19d64eee235101fd49cbf11b4
 }
-var playGame = () => {
-  console.log("playGame invoked...")
 
-  window.cancelAnimationFrame(requestID);
-  requestID = window.requestAnimationFrame(playGame);
+var jump = () =>{
+  if(jmp && !up){ // falling down
+      img[1] += 5;
+      if(img[1]>95){
+        img[1] = 95;
+        jmp = false;
+      }
+    jmp_cnt = 0;
+    }
 
-  clear();
+    else if(up && jmp){ // jumping up
+      img[1]-=8;
+      if(img[1]<-10){ // -10 because of empty space in image
+        img[1] = -10;
+        up = false;
+      }
+}
+}
 
-  ctx.strokeStyle = "black";
-  ctx.strokeRect(0,levels[1], c.clientWidth, c.clientWidth);
-
+var generate_rect = () =>{
   if(generate == true){
     console.log("generating . . .");
     var start = 300;
@@ -103,7 +106,7 @@ var playGame = () => {
       var block_height = Math.floor(Math.random()*50 + 20);
       var lv = 1;
       start += block_len + Math.floor(Math.random() * 250) + 250;
-      rects.push([start,levels[lv] - block_height, block_len, block_height]);
+      rects.push([start,levels - block_height, block_len, block_height]);
     }
     generate = false;
   }
@@ -132,42 +135,28 @@ var playGame = () => {
   if(last_rect < 300){
     generate = true;
   }
+};
 
-  console.log(rects.length);
- 
+var playGame = () => {
+  console.log("playGame invoked...")
+
+  window.cancelAnimationFrame(requestID);
+  requestID = window.requestAnimationFrame(playGame);
+
+  clear();
+
+  ctx.strokeStyle = "black";
+  ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
+  generate_rect();
+
   if(r){
     run();
   }
   else{
-    crouch();
+    ctx.drawImage(four, img[0], img[1] + 50,150,100);
   }
 
-  // if you want smooth animation, set jmp_cnt < 0, but then it's very hard to get pass obstacles.
-  if(img[1] == 95-90 && jmp_cnt <0){
-    jmp_cnt++;
-  }
-
-  else if(jmp && !up){ // falling down
-    img[1] += 5;
-    if(img[1]>95){
-      img[1] = 95;
-      jmp = false;
-    }
-  jmp_cnt = 0;
-  }
-
-  else if(up && jmp){ // jumping up
-    img[1]-=8;
-    if(img[1]<-10){ // -10 because of empty space in image
-      img[1] = -10;
-      up = false;
-    }
-    jmp_cnt = 0;
-  }
-  else{
-    jmp_cnt = 0;
-  }
-
+  jump();
   score ++;
   scoreEle.innerHTML = "SCORE: " + score;
 }
