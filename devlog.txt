@@ -56,3 +56,4 @@ hebeH, yuqingW, roshaniS, justinZ -- 2022-03-10 22:19
 hebeH -- 2022-03-10 22:38
     - Edited obstacle and character sizes/placement/speed so player can jump over obstacles
     - Created store database for powerups and skins
+    - Added simple score counter
