@@ -152,7 +152,6 @@ var playGame = () => {
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
-
   if (rects[0][0] == img[0] + 95 && rects[0][1] >= img[1] && rects[0][1] <= img[1] + 150){
     stopIt();
   }
@@ -175,10 +174,10 @@ var playGame = () => {
 playGame();
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
-            if(key=="ArrowDown"){
+            if(key=="ArrowDown" || key =="s"){
               r = false;
             }
-            if(key == "ArrowUp" && jmp == false){
+            if((key == "ArrowUp" || key =="w" || key==" ") && jmp == false){
               up = true;
               jmp = true;
             }
@@ -186,7 +185,7 @@ document.body.addEventListener('keydown', function(event) {
 
 document.body.addEventListener('keyup', function(event) {
             var key = event.key;
-            if(key=="ArrowDown"){
+            if(key=="ArrowDown" || key =="s"){
               r = true;
             }
 
