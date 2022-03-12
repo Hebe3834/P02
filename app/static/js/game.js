@@ -18,6 +18,8 @@ var jmp = false;
 var up = false;
 var img = [30,95];
 var counter = 0;
+var zero = new Image(100);
+zero.src = 'static/sprites/tile000.png';
 var one = new Image(100);
 one.src = 'static/sprites/tile001.png';
 var two = new Image(100);
@@ -28,6 +30,13 @@ four.src = 'static/sprites/tile004.png';
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
+};
+
+var stopIt = () => {
+  console.log("stopIt invoked...")
+  console.log( requestID );
+  window.cancelAnimationFrame(requestID);
+  ctx.drawImage(zero, img[0], img[1], 150, 150);
 };
 
 var run = () =>{
@@ -143,6 +152,12 @@ var playGame = () => {
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
+
+  if (rects[0][0] == img[0] + 95 && rects[0][1] >= img[1] && rects[0][1] <= img[1] + 150){
+    stopIt();
+  }
+  // || rects[0][1] == img[1] - 95
+  // circs[0][0] == img[0] + 95 || circs[0][1] == img[1] - 95
 
   if(r){
     run();

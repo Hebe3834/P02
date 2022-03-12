@@ -128,6 +128,18 @@ def store():
 
     return render_template('store.html', powerups = powerups, skins = skins)
 
+@app.route("/power", methods=['GET', 'POST'])
+def buyPower():
+    power = request.form['powerups']
+    insert_item(session['username'], "powerup", power)
+    return render_template('profile.html', test=power, powerups = powerups, skins = skins)
+
+@app.route("/skin", methods=['GET', 'POST'])
+def buySkin():
+    power = request.form['skins']
+    insert_item(session['username'], "skin", power)
+    return render_template('profile.html', test=power, powerups = powerups, skins = skins)
+
 @app.route("/profile")
 def profile():
     user = session['username']

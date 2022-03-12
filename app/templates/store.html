@@ -18,25 +18,29 @@
 
     <body>
       <div style="text-align: center;">
-        <h1>STORE</h1>
+        <h1 class="my-2">STORE</h1> <br>
         <h2>POWERUPS</h2>
 
-        <select class="form-select form-select-lg" id="powerups" name="powerups">
-        {% for power in powerups %}
-          <option value="{{power}}">{{power}}</option>
-          <br>
-        {% endfor %}
-        </select>
-        <input class="btn btn-dark" type="button" id="buypowerups"  value="Submit">
+        <form class="px-3" action = "power" method = "POST">
+          <select class="form-select form-select-lg" id="powerups" name="powerups">
+          {% for power in powerups %}
+            <option value="{{power}}">{{power}}</option>
+            <br>
+          {% endfor %}
+          </select>
+          <input class="btn btn-dark" type="button" id="buypowerups"  value="Buy">
+        </form>
 
-        <h2>SKINS</h2>
+        <form class="px-3" action = "skin" method = "POST">
+        <br><br><h2>SKINS</h2> 
         <select class="form-select form-select-lg" id="skins" name="skins">
           {% for skin in skins %}
             <option value="{{skin}}">{{skin}}</option>
             <br>
           {% endfor %}
         </select>
-        <input class="btn btn-dark" type="submit" id="buyskins" value="Submit">
+        <input class="btn btn-dark" type="submit" id="buyskins" value="Buy">
+        </form>
       </div>
     </body>
     <!-- will use this form input to buy and insert into items owned db -->
