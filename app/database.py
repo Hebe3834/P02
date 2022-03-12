@@ -55,7 +55,7 @@ def create_user(username, password):
     if username in users:
         return False
     else:
-        c.execute("INSERT INTO users(usernames,passwords) VALUES (?, ?);", (username, password))
+        c.execute("INSERT INTO users VALUES (?, ?, ?);", (username, password, 0))
         db.commit()
         return True
 

@@ -37,7 +37,11 @@ def authenticate():
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        return redirect(url_for('hello_world'))
+        query = "SELECT score FROM users WHERE usernames = \'" + username + "\';"
+        c.execute(query)
+        rows = c.fetchall()
+        high_score = rows[0][0]
+        return render_template('game.html', user=session['username'], high=high_score)
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":

@@ -26,6 +26,7 @@ var two = new Image(100);
 two.src = 'static/sprites/tile002.png';
 var four = new Image(100);
 four.src = 'static/sprites/tile004.png';
+var highScore = parseInt(document.getElementById("highScore"));
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -154,6 +155,9 @@ var playGame = () => {
   generate_rect();
   if (rects[0][0] == img[0] + 95 && rects[0][1] >= img[1] && rects[0][1] <= img[1] + 150){
     stopIt();
+    if(score > highScore){
+      console.log(score);
+    }
   }
   // || rects[0][1] == img[1] - 95
   // circs[0][0] == img[0] + 95 || circs[0][1] == img[1] - 95
