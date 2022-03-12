@@ -67,3 +67,12 @@ justinZ -- 2022-03-11 09:24
 yuqingW -- 2022-03-11 18:45
     - added circles obstacles to the game so the character has to crouch sometimes. 
     - cleaned up some code
+
+hebeH -- 2022-03-12 00:21
+    - Made a small change to the design doc:
+        - Added coins owned to the first database
+
+roshaniS -- 2022-03-12 00:24
+    - Worked on detecting the end of the game; it doesn't quite work yet, however.
+    - Added some CSS and edited store.html to make the store page look better
+    - Worked on taking form inputs from the store page; it doesn't work yet.
