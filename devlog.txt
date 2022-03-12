@@ -69,6 +69,7 @@ yuqingW -- 2022-03-11 18:45
     - cleaned up some code
 
 hebeH -- 2022-03-12 00:21
+    - Made store.html and profile.html display items based on database items
     - Made a small change to the design doc:
         - Added coins owned to the first database
 
