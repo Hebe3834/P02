@@ -60,7 +60,6 @@ def create_user(username, password):
         return True
 
 
-
 def updateScore(value, user):
     '''
     Update the score value of the user

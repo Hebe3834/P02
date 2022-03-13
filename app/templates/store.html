@@ -21,17 +21,17 @@
         <h1 class="my-2">STORE</h1> <br>
         <h2>POWERUPS</h2>
 
-        <form class="px-3" action = "power" method = "POST">
+        <form class="px-3" action = "/power" method = "POST">
           <select class="form-select form-select-lg" id="powerups" name="powerups">
           {% for power in powerups %}
             <option value="{{power}}">{{power}}</option>
             <br>
           {% endfor %}
           </select>
-          <input class="btn btn-dark" type="button" id="buypowerups"  value="Buy">
+          <input class="btn btn-dark" type="submit" name="buypowerups" id="buypowerups"  value="Buy">
         </form>
 
-        <form class="px-3" action = "skin" method = "POST">
+        <form class="px-3" action = "/skin" method = "POST">
         <br><br><h2>SKINS</h2> 
         <select class="form-select form-select-lg" id="skins" name="skins">
           {% for skin in skins %}
@@ -39,7 +39,7 @@
             <br>
           {% endfor %}
         </select>
-        <input class="btn btn-dark" type="submit" id="buyskins" value="Buy">
+        <input class="btn btn-dark" type="submit" name="buyskins" id="buyskins" value="Buy">
         </form>
       </div>
     </body>

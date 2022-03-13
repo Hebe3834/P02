@@ -132,17 +132,38 @@ def store():
 
     return render_template('store.html', powerups = powerups, skins = skins)
 
+
+def returnPowerUps():
+    powerups = []
+    query = "SELECT item_owned FROM items WHERE item_type = \'powerup\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        powerups.append(row[0])
+    return powerups
+    
+def returnSkins():
+    skins = []
+    query = "SELECT item_owned FROM items WHERE item_type = \'skin\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        skins.append(row[0])
+    return skins
+
 @app.route("/power", methods=['GET', 'POST'])
 def buyPower():
     power = request.form['powerups']
     insert_item(session['username'], "powerup", power)
-    return render_template('profile.html', test=power, powerups = powerups, skins = skins)
+    print("yes")
+    return render_template('profile.html', powerups = returnPowerUps(), skins = returnSkins())
 
 @app.route("/skin", methods=['GET', 'POST'])
 def buySkin():
-    power = request.form['skins']
-    insert_item(session['username'], "skin", power)
-    return render_template('profile.html', test=power, powerups = powerups, skins = skins)
+    skin = request.form['skins']
+    insert_item(session['username'], "skin", skin)
+    print("hi")
+    return render_template('profile.html', powerups = returnPowerUps(), skins = returnSkins())
 
 @app.route("/profile")
 def profile():
