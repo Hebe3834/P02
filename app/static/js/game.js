@@ -38,6 +38,9 @@ var stopIt = () => {
   console.log( requestID );
   window.cancelAnimationFrame(requestID);
   ctx.drawImage(zero, img[0], img[1], 150, 150);
+  if(score > highScore){
+    console.log(score);
+  }
 };
 
 var run = () =>{
@@ -153,14 +156,28 @@ var playGame = () => {
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
-  if (rects[0][0] == img[0] + 95 && rects[0][1] >= img[1] && rects[0][1] <= img[1] + 150){
-    stopIt();
-    if(score > highScore){
-      console.log(score);
-    }
+
+  var ix = img[0];
+  var iy = img[1];
+
+  var rx = rects[0][0];
+  var ry = rects[0][1];
+  var rw = rects[0][2];
+  var rl = rects[0][3];
+
+  var cx = 0;
+  var cy = 0;
+
+  if (circs.length > 0){
+    cx = circs[0][0];
+    cy = circs[0][1];
   }
-  // || rects[0][1] == img[1] - 95
-  // circs[0][0] == img[0] + 95 || circs[0][1] == img[1] - 95
+
+  if ((ix + 95 >= rx && ix + 95 <= rx + rw && iy + 95 >= ry && iy <= ry + rl) ||
+  (ix + 95 >= cx - radius && ix + 95 <= cx + radius && iy >= cy - radius && iy <= cy + radius)
+  ){
+    stopIt();
+  }
 
   if(r){
     run();
@@ -172,7 +189,7 @@ var playGame = () => {
   jump();
   score ++;
   scoreEle.innerHTML = "SCORE: " + score;
-}
+};
 
 
 playGame();

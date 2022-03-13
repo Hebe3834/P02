@@ -87,3 +87,9 @@ hebeH -- 2022-03-13 15:17
         - Buying store items no longer tries to access your printer
         - After buying items, profile page shows only items user owns
     - returnPowerUps and returnSkins currently not being used but could be used for implementing powers/skins later
+    
+roshaniS -- 2022-03-13 15:20
+    - Worked on detecting the end of the game; it works better now. 
+    - Detecting rectangles seem to mostly work. 
+    - Detecting circles don't seem to work at the moment.
+    
