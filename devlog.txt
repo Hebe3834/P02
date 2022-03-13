@@ -77,3 +77,7 @@ roshaniS -- 2022-03-12 00:24
     - Worked on detecting the end of the game; it doesn't quite work yet, however.
     - Added some CSS and edited store.html to make the store page look better
     - Worked on taking form inputs from the store page; it doesn't work yet.
+
+justinZ -- 2022-03-13 13:36
+    - finished up the form inputs from the store page
+    - items are buyable and show up on profile page
