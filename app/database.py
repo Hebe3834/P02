@@ -70,9 +70,7 @@ def updateScore(value, user):
     db.commit()
 
 def insert_item(user, itemType, item):
-    '''
-    Adds item type and item to database.
-    '''
+    '''Adds item type and item to database.'''
 
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -81,9 +79,7 @@ def insert_item(user, itemType, item):
     db.commit()
 
 def restock_store():
-    '''
-    Adds initial items to the store.
-    '''
+    '''Adds initial items to the store.'''
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("MAGNET", "powerup", 500))

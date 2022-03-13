@@ -18,14 +18,15 @@ c = db.cursor()
 
 @app.route("/")
 def hello_world():
+    '''Displays the main game'''
     return render_template('game.html', msg="I don't speak cheese!")
+
 
 @app.route("/auth", methods=['GET', 'POST'])
 def authenticate():
     ''' Checks whether method is get, post. If get method, then redirect to
        loginpage. If post, then authenticate the username and password, rendering
        the error page if incorrect and the response.html if correct username/pass. '''
-
     # Variables
     method = request.method
     username = request.form.get('username')
@@ -41,7 +42,7 @@ def authenticate():
         c.execute(query)
         rows = c.fetchall()
         high_score = rows[0][0]
-        return render_template('game.html', user=session['username'], high=high_score)
+        return redirect("/")
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -51,21 +52,18 @@ def authenticate():
 @app.route("/register")
 def register():
     ''' Displays register page '''
-
     return render_template('register.html')
 
 
 @app.route("/login")
 def login():
     ''' Displays login page '''
-
     return render_template('login.html')
 
 
 @app.route("/rAuth", methods=['GET', 'POST'])
 def rAuthenticate():
     ''' Authentication of username and passwords given in register page from user '''
-
     method = request.method
     username = request.form.get('username')
     password0 = request.form.get('password0')
@@ -114,8 +112,10 @@ def logout():
 def leaderboard():
     pass
 
+
 @app.route("/store")
 def store():
+    '''Displays the store page where users can buy powerups and skins'''
     powerups = []
     query = "SELECT item FROM store WHERE item_type = \'powerup\';"
     c.execute(query)
@@ -134,39 +134,49 @@ def store():
 
 
 def returnPowerUps():
+    '''Returns a list of the powerups the current user logged in owns'''
     powerups = []
-    query = "SELECT item_owned FROM items WHERE item_type = \'powerup\';"
+    query = "SELECT item_owned FROM items WHERE item_type = \'powerup\' AND player = \'" + session['username'] + "\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
         powerups.append(row[0])
     return powerups
     
+
 def returnSkins():
+    '''Returns a list of the powerups the current user logged in owns'''
     skins = []
-    query = "SELECT item_owned FROM items WHERE item_type = \'skin\';"
+    query = "SELECT item_owned FROM items WHERE item_type = \'skin\' AND player = \'" + session['username'] + "\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
         skins.append(row[0])
     return skins
 
+
+
 @app.route("/power", methods=['GET', 'POST'])
 def buyPower():
+    '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
     insert_item(session['username'], "powerup", power)
     print("yes")
-    return render_template('profile.html', powerups = returnPowerUps(), skins = returnSkins())
+    return redirect("/profile")
+
 
 @app.route("/skin", methods=['GET', 'POST'])
 def buySkin():
+    '''Adds skin that user selected from the store to user db then redirects to user profile page'''
     skin = request.form['skins']
     insert_item(session['username'], "skin", skin)
     print("hi")
-    return render_template('profile.html', powerups = returnPowerUps(), skins = returnSkins())
+    return redirect("/profile")
+
 
 @app.route("/profile")
 def profile():
+    '''Displays user profile page with all the items owned'''
     user = session['username']
     powerups = []
     query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'powerup\';"
@@ -183,6 +193,7 @@ def profile():
         skins.append(row[0])
 
     return render_template('profile.html', powerups = powerups, skins = skins)
+
 
 if __name__ == "__main__":
     app.debug = True

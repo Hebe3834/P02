@@ -81,3 +81,9 @@ roshaniS -- 2022-03-12 00:24
 justinZ -- 2022-03-13 13:36
     - finished up the form inputs from the store page
     - items are buyable and show up on profile page
+
+hebeH -- 2022-03-13 15:17
+    - Small bug fixes:
+        - Buying store items no longer tries to access your printer
+        - After buying items, profile page shows only items user owns
+    - returnPowerUps and returnSkins currently not being used but could be used for implementing powers/skins later
