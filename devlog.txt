@@ -81,3 +81,9 @@ roshaniS -- 2022-03-12 00:24
 justinZ -- 2022-03-13 13:36
     - finished up the form inputs from the store page
     - items are buyable and show up on profile page
+    
+roshaniS -- 2022-03-13 15:20
+    - Worked on detecting the end of the game; it works better now. 
+    - Detecting rectangles seem to mostly work. 
+    - Detecting circles don't seem to work at the moment.
+    
