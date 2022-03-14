@@ -16,7 +16,7 @@ var generate = true;
 var r = true;
 var jmp = false;
 var up = false;
-var img = [30,95];
+var img = [25,95];
 var counter = 0;
 var zero = new Image(100);
 zero.src = 'static/sprites/tile000.png';
@@ -91,7 +91,9 @@ var generate_rect = () =>{
       if(circ_rect<2){
       var block_len = Math.floor(Math.random() * 30 + 10);
       var block_height = Math.floor(Math.random()*50 + 20);
-      start += block_len + Math.floor(Math.random() * 250) + 250;
+      var random = Math.floor(Math.random() * 250);
+      start += block_len+250 + (6-((block_len+250)%6))+random+(6-random%6);
+      console.log(start)
       rects.push([start,levels - block_height, block_len, block_height]);
       }
       else{
