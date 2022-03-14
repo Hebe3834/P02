@@ -176,8 +176,8 @@ var playGame = () => {
     cy = circs[0][1];
   }
 
-  if ((ix <= rx + rw && ix + 90 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
-  (ix <= cx + radius && ix + 90 >= cx && iy <= cy + radius && iy + 95 >= cy)
+  if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
+  (ix <= cx + radius && ix + 95 >= cx - radius && iy <= cy + radius && iy + 95 >= cy - radius)
   ){
     stopIt();
   }
