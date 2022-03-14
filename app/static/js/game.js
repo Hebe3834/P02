@@ -4,6 +4,7 @@
 // 2022-03-06
 
 var c = document.getElementById("main_game");
+var start_btn = document.getElementById("start");
 var ctx = c.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var score = 0;
@@ -194,7 +195,7 @@ var playGame = () => {
 };
 
 
-playGame();
+//playGame();
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
             if(key=="ArrowDown" || key =="s"){
@@ -213,3 +214,4 @@ document.body.addEventListener('keyup', function(event) {
             }
 
         });
+start_btn.addEventListener('click',playGame);
