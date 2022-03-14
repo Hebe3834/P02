@@ -1,6 +1,8 @@
 import sqlite3
 
 DB_FILE = "discobandit.db"
+db = sqlite3.connect(DB_FILE, check_same_thread=False)
+c = db.cursor()
 
 def create_db():
     ''' Creates / Connects to DB File '''
@@ -95,6 +97,15 @@ def restock_store():
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ('S5', "skin", 500))
 
     db.commit()
+
+def get_stuff(user, type):
+    powerups = []
+    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'" + type +"\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        powerups.append(row[0])
+    return powerups
 
 create_db()
 # updateScore(34)

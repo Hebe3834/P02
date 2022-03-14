@@ -195,7 +195,6 @@ var playGame = () => {
 };
 
 
-//playGame();
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
             if(key=="ArrowDown" || key =="s"){
