@@ -96,3 +96,8 @@ roshaniS -- 2022-03-13 15:20
 justinZ -- 2022-03-14 09:19
     - Realized that you should delete your database after making changes to the table
     - added coins
+
+roshaniS -- 2022-03-14 16:53
+    - Worked on detecting obstacles/end of the game. It works better now.
+    - Detecting circles work better. 
+

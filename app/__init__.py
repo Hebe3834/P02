@@ -149,7 +149,7 @@ def returnPowerUps():
     for row in rows:
         powerups.append(row[0])
     return powerups
-    
+
 
 def returnSkins():
     '''Returns a list of the powerups the current user logged in owns'''
@@ -185,20 +185,8 @@ def buySkin():
 def profile():
     '''Displays user profile page with all the items owned'''
     user = session['username']
-    powerups = []
-    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'powerup\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        powerups.append(row[0])
-
-    skins = []
-    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'skin\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        skins.append(row[0])
-
+    powerups = get_stuff(user,'powerup')
+    skins = get_stuff(user,'skin')
     return render_template('profile.html', powerups = powerups, skins = skins)
 
 

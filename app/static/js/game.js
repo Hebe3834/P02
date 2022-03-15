@@ -4,6 +4,7 @@
 // 2022-03-06
 
 var c = document.getElementById("main_game");
+var start_btn = document.getElementById("start");
 var ctx = c.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var score = 0;
@@ -16,7 +17,7 @@ var generate = true;
 var r = true;
 var jmp = false;
 var up = false;
-var img = [30,95];
+var img = [25,95];
 var counter = 0;
 var zero = new Image(100);
 zero.src = 'static/sprites/tile000.png';
@@ -91,7 +92,9 @@ var generate_rect = () =>{
       if(circ_rect<2){
       var block_len = Math.floor(Math.random() * 30 + 10);
       var block_height = Math.floor(Math.random()*50 + 20);
-      start += block_len + Math.floor(Math.random() * 250) + 250;
+      var random = Math.floor(Math.random() * 250);
+      start += block_len+250 + (6-((block_len+250)%6))+random+(6-random%6);
+      console.log(start)
       rects.push([start,levels - block_height, block_len, block_height]);
       }
       else{
@@ -173,8 +176,8 @@ var playGame = () => {
     cy = circs[0][1];
   }
 
-  if ((ix + 95 >= rx && ix + 95 <= rx + rw && iy + 95 >= ry && iy <= ry + rl) ||
-  (ix + 95 >= cx - radius && ix + 95 <= cx + radius && iy >= cy - radius && iy <= cy + radius)
+  if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
+  (ix <= cx + radius && ix + 95 >= cx - radius && iy <= cy + radius && iy + 95 >= cy - radius)
   ){
     stopIt();
   }
@@ -192,7 +195,6 @@ var playGame = () => {
 };
 
 
-playGame();
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
             if(key=="ArrowDown" || key =="s"){
@@ -211,3 +213,4 @@ document.body.addEventListener('keyup', function(event) {
             }
 
         });
+start_btn.addEventListener('click',playGame);
