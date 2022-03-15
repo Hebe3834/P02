@@ -20,6 +20,7 @@ c = db.cursor()
 @app.route("/")
 def hello_world():
     '''Displays the main game'''
+<<<<<<< HEAD
     userHighScore = 0
     if 'username' in session:
         query = "SELECT score FROM users WHERE usernames = \'" + session['username'] + "\';"
@@ -28,6 +29,9 @@ def hello_world():
         userHighScore = rows[0][0]
         print(userHighScore)
     return render_template('game.html', high=userHighScore)
+=======
+    return render_template('game.html', msg= 'hi')
+>>>>>>> 20fbafbb863db85fc122eed299d12ab0f387339a
 
 
 @app.route("/auth", methods=['GET', 'POST'])
@@ -39,7 +43,7 @@ def authenticate():
     method = request.method
     username = request.form.get('username')
     password = request.form.get('password')
-    # Get vs Post
+    # Get vs Post 
     if method == 'GET':
         return redirect(url_for('hello_world'))
 
@@ -50,7 +54,7 @@ def authenticate():
         c.execute(query)
         rows = c.fetchall()
         high_score = rows[0][0]
-        return redirect("/")
+        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -97,7 +101,7 @@ def rAuthenticate():
                 return render_template('register.html', mismatch=True)
             else:
                 # creates user account b/c no fails
-                if create_user(username, password0):
+                if create_user(username, password0, 0, 500):
                     return render_template('login.html', input='success')
                 # does not create account because create_user failed (username is taken)
                 else:
@@ -120,6 +124,13 @@ def logout():
 def leaderboard():
     pass
 
+
+
+# def getCoins():
+#     query = "SELECT coins FROM users;"
+#     coins = c.execute(query)
+#     print(coins)
+#     return render_template('game.html', msg="I don't speak cheese!")
 
 @app.route("/store")
 def store():

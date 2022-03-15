@@ -93,6 +93,18 @@ roshaniS -- 2022-03-13 15:20
     - Detecting rectangles seem to mostly work. 
     - Detecting circles don't seem to work at the moment.
     
+justinZ -- 2022-03-14 09:19
+    - Realized that you should delete your database after making changes to the table
+    - added coins
+
 roshaniS -- 2022-03-14 16:53
     - Worked on detecting obstacles/end of the game. It works better now.
     - Detecting circles work better. 
+
+roshaniS -- 2022-03-15 09:23
+    - Worked on detecting circles. It works better now.
+    - Added a function for when the user presses the spacebar, which reloads the page.
+
+justinZ -- 2022-03-15 09:25
+    - finished up coins and being able to display it as well as users
+    - started work on buying in the store based on price

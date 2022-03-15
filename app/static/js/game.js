@@ -170,14 +170,19 @@ var playGame = () => {
 
   var cx = 0;
   var cy = 0;
+  var cr = 0;
 
   if (circs.length > 0){
     cx = circs[0][0];
     cy = circs[0][1];
+    cr = circs[0][2];
   }
 
+  var dx = Math.max(ix, Math.min(cx, ix + 95)) - cx;
+  var dy = Math.max(iy, Math.min(cy, iy + 95)) - cy;
+
   if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
-  (ix <= cx + radius && ix + 95 >= cx - radius && iy <= cy + radius && iy + 95 >= cy - radius)
+  (dx * dx + dy * dy <= cr * cr)
   ){
     stopIt(); // game over
     const msg = document.createElement("h1");
@@ -186,6 +191,8 @@ var playGame = () => {
     msg.appendChild(msgContent);
     document.body.insertBefore(msg, c);
   }
+
+  // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
 
   if(r){
     run();
@@ -213,6 +220,9 @@ document.body.addEventListener('keydown', function(event) {
             if((key == "ArrowUp" || key =="w") && jmp == false){
               up = true;
               jmp = true;
+            }
+            if (key == " ") {
+              location.reload();
             }
         });
 
