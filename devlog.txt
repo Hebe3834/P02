@@ -101,3 +101,6 @@ roshaniS -- 2022-03-14 16:53
     - Worked on detecting obstacles/end of the game. It works better now.
     - Detecting circles work better. 
 
+roshaniS -- 2022-03-15 09:23
+    - Worked on detecting circles. It works better now.
+    - Added a function for when the user presses the spacebar, which reloads the page.
