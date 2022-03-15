@@ -89,7 +89,7 @@ def rAuthenticate():
                 return render_template('register.html', mismatch=True)
             else:
                 # creates user account b/c no fails
-                if create_user(username, password0):
+                if create_user(username, password0, 0, 100):
                     return render_template('login.html', input='success')
                 # does not create account because create_user failed (username is taken)
                 else:
@@ -112,6 +112,13 @@ def logout():
 def leaderboard():
     pass
 
+
+
+# def getCoins():
+#     query = "SELECT coins FROM users;"
+#     coins = c.execute(query)
+#     print(coins)
+#     return render_template('game.html', msg="I don't speak cheese!")
 
 @app.route("/store")
 def store():

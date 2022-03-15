@@ -8,7 +8,7 @@ def create_db():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT, score INTEGER);")
+    c.execute("CREATE TABLE IF NOT EXISTS users (usernames TEXT, passwords TEXT, score INTEGER, coins INTEGER);")
     c.execute("CREATE TABLE IF NOT EXISTS items (player TEXT, item_type TEXT, item_owned TEXT);")
     c.execute("CREATE TABLE IF NOT EXISTS store (item TEXT, item_type TEXT, price INTEGER, UNIQUE(item));")
 
@@ -38,7 +38,7 @@ def auth_user(username, password):
         return "bad_user"
 
 
-def create_user(username, password):
+def create_user(username, password, score, coins):
     ''' Adds user to database if right username and password are given when a
         person registers '''
 
@@ -55,7 +55,7 @@ def create_user(username, password):
     if username in users:
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?, ?, ?);", (username, password, 0))
+        c.execute("INSERT INTO users(usernames, passwords, score, coins) VALUES (?, ?, ?, ?);", (username, password, score, coins))
         db.commit()
         return True
 
@@ -97,5 +97,4 @@ def restock_store():
     db.commit()
 
 create_db()
-# updateScore(34)
 restock_store()
