@@ -93,3 +93,6 @@ roshaniS -- 2022-03-13 15:20
     - Detecting rectangles seem to mostly work. 
     - Detecting circles don't seem to work at the moment.
     
+roshaniS -- 2022-03-14 16:53
+    - Worked on detecting obstacles/end of the game. It works better now.
+    - Detecting circles work better. 
