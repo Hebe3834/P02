@@ -194,13 +194,18 @@ var playGame = () => {
   scoreEle.innerHTML = "SCORE: " + score;
 };
 
-
+var reset = () => {
+  rects = []
+  circs = []
+  generate = true;
+  playGame();
+}
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
             if(key=="ArrowDown" || key =="s"){
               r = false;
             }
-            if((key == "ArrowUp" || key =="w" || key==" ") && jmp == false){
+            if((key == "ArrowUp" || key =="w") && jmp == false){
               up = true;
               jmp = true;
             }
@@ -213,4 +218,4 @@ document.body.addEventListener('keyup', function(event) {
             }
 
         });
-start_btn.addEventListener('click',playGame);
+start_btn.addEventListener('click',reset);
