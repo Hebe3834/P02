@@ -104,3 +104,7 @@ roshaniS -- 2022-03-14 16:53
 roshaniS -- 2022-03-15 09:23
     - Worked on detecting circles. It works better now.
     - Added a function for when the user presses the spacebar, which reloads the page.
+
+justinZ -- 2022-03-15 09:25
+    - finished up coins and being able to display it as well as users
+    - started work on buying in the store based on price
