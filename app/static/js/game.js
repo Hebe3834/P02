@@ -98,7 +98,7 @@ var generate_rect = () =>{
       rects.push([start,levels - block_height, block_len, block_height]);
       }
       else{
-        var rad = Math.floor(Math.random() * 10 + 20);
+        var rad = Math.floor(Math.random() * 10 + 17);
         var circ_y = Math.floor(Math.random() * -60 + levels - 30);
         start += 2*rad + Math.floor(Math.random() * 250) + 250;
         circs.push([start,circ_y,rad]);
@@ -179,7 +179,12 @@ var playGame = () => {
   if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
   (ix <= cx + radius && ix + 95 >= cx - radius && iy <= cy + radius && iy + 95 >= cy - radius)
   ){
-    stopIt();
+    stopIt(); // game over
+    const msg = document.createElement("h1");
+    console.log(highScore);
+    const msgContent = document.createTextNode("Game Over! You scored " + parseInt(highScore));
+    msg.appendChild(msgContent);
+    document.body.insertBefore(msg, c);
   }
 
   if(r){

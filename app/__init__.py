@@ -16,11 +16,18 @@ DB_FILE = "discobandit.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
 c = db.cursor()
 
+
 @app.route("/")
 def hello_world():
     '''Displays the main game'''
-    
-    return render_template('game.html', msg="I don't speak cheese!")
+    userHighScore = 0
+    if 'username' in session:
+        query = "SELECT score FROM users WHERE usernames = \'" + session['username'] + "\';"
+        c.execute(query)
+        rows = c.fetchall()
+        userHighScore = rows[0][0]
+        print(userHighScore)
+    return render_template('game.html', high=userHighScore)
 
 
 @app.route("/auth", methods=['GET', 'POST'])
