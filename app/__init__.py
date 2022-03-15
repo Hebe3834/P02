@@ -19,6 +19,7 @@ c = db.cursor()
 @app.route("/")
 def hello_world():
     '''Displays the main game'''
+    
     return render_template('game.html', msg="I don't speak cheese!")
 
 
@@ -153,8 +154,6 @@ def returnSkins():
     for row in rows:
         skins.append(row[0])
     return skins
-
-
 
 @app.route("/power", methods=['GET', 'POST'])
 def buyPower():
