@@ -19,8 +19,7 @@ c = db.cursor()
 @app.route("/")
 def hello_world():
     '''Displays the main game'''
-    
-    return render_template('game.html', msg="I don't speak cheese!")
+    return render_template('game.html', msg= 'hi')
 
 
 @app.route("/auth", methods=['GET', 'POST'])
@@ -32,7 +31,7 @@ def authenticate():
     method = request.method
     username = request.form.get('username')
     password = request.form.get('password')
-    # Get vs Post
+    # Get vs Post 
     if method == 'GET':
         return redirect(url_for('hello_world'))
 
@@ -43,7 +42,7 @@ def authenticate():
         c.execute(query)
         rows = c.fetchall()
         high_score = rows[0][0]
-        return redirect("/")
+        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":

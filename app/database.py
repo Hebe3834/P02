@@ -71,6 +71,14 @@ def updateScore(value, user):
     c.execute("UPDATE users SET score = (?) WHERE usernames = (?);",(value, user))
     db.commit()
 
+def getCoins(user):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT coins FROM users WHERE usernames = (?);",(user))
+    d = c.fetchall()[0][0]
+    return d
+
+
 def insert_item(user, itemType, item):
     '''Adds item type and item to database.'''
 
