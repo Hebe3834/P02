@@ -89,7 +89,7 @@ def rAuthenticate():
                 return render_template('register.html', mismatch=True)
             else:
                 # creates user account b/c no fails
-                if create_user(username, password0, 0, 100):
+                if create_user(username, password0, 0, 500):
                     return render_template('login.html', input='success')
                 # does not create account because create_user failed (username is taken)
                 else:
