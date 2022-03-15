@@ -93,3 +93,6 @@ roshaniS -- 2022-03-13 15:20
     - Detecting rectangles seem to mostly work. 
     - Detecting circles don't seem to work at the moment.
     
+justinZ -- 2022-03-14 09:19
+    - Realized that you should delete your database after making changes to the table
+    - added coins
