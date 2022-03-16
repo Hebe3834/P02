@@ -57,7 +57,7 @@ def create_user(username, password, score, coins):
     if username in users:
         return False
     else:
-        c.execute("INSERT INTO users VALUES (?, ?, ?);", (username, password, 0))
+        c.execute("INSERT INTO users VALUES (?, ?, ?, ?);", (username, password, score,coins))
         db.commit()
         return True
 

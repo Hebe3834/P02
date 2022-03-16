@@ -50,7 +50,7 @@ def authenticate():
         c.execute(query)
         rows = c.fetchall()
         high_score = rows[0][0]
-        return redirect("/")
+        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
