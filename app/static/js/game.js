@@ -22,7 +22,7 @@ var counter = 0;
 var c_generate = true;
 var coin = new Image(100);
 coin.src = 'static/sprites/coin.png';
-var coin_lv = [60,90,120,150];
+var coin_lv = [60,90,100,150];
 var coins = [];
 var zero = new Image(100);
 zero.src = 'static/sprites/tile000.png';
@@ -153,14 +153,21 @@ for(i=0;i<rects.length;i++){
   }
 };
 var generate_coin = () =>{
-
-  if(c_generate){
 var start = 0;
+  if(c_generate){
   for(i=0;i<10;i++){
     var coin_x = Math.floor(Math.random()*100 + 25) +60;
     start+= coin_x
     var coin_y = coin_lv[Math.floor(Math.random()*4)];
+    var on_obs = false;
+    for (j=0;j<rects.length;j++){
+      if((start>=rects[i][0] && start <= rects[i][0] + rects[i][2]) || (coin_y+50>=rects[i][1])){
+        on_obs = true;
+      }
+    }
+    if(on_obs == false){
     coins.push([start, coin_y]);
+  }
   }
   c_generate = false;
 }
@@ -170,11 +177,11 @@ var start = 0;
     //console.log(coins);
   }
 
-
     if(coins[coins.length-1] < 300){
+      console.log("coin generate true");
       c_generate = true;
     }
-    if(coins[0]<-250){
+    if(coins[0]<=250){
       coins.shift();
     }
 
