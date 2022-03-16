@@ -19,6 +19,11 @@ var jmp = false;
 var up = false;
 var img = [25,95];
 var counter = 0;
+var c_generate = true;
+var coin = new Image(100);
+coin.src = 'static/sprites/coin.png';
+var coin_lv = [60,90,120,150];
+var coins = [];
 var zero = new Image(100);
 zero.src = 'static/sprites/tile000.png';
 var one = new Image(100);
@@ -147,7 +152,33 @@ for(i=0;i<rects.length;i++){
     generate = true;
   }
 };
+var generate_coin = () =>{
 
+  if(c_generate){
+var start = 0;
+  for(i=0;i<10;i++){
+    var coin_x = Math.floor(Math.random()*100 + 25) +60;
+    start+= coin_x
+    var coin_y = coin_lv[Math.floor(Math.random()*4)];
+    coins.push([start, coin_y]);
+  }
+  c_generate = false;
+}
+  for (i=0;i<coins.length;i++){
+    ctx.drawImage(coin, coins[i][0], coins[i][1],50,50);
+    coins[i][0] -= 6;
+    //console.log(coins);
+  }
+
+
+    if(coins[coins.length-1] < 300){
+      c_generate = true;
+    }
+    if(coins[0]<-250){
+      coins.shift();
+    }
+
+}
 var playGame = () => {
   console.log("playGame invoked...")
 
@@ -159,7 +190,7 @@ var playGame = () => {
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
-
+  generate_coin();
   var ix = img[0];
   var iy = img[1];
 
@@ -223,6 +254,11 @@ document.body.addEventListener('keydown', function(event) {
             }
             if (key == " ") {
               location.reload();
+            }
+
+            // for debugging
+            if(key == "q"){
+              window.cancelAnimationFrame(requestID);
             }
         });
 

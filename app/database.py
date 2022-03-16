@@ -123,13 +123,35 @@ def restock_store():
     db.commit()
 
 def get_stuff(user, type):
-    powerups = []
+    '''Gets list of items the user owns. Takes a username and an item type.'''
+    items = []
     query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'" + type +"\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
-        powerups.append(row[0])
-    return powerups
+        items.append(row[0])
+    return items
+
+def get_store_stuff(type):
+    '''Gets list of items in the store. Takes an item type.'''
+    items = []
+    query = "SELECT item FROM store WHERE item_type = \'" + type +"\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        items.append(row[0])
+    return items
+
+def get_usr_info(user, selector):
+    '''Gets a user's password, high score, or coin count from the database.
+    Takes a username and the selector'''
+    info = []
+    query = "SELECT \'" + selector + "\' FROM users WHERE usernames = \'" + user +"\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        info.append(row[0])
+    return info[0]
 
 create_db()
 restock_store()
