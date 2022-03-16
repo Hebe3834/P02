@@ -71,6 +71,16 @@ def updateScore(value, user):
     c.execute("UPDATE users SET score = (?) WHERE usernames = (?);",(value, user))
     db.commit()
 
+
+def updateCoins(value, user):
+    '''
+    Update the score value of the user
+    '''
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("UPDATE users SET coins = (?) WHERE usernames = (?);",(value, user))
+    db.commit()
+
 def getCoins(user):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
@@ -78,6 +88,12 @@ def getCoins(user):
     d = c.fetchall()[0][0]
     return d
 
+def cost(powerup):
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    c.execute("SELECT price FROM store WHERE item = (?);",(powerup))
+    d = c.fetchall()[0][0]
+    return d
 
 def insert_item(user, itemType, item):
     '''Adds item type and item to database.'''

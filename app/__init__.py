@@ -4,6 +4,7 @@
 # 2022-03-06
 
 from os import urandom
+from turtle import update
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
 import sqlite3
@@ -173,6 +174,11 @@ def returnSkins():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
+    if (getCoins(session['username']) >= 500):
+        # updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
+        print('bought successfully')
+    else:
+        print('bad buy poor')
     insert_item(session['username'], "powerup", power)
     print("yes")
     return redirect("/profile")
