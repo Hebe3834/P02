@@ -4,6 +4,7 @@
 # 2022-03-06
 
 from os import urandom
+from turtle import update
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
 import sqlite3
@@ -22,10 +23,7 @@ def hello_world():
     '''Displays the main game'''
     userHighScore = 0
     if 'username' in session:
-        query = "SELECT score FROM users WHERE usernames = \'" + session['username'] + "\';"
-        c.execute(query)
-        rows = c.fetchall()
-        userHighScore = rows[0][0]
+        userHighScore = get_usr_info(session['username'], 'score')
         print(userHighScore)
     return render_template('game.html', high=userHighScore)
 
@@ -46,11 +44,8 @@ def authenticate():
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        query = "SELECT score FROM users WHERE usernames = \'" + username + "\';"
-        c.execute(query)
-        rows = c.fetchall()
-        high_score = rows[0][0]
-        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
+        high_score = get_usr_info(username, "score")
+        return redirect(url_for('hello_world'))
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -121,58 +116,23 @@ def leaderboard():
     pass
 
 
-
-# def getCoins():
-#     query = "SELECT coins FROM users;"
-#     coins = c.execute(query)
-#     print(coins)
-#     return render_template('game.html', msg="I don't speak cheese!")
-
 @app.route("/store")
 def store():
     '''Displays the store page where users can buy powerups and skins'''
-    powerups = []
-    query = "SELECT item FROM store WHERE item_type = \'powerup\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        powerups.append(row[0])
-
-    skins = []
-    query = "SELECT item FROM store WHERE item_type = \'skin\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        skins.append(row[0])
-
+    powerups = get_store_stuff("powerup")
+    skins = get_store_stuff("skin")
     return render_template('store.html', powerups = powerups, skins = skins)
 
-
-def returnPowerUps():
-    '''Returns a list of the powerups the current user logged in owns'''
-    powerups = []
-    query = "SELECT item_owned FROM items WHERE item_type = \'powerup\' AND player = \'" + session['username'] + "\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        powerups.append(row[0])
-    return powerups
-
-
-def returnSkins():
-    '''Returns a list of the powerups the current user logged in owns'''
-    skins = []
-    query = "SELECT item_owned FROM items WHERE item_type = \'skin\' AND player = \'" + session['username'] + "\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        skins.append(row[0])
-    return skins
 
 @app.route("/power", methods=['GET', 'POST'])
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
+    if (getCoins(session['username']) >= 500):
+        # updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
+        print('bought successfully')
+    else:
+        print('bad buy poor')
     insert_item(session['username'], "powerup", power)
     print("yes")
     return redirect("/profile")

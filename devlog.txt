@@ -115,3 +115,6 @@ justinZ -- 2022-03-15 09:25
     
 yuqingW -- 2022-03-15 09:26
     - started working on generating coins. 
+
+yuqingW -- 2022-03-16 09:26
+    - generating coin is working but sometimes it goes onto the obstacles. 
