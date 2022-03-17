@@ -17,7 +17,7 @@ var generate = true;
 var r = true;
 var jmp = false;
 var up = false;
-var img = [25,95];
+var img = [25,150];
 var counter = 0;
 var c_generate = true;
 var coin = new Image(100);
@@ -43,7 +43,7 @@ var stopIt = () => {
   console.log("stopIt invoked...")
   console.log( requestID );
   window.cancelAnimationFrame(requestID);
-  ctx.drawImage(zero, img[0], img[1], 150, 150);
+  ctx.drawImage(zero, img[0], img[1], 50, 50);
   if(score > highScore){
     console.log(score);
   }
@@ -52,10 +52,10 @@ var stopIt = () => {
 var run = () =>{
   console.log("run invoked...");
   if (counter <= 10) {
-    ctx.drawImage(one, img[0], img[1], 150, 150);
+    ctx.drawImage(one, img[0], img[1], 50, 50);
   }
   else if (counter <= 20) {
-    ctx.drawImage(two, img[0], img[1], 150, 150);
+    ctx.drawImage(two, img[0], img[1], 50, 50);
   }
   else {
     counter = 0;
@@ -65,18 +65,18 @@ var run = () =>{
 
 var jump = () =>{
   if(jmp && !up){ // falling down
-      img[1] += 5;
-      if(img[1]>95){
-        img[1] = 95;
+      img[1] += 9;
+      if(img[1]>150){
+        img[1] = 150;
         jmp = false;
       }
     jmp_cnt = 0;
     }
 
     else if(up && jmp){ // jumping up
-      img[1]-=8;
-      if(img[1]<-10){ // -10 because of empty space in image
-        img[1] = -10;
+      img[1]-=9;
+      if(img[1]<0){ // -10 because of empty space in image
+        img[1] = 0;
         up = false;
       }
 }
@@ -201,10 +201,12 @@ var playGame = () => {
   var ix = img[0];
   var iy = img[1];
 
-  var rx = rects[0][0];
-  var ry = rects[0][1];
-  var rw = rects[0][2];
-  var rl = rects[0][3];
+  if (rects.length > 0) {
+    var rx = rects[0][0];
+    var ry = rects[0][1];
+    var rw = rects[0][2];
+    var rl = rects[0][3];
+  }
 
   var cx = 0;
   var cy = 0;
@@ -216,10 +218,10 @@ var playGame = () => {
     cr = circs[0][2];
   }
 
-  var dx = Math.max(ix, Math.min(cx, ix + 95)) - cx;
-  var dy = Math.max(iy, Math.min(cy, iy + 95)) - cy;
+  var dx = Math.max(ix, Math.min(cx, ix)) - cx;
+  var dy = Math.max(iy, Math.min(cy, iy + 50)) - cy;
 
-  if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
+  if ((ix <= rx + rw && ix + 50 >= rx && iy <= ry + rl && iy + 50 >= ry) ||
   (dx * dx + dy * dy <= cr * cr)
   ){
     stopIt(); // game over
