@@ -121,3 +121,7 @@ yuqingW -- 2022-03-16 09:26
 
 roshaniS -- 2022-03-17 09:38
     - Changed the character images to squares and edited the code accordingly
+    
+hebeH -- 2022-03-17 19:05
+    - High score and coins are updated after each game
+    - Added leaderboard
