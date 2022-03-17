@@ -153,18 +153,21 @@ for(i=0;i<rects.length;i++){
   }
 };
 var generate_coin = () =>{
-var start = 0;
+var start = 500;
   if(c_generate){
   for(i=0;i<10;i++){
     var coin_x = Math.floor(Math.random()*100 + 25) +60;
-    start+= coin_x
+    start+= coin_x;
     var coin_y = coin_lv[Math.floor(Math.random()*4)];
     var on_obs = false;
+    //console.log(rects);
     for (j=0;j<rects.length;j++){
-      if((start>=rects[i][0] && start <= rects[i][0] + rects[i][2]) || (coin_y+50>=rects[i][1])){
+      if((start>=(rects[j][0]-10) && (start <= (rects[j][0] + rects[j][2] + 10))) && (coin_y+50>=rects[j][1])){
         on_obs = true;
+        //console.log(on_obs);
       }
     }
+
     if(on_obs == false){
     coins.push([start, coin_y]);
   }
@@ -177,14 +180,14 @@ var start = 0;
     //console.log(coins);
   }
 
-    if(coins[coins.length-1] < 300){
+    if(coins[coins.length-1][0] < 300){
       console.log("coin generate true");
       c_generate = true;
     }
     if(coins[0]<=250){
       coins.shift();
     }
-
+console.log(coins);
 }
 var playGame = () => {
   console.log("playGame invoked...")
@@ -222,12 +225,14 @@ var playGame = () => {
   if ((ix <= rx + rw && ix + 95 >= rx && iy <= ry + rl && iy + 95 >= ry) ||
   (dx * dx + dy * dy <= cr * cr)
   ){
-    stopIt(); // game over
+    /*
+    //stopIt(); // game over
     const msg = document.createElement("h1");
     console.log(highScore);
     const msgContent = document.createTextNode("Game Over! You scored " + parseInt(highScore));
     msg.appendChild(msgContent);
     document.body.insertBefore(msg, c);
+    */
   }
 
   // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
