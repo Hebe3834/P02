@@ -156,6 +156,21 @@ def profile():
     return render_template('profile.html', powerups = powerups, skins = skins)
 
 
+@app.route("/game_results", methods=['GET', 'POST'])
+def results():
+    '''Displays results of game after losing and updates user account info'''
+    score = int(request.form.get('score'))
+    coins = int(request.form.get('coins'))
+    if "username" in session:
+        user = session["username"]
+        prev_score = getScore(user)
+        prev_coins = getCoins(user)
+        if score > prev_score:
+            updateScore(score, user)
+        updateCoins(prev_coins+coins, user)
+    return render_template('results.html', score=score, coins=coins)
+
+
 if __name__ == "__main__":
     app.debug = True
     app.run()

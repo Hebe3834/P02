@@ -118,3 +118,6 @@ yuqingW -- 2022-03-15 09:26
 
 yuqingW -- 2022-03-16 09:26
     - generating coin is working but sometimes it goes onto the obstacles. 
+
+roshaniS -- 2022-03-17 09:38
+    - Changed the character images to squares and edited the code accordingly
