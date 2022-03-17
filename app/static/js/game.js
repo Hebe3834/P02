@@ -7,7 +7,9 @@ var c = document.getElementById("main_game");
 var start_btn = document.getElementById("start");
 var ctx = c.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
+var coinEle = document.getElementById("usrCoins");
 var score = 0;
+var usrCoinsEarned = 0;
 var requestID;  //init global var for use with animation frames
 var radius = 1;
 var levels = 200;
@@ -184,10 +186,11 @@ var start = 500;
     ctx.drawImage(coin, coins[i][0], coins[i][1],50,50);
     coins[i][0] -= 6;
     if (img[0] <= coins[i][0] + 50 && img[0] + 50 >= coins[i][0] && img[1] <= coins[i][1] + 50 && img[1] + 50 >= coins[i][1]){
-      console.log(img);
-      console.log(coins);
-      console.log(coins[i]);
-      coins.splice(i,i+1);
+      // console.log(img);
+      // console.log(coins);
+      // console.log(coins[i]);
+      coins.splice(i,1);
+      usrCoinsEarned++;
       i--;
     }
   }
@@ -257,6 +260,7 @@ var playGame = () => {
   jump();
   score ++;
   scoreEle.innerHTML = "SCORE: " + score;
+  coinEle.innerHTML = "COINS EARNED: " + usrCoinsEarned;
 };
 
 var reset = () => {
@@ -303,9 +307,9 @@ var gameOver = (score) => {
   results.setAttribute("method", "POST");
   results.setAttribute("action", "/game_results");
 
-  let coins = document.createElement("input");
-  coins.setAttribute("name", "coins");
-  coins.setAttribute("value", 0);
+  let coinsEarned = document.createElement("input");
+  coinsEarned.setAttribute("name", "coins");
+  coinsEarned.setAttribute("value", usrCoinsEarned);
   let lastScore = document.createElement("input");
   lastScore.setAttribute("name", "score");
   lastScore.setAttribute("value", score+1);
@@ -314,7 +318,7 @@ var gameOver = (score) => {
   enter.setAttribute("type", "submit");
 
   document.body.appendChild(results);
-  results.appendChild(coins);
+  results.appendChild(coinsEarned);
   results.appendChild(lastScore);
   results.appendChild(enter);
   enter.click();

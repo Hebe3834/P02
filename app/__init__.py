@@ -25,7 +25,7 @@ def hello_world():
     if 'username' in session:
         userHighScore = get_usr_info(session['username'], 'score')
         print(userHighScore)
-        return render_template('game.html', msg= getCoins(session['username']), user = session['username'],high = userHighScore)
+        return render_template('game.html', coins= getCoins(session['username']), user = session['username'],high = userHighScore)
     return render_template('game.html')
 
 
