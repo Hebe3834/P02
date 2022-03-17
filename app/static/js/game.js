@@ -22,7 +22,7 @@ var counter = 0;
 var c_generate = true;
 var coin = new Image(100);
 coin.src = 'static/sprites/coin.png';
-var coin_lv = [60,90,100,150];
+var coin_lv = [30,90,150];
 var coins = [];
 var zero = new Image(100);
 zero.src = 'static/sprites/tile000.png';
@@ -162,10 +162,16 @@ var start = 500;
     var on_obs = false;
     //console.log(rects);
     for (j=0;j<rects.length;j++){
-      if((start>=(rects[j][0]-10) && (start <= (rects[j][0] + rects[j][2] + 10))) && (coin_y+50>=rects[j][1])){
+      // replace rects[j][0] with circ_X - r and replace rects[j][0]
+      if((start>=(rects[j][0]-60) && (start <= (rects[j][0] + rects[j][2] + 10))) && (coin_y+60>=rects[j][1])){
         on_obs = true;
-        //console.log(on_obs);
       }
+    }
+
+    for(j=0;j<circs.length;j++){
+    if(((start + 60)>=(circs[j][0] - circs[j][2])) && (start<= (circs[j][0] + circs[j][2] +10)) && (coin_y+60 >= (circs[j][1] - circs[j][2])) && ((coin_y - 10)<= (circs[j][1]+circs[j][2]))){
+      on_obs = true;
+    }
     }
 
     if(on_obs == false){
@@ -248,9 +254,11 @@ var playGame = () => {
 };
 
 var reset = () => {
-  rects = []
-  circs = []
+  rects = [];
+  circs = [];
+  coins = [];
   generate = true;
+  c_generate = true;
   playGame();
 }
 document.body.addEventListener('keydown', function(event) {
