@@ -95,7 +95,7 @@ def getCoins(user):
 def cost(powerup):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("SELECT price FROM store WHERE item = (?);",(powerup))
+    c.execute("SELECT price FROM store WHERE item = (?);",(powerup,))
     return c.fetchall()[0][0]
 
 def insert_item(user, itemType, item):

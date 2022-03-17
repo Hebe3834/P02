@@ -131,7 +131,7 @@ def buyPower():
     power = request.form['powerups']
 
     if (getCoins(session['username']) >= 500):
-        print((getCoins(session['username']) - cost(power)))
+        updateCoins((getCoins(session['username']) - cost(power)), session['username'])
         print('bought successfully')
     else:
         print('bad buy poor')
