@@ -145,16 +145,11 @@ def get_store_stuff(type):
         items.append(row[0])
     return items
 
-def get_usr_info(user, selector):
-    '''Gets a user's password, high score, or coin count from the database.
-    Takes a username and the selector'''
-    info = []
-    query = "SELECT \'" + selector + "\' FROM users WHERE usernames = \'" + user +"\';"
+def get_leaderboard():
+    ''' '''
+    query = "SELECT usernames, score FROM users ORDER BY score DESC;"
     c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        info.append(row[0])
-    return info[0]
+    return c.fetchall()
 
 create_db()
 restock_store()

@@ -23,9 +23,10 @@ def hello_world():
     '''Displays the main game'''
     userHighScore = 0
     if 'username' in session:
-        userHighScore = get_usr_info(session['username'], 'score')
-        print(userHighScore)
-        return render_template('game.html', coins= getCoins(session['username']), user = session['username'],high = userHighScore)
+        user = session["username"]
+        userHighScore = getScore(user)
+        userCoins = getCoins(user)
+        return render_template('game.html', coins= userCoins, user = user, high = userHighScore)
     return render_template('game.html')
 
 
@@ -45,8 +46,8 @@ def authenticate():
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        high_score = get_usr_info(username, "score")
-        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
+        high_score = getScore(username)
+        return redirect("/")
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -114,7 +115,8 @@ def logout():
 
 @app.route("/leaderboard")
 def leaderboard():
-    pass
+    leaderboard = get_leaderboard()
+    return render_template('leaderboard.html', sortedUsers = leaderboard)
 
 
 @app.route("/store")
@@ -161,14 +163,18 @@ def results():
     '''Displays results of game after losing and updates user account info'''
     score = int(request.form.get('score'))
     coins = int(request.form.get('coins'))
+    dist_from_hi = 0
     if "username" in session:
         user = session["username"]
         prev_score = getScore(user)
         prev_coins = getCoins(user)
         if score > prev_score:
             updateScore(score, user)
+        else:
+            dist_from_hi = prev_score - score
         updateCoins(prev_coins+coins, user)
-    return render_template('results.html', score=score, coins=coins)
+    leaderboard = get_leaderboard()
+    return render_template('results.html', score=score, dist_from_hi=dist_from_hi, coins=coins, sortedUsers=leaderboard)
 
 
 if __name__ == "__main__":

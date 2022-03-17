@@ -18,6 +18,14 @@
 
     <body>
 
+      <h3>Leaderboard: </h3>
+      {% for user, score in sortedUsers %}
+          {% if user == session['username'] %}
+          <p style="color:brown;"> {{ user }} {{ score }} </p>
+          {% else %}
+          <p> {{ user }} {{ score }} </p>
+          {% endif %}
+      {% endfor %}
 
     </body>
 
