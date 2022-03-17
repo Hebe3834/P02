@@ -45,7 +45,7 @@ def authenticate():
     if auth_state == True:
         session['username'] = username
         high_score = get_usr_info(username, "score")
-        return redirect(url_for('hello_world'))
+        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -130,10 +130,10 @@ def buyPower():
     power = request.form['powerups']
     if (getCoins(session['username']) >= 500):
         # updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
+        insert_item(session['username'], "powerup", power)
         print('bought successfully')
     else:
         print('bad buy poor')
-    insert_item(session['username'], "powerup", power)
     print("yes")
     return redirect("/profile")
 
@@ -143,7 +143,6 @@ def buySkin():
     '''Adds skin that user selected from the store to user db then redirects to user profile page'''
     skin = request.form['skins']
     insert_item(session['username'], "skin", skin)
-    print("hi")
     return redirect("/profile")
 
 
