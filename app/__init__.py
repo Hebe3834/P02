@@ -25,7 +25,8 @@ def hello_world():
     if 'username' in session:
         userHighScore = get_usr_info(session['username'], 'score')
         print(userHighScore)
-    return render_template('game.html', high=userHighScore)
+        return render_template('game.html', msg= getCoins(session['username']), user = session['username'],high = userHighScore)
+    return render_template('game.html')
 
 
 @app.route("/auth", methods=['GET', 'POST'])
@@ -128,8 +129,9 @@ def store():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
-    if (getCoins(session['username']) >= 500):
-        # updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
+    print(session['username'])
+    if (getCoins(session['username']) >= cost(power[0][0])):
+        #updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
         insert_item(session['username'], "powerup", power)
         print('bought successfully')
     else:
