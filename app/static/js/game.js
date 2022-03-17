@@ -239,14 +239,10 @@ var playGame = () => {
   if ((ix <= rx + rw && ix + 50 >= rx && iy <= ry + rl && iy + 50 >= ry) ||
   (dx * dx + dy * dy <= cr * cr)
   ){
-/*
+
     stopIt(); // game over
-    const msg = document.createElement("h1");
-    console.log(highScore);
-    const msgContent = document.createTextNode("Game Over! You scored " + parseInt(highScore));
-    msg.appendChild(msgContent);
-    document.body.insertBefore(msg, c);
-*/
+    gameOver(score);
+
   }
 
   // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
@@ -298,3 +294,28 @@ document.body.addEventListener('keyup', function(event) {
 
         });
 start_btn.addEventListener('click',reset);
+
+
+
+
+var gameOver = (score) => {
+  let results = document.createElement("form");
+  results.setAttribute("method", "POST");
+  results.setAttribute("action", "/game_results");
+
+  let coins = document.createElement("input");
+  coins.setAttribute("name", "coins");
+  coins.setAttribute("value", 0);
+  let lastScore = document.createElement("input");
+  lastScore.setAttribute("name", "score");
+  lastScore.setAttribute("value", score+1);
+
+  let enter = document.createElement("input");
+  enter.setAttribute("type", "submit");
+
+  document.body.appendChild(results);
+  results.appendChild(coins);
+  results.appendChild(lastScore);
+  results.appendChild(enter);
+  enter.click();
+}

@@ -129,14 +129,13 @@ def store():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
-    print(session['username'])
-    if (getCoins(session['username']) >= cost(power[0][0])):
-        #updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
-        insert_item(session['username'], "powerup", power)
+
+    if (getCoins(session['username']) >= 500):
+        updateCoins((getCoins(session['username']) - cost(power)), session['username'])
         print('bought successfully')
     else:
         print('bad buy poor')
-    print("yes")
+    insert_item(session['username'], "powerup", power)
     return redirect("/profile")
 
 
@@ -155,6 +154,21 @@ def profile():
     powerups = get_stuff(user,'powerup')
     skins = get_stuff(user,'skin')
     return render_template('profile.html', powerups = powerups, skins = skins)
+
+
+@app.route("/game_results", methods=['GET', 'POST'])
+def results():
+    '''Displays results of game after losing and updates user account info'''
+    score = int(request.form.get('score'))
+    coins = int(request.form.get('coins'))
+    if "username" in session:
+        user = session["username"]
+        prev_score = getScore(user)
+        prev_coins = getCoins(user)
+        if score > prev_score:
+            updateScore(score, user)
+        updateCoins(prev_coins+coins, user)
+    return render_template('results.html', score=score, coins=coins)
 
 
 if __name__ == "__main__":
