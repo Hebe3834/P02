@@ -89,11 +89,7 @@ def cost(powerup):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("SELECT price FROM store WHERE item = (?);",(powerup))
-    d = c.fetchall()[0][0]
-    print(d)
-    return d
-
-
+    return c.fetchall()[0][0]
 
 def insert_item(user, itemType, item):
     '''Adds item type and item to database.'''

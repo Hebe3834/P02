@@ -129,14 +129,13 @@ def store():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
-    print(session['username'])
-    if (getCoins(session['username']) >= cost(power[0][0])):
-        #updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
-        insert_item(session['username'], "powerup", power)
+
+    if (getCoins(session['username']) >= 500):
+        print((getCoins(session['username']) - cost(power)))
         print('bought successfully')
     else:
         print('bad buy poor')
-    print("yes")
+    insert_item(session['username'], "powerup", power)
     return redirect("/profile")
 
 
