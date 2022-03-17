@@ -132,10 +132,10 @@ def buyPower():
 
     if (getCoins(session['username']) >= 500):
         updateCoins((getCoins(session['username']) - cost(power)), session['username'])
+        insert_item(session['username'], "powerup", power)
         print('bought successfully')
     else:
         print('bad buy poor')
-    insert_item(session['username'], "powerup", power)
     return redirect("/profile")
 
 
