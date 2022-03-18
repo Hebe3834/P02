@@ -81,14 +81,14 @@ def updateCoins(value, user):
 def getScore(user):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("SELECT score FROM users WHERE usernames = (?);",(user))
+    c.execute("SELECT score FROM users WHERE usernames = (?);",(user,))
     d = c.fetchall()[0][0]
     return d
 
 def getCoins(user):
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    c.execute("SELECT coins FROM users WHERE usernames = (?);",(user))
+    c.execute("SELECT coins FROM users WHERE usernames = (?);",(user,))
     d = c.fetchall()[0][0]
     return d
 
