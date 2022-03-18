@@ -133,4 +133,7 @@ yuqingW -- 2022-03-17 17:00
 hebeH -- 2022-03-17 19:05
     - High score and coins are updated after each game
     - Added leaderboard
-   
+
+justinZ -- 2022-03-18 09:21
+    - Added message if you were too poor, added home buttons
+    - fixed error 
