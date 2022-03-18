@@ -9,7 +9,9 @@ var start_btn = document.getElementById("start");
 var ctx = c.getContext("2d", { alpha: false });
 var btx = b.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
+var coinEle = document.getElementById("usrCoins");
 var score = 0;
+var usrCoinsEarned = 0;
 var requestID;  //init global var for use with animation frames
 var radius = 1;
 var levels = 200;
@@ -164,39 +166,46 @@ var start = 500;
   for(i=0;i<10;i++){
     var coin_x = Math.floor(Math.random()*100 + 25) +60;
     start+= coin_x;
-    var coin_y = coin_lv[Math.floor(Math.random()*4)];
+    var coin_y = coin_lv[Math.floor(Math.random()*3)];
     var on_obs = false;
     //console.log(rects);
     for (j=0;j<rects.length;j++){
       // replace rects[j][0] with circ_X - r and replace rects[j][0]
-      if((start>=(rects[j][0]-60) && (start <= (rects[j][0] + rects[j][2] + 10))) && (coin_y+60>=rects[j][1])){
+      if((start>=(rects[j][0]-70) && (start <= (rects[j][0] + rects[j][2] + 20))) && (coin_y+70>=rects[j][1])){
         on_obs = true;
       }
     }
 
     for(j=0;j<circs.length;j++){
-    if(((start + 60)>=(circs[j][0] - circs[j][2])) && (start<= (circs[j][0] + circs[j][2] +10)) && (coin_y+60 >= (circs[j][1] - circs[j][2])) && ((coin_y - 10)<= (circs[j][1]+circs[j][2]))){
+    if(((start + 70)>=(circs[j][0] - circs[j][2])) && (start<= (circs[j][0] + circs[j][2] +20)) && (coin_y+70 >= (circs[j][1] - circs[j][2])) && ((coin_y + 20)<= (circs[j][1]+circs[j][2]))){
       on_obs = true;
     }
     }
 
     if(on_obs == false){
     coins.push([start, coin_y]);
-  }
+    }
   }
   c_generate = false;
 }
   for (i=0;i<coins.length;i++){
     ctx.drawImage(coin, coins[i][0], coins[i][1],50,50);
     coins[i][0] -= 6;
-    //console.log(coins);
+    if (img[0] <= coins[i][0] + 50 && img[0] + 50 >= coins[i][0] && img[1] <= coins[i][1] + 50 && img[1] + 50 >= coins[i][1]){
+      // console.log(img);
+      // console.log(coins);
+      // console.log(coins[i]);
+      coins.splice(i,1);
+      usrCoinsEarned++;
+      i--;
+    }
   }
 
     if(coins[coins.length-1][0] < 300){
       console.log("coin generate true");
       c_generate = true;
     }
-    if(coins[0]<=250){
+    if(coins[0][0]<=-250){
       coins.shift();
     }
 console.log(coins);
@@ -251,11 +260,7 @@ var playGame = () => {
   ){
 
     stopIt(); // game over
-    const msg = document.createElement("h1");
-    console.log(highScore);
-    const msgContent = document.createTextNode("Game Over! You scored " + parseInt(highScore));
-    msg.appendChild(msgContent);
-    document.body.insertBefore(msg, c);
+    gameOver(score);
 
   }
 
@@ -271,6 +276,7 @@ var playGame = () => {
   jump();
   score ++;
   scoreEle.innerHTML = "SCORE: " + score;
+  coinEle.innerHTML = "COINS EARNED: " + usrCoinsEarned;
 };
 
 var reset = () => {
@@ -308,3 +314,28 @@ document.body.addEventListener('keyup', function(event) {
 
         });
 start_btn.addEventListener('click',reset);
+
+
+
+
+var gameOver = (score) => {
+  let results = document.createElement("form");
+  results.setAttribute("method", "POST");
+  results.setAttribute("action", "/game_results");
+
+  let coinsEarned = document.createElement("input");
+  coinsEarned.setAttribute("name", "coins");
+  coinsEarned.setAttribute("value", usrCoinsEarned);
+  let lastScore = document.createElement("input");
+  lastScore.setAttribute("name", "score");
+  lastScore.setAttribute("value", score+1);
+
+  let enter = document.createElement("input");
+  enter.setAttribute("type", "submit");
+
+  document.body.appendChild(results);
+  results.appendChild(coinsEarned);
+  results.appendChild(lastScore);
+  results.appendChild(enter);
+  enter.click();
+}

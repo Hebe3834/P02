@@ -121,3 +121,16 @@ yuqingW -- 2022-03-16 09:26
 
 roshaniS -- 2022-03-17 09:38
     - Changed the character images to squares and edited the code accordingly
+
+justinZ -- 2022-03-17 17:00
+    - Fixed up buying things with the coins and made it work
+    - Working on Css + how it looks
+
+yuqingW -- 2022-03-17 17:00
+    - Coins mostly avoids obstacles (both rectangles and circles).
+    - Animations to make coin disappear when character jumps on it. 
+    
+hebeH -- 2022-03-17 19:05
+    - High score and coins are updated after each game
+    - Added leaderboard
+   

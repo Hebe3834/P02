@@ -23,13 +23,10 @@ def hello_world():
     '''Displays the main game'''
     userHighScore = 0
     if 'username' in session:
-        userHighScore = get_usr_info(session['username'], 'score')
-        print(userHighScore)
-        try:
-            url = "https://picsum.photos/800/400"
-            return render_template('game.html', msg= getCoins(session['username']), user = session['username'],high = userHighScore, img = url)
-        except:
-            return "Error with API"
+        user = session["username"]
+        userHighScore = getScore(user)
+        userCoins = getCoins(user)
+        return render_template('game.html', coins= userCoins, user = user, high = userHighScore)
     return render_template('game.html')
 
 
@@ -49,8 +46,8 @@ def authenticate():
     auth_state = auth_user(username, password)
     if auth_state == True:
         session['username'] = username
-        high_score = get_usr_info(username, "score")
-        return render_template('game.html', msg= getCoins(session['username']), user = session['username'])
+        high_score = getScore(username)
+        return redirect("/")
     elif auth_state == "bad_pass":
         return render_template('login.html', input="bad_pass")
     elif auth_state == "bad_user":
@@ -118,7 +115,8 @@ def logout():
 
 @app.route("/leaderboard")
 def leaderboard():
-    pass
+    leaderboard = get_leaderboard()
+    return render_template('leaderboard.html', sortedUsers = leaderboard)
 
 
 @app.route("/store")
@@ -133,22 +131,29 @@ def store():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
-    print(session['username'])
-    if (getCoins(session['username']) >= cost(power[0][0])):
-        #updateCoins((getCoins(session['username']) - cost(power[0][0])), session['username'])
+    powerups = get_store_stuff("powerup")
+    skins = get_store_stuff("skin")
+    if (getCoins(session['username']) >= 500):
+        updateCoins((getCoins(session['username']) - cost(power)), session['username'])
         insert_item(session['username'], "powerup", power)
-        print('bought successfully')
     else:
-        print('bad buy poor')
-    print("yes")
+        return render_template('store.html', powerups = powerups, skins = skins, msg='You are too poor!')
     return redirect("/profile")
+        
 
 
 @app.route("/skin", methods=['GET', 'POST'])
 def buySkin():
     '''Adds skin that user selected from the store to user db then redirects to user profile page'''
     skin = request.form['skins']
-    insert_item(session['username'], "skin", skin)
+    powerups = get_store_stuff("powerup")
+    skins = get_store_stuff("skin")
+    if (getCoins(session['username']) >= 500):
+        updateCoins((getCoins(session['username']) - cost(skin)), session['username'])
+        insert_item(session['username'], "skin", skin)
+        print('bought successfully')
+    else:
+        return render_template('store.html', powerups = powerups, skins = skins, msg='You are too poor!')
     return redirect("/profile")
 
 
@@ -159,6 +164,25 @@ def profile():
     powerups = get_stuff(user,'powerup')
     skins = get_stuff(user,'skin')
     return render_template('profile.html', powerups = powerups, skins = skins)
+
+
+@app.route("/game_results", methods=['GET', 'POST'])
+def results():
+    '''Displays results of game after losing and updates user account info'''
+    score = int(request.form.get('score'))
+    coins = int(request.form.get('coins'))
+    dist_from_hi = 0
+    if "username" in session:
+        user = session["username"]
+        prev_score = getScore(user)
+        prev_coins = getCoins(user)
+        if score > prev_score:
+            updateScore(score, user)
+        else:
+            dist_from_hi = prev_score - score
+        updateCoins(prev_coins+coins, user)
+    leaderboard = get_leaderboard()
+    return render_template('results.html', score=score, dist_from_hi=dist_from_hi, coins=coins, sortedUsers=leaderboard)
 
 
 if __name__ == "__main__":
