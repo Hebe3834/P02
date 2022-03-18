@@ -131,21 +131,29 @@ def store():
 def buyPower():
     '''Adds powerup that user selected from the store to user db then redirects to user profile page'''
     power = request.form['powerups']
-
+    powerups = get_store_stuff("powerup")
+    skins = get_store_stuff("skin")
     if (getCoins(session['username']) >= 500):
         updateCoins((getCoins(session['username']) - cost(power)), session['username'])
         insert_item(session['username'], "powerup", power)
-        print('bought successfully')
     else:
-        print('bad buy poor')
+        return render_template('store.html', powerups = powerups, skins = skins, msg='You are too poor!')
     return redirect("/profile")
+        
 
 
 @app.route("/skin", methods=['GET', 'POST'])
 def buySkin():
     '''Adds skin that user selected from the store to user db then redirects to user profile page'''
     skin = request.form['skins']
-    insert_item(session['username'], "skin", skin)
+    powerups = get_store_stuff("powerup")
+    skins = get_store_stuff("skin")
+    if (getCoins(session['username']) >= 500):
+        updateCoins((getCoins(session['username']) - cost(skin)), session['username'])
+        insert_item(session['username'], "skin", skin)
+        print('bought successfully')
+    else:
+        return render_template('store.html', powerups = powerups, skins = skins, msg='You are too poor!')
     return redirect("/profile")
 
 

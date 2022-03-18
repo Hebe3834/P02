@@ -41,6 +41,9 @@
         </select>
         <input class="btn btn-dark" type="submit" name="buyskins" id="buyskins" value="Buy">
         </form>
+        {% if msg %}
+        <p style="color:rgb(255, 0, 0);"> {{ msg }} </p>
+        {% endif %}
       </div>
     </body>
     <!-- will use this form input to buy and insert into items owned db -->
