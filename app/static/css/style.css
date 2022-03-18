@@ -1,5 +1,5 @@
 #main_game {
-  border: 1px solid black 
+  z-index: 2;
 }
 
 #store {
@@ -13,4 +13,19 @@
   background-color: black;
   color: white;
   border-style: dashed;
+}
+
+#bgimg {
+  z-index: 1;
+}
+
+#game {
+  width: 800px;
+  height: 400px;
+  position: relative;
+  border: 2px solid black;
+}
+
+canvas {
+  position: absolute;
 }

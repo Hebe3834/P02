@@ -42,7 +42,17 @@
             <h1> HIGH SCORE: </h1> <h1 id="highScore"> {{ high }} </h1>
         </div>
         <h3 id="usrScore">SCORE: 00000</h3>
-        <canvas width="700" height="300" id="main_game"></canvas>
+        <div id="game">
+            <canvas width="800" height="400" id="bgimg">
+                <div style="display:none;">
+                    <img id="source"
+                         src="https://picsum.photos/800/400">
+                </div>
+            </canvas>
+            <div class="d-flex justify-content-center">
+                <canvas class="center" width="700" height="300" id="main_game"></canvas>
+            </div>
+        </div>
         <br/>
         <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
 

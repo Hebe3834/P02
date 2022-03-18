@@ -4,8 +4,10 @@
 // 2022-03-06
 
 var c = document.getElementById("main_game");
+var b = document.getElementById("bgimg");
 var start_btn = document.getElementById("start");
-var ctx = c.getContext("2d");
+var ctx = c.getContext("2d", { alpha: false });
+var btx = b.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var score = 0;
 var requestID;  //init global var for use with animation frames
@@ -34,10 +36,14 @@ var four = new Image(100);
 four.src = 'static/sprites/tile004.png';
 var highScore = parseInt(document.getElementById("highScore"));
 
+var bg = document.getElementById('source');
+
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
 };
+
+
 
 var stopIt = () => {
   console.log("stopIt invoked...")
@@ -203,18 +209,28 @@ var playGame = () => {
 
   clear();
 
+  ctx.fillStyle = 'white';
+  ctx.fillRect(0, 0, c.clientWidth, c.clientHeight);
+  btx.drawImage(bg, 0, 0, 800, 400);
+  
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
   generate_coin();
   var ix = img[0];
   var iy = img[1];
+  var iw = 50;
+  var ih = 50;
+
+  if (!r) {
+    ih = 25;
+  }
 
   if (rects.length > 0) {
     var rx = rects[0][0];
     var ry = rects[0][1];
-    var rw = rects[0][2];
-    var rl = rects[0][3];
+    var rw = rects[0][2] - 5;
+    var rl = rects[0][3] - 5;
   }
 
   var cx = 0;
@@ -228,9 +244,9 @@ var playGame = () => {
   }
 
   var dx = Math.max(ix, Math.min(cx, ix)) - cx;
-  var dy = Math.max(iy, Math.min(cy, iy + 50)) - cy;
+  var dy = Math.max(iy, Math.min(cy, iy + ih)) - cy;
 
-  if ((ix <= rx + rw && ix + 50 >= rx && iy <= ry + rl && iy + 50 >= ry) ||
+  if ((ix <= rx + rw && ix + iw >= rx && iy <= ry + rl && iy + ih >= ry) ||
   (dx * dx + dy * dy <= cr * cr)
   ){
 
@@ -249,7 +265,7 @@ var playGame = () => {
     run();
   }
   else{
-    ctx.drawImage(four, img[0], img[1] + 50,150,100);
+    ctx.drawImage(four, img[0], img[1] + 25,50,25);
   }
 
   jump();
