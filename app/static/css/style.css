@@ -1,5 +1,4 @@
 #main_game {
-  padding-top: 50px;
   z-index: 2;
 }
 
@@ -21,8 +20,8 @@
 }
 
 #game {
-  width: 800px;
-  height: 400px;
+  width: 700px;
+  height: 300px;
   position: relative;
   border: 2px solid black;
 }
