@@ -6,7 +6,7 @@
 var c = document.getElementById("main_game");
 var b = document.getElementById("bgimg");
 var start_btn = document.getElementById("start");
-var ctx = c.getContext("2d", { alpha: false });
+var ctx = c.getContext("2d");
 var btx = b.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var coinEle = document.getElementById("usrCoins");
@@ -218,8 +218,6 @@ var playGame = () => {
 
   clear();
 
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, c.clientWidth, c.clientHeight);
   btx.drawImage(bg, 0, 0, 800, 400);
   
   ctx.strokeStyle = "black";
