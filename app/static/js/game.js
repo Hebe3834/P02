@@ -230,6 +230,7 @@ var playGame = () => {
   var ih = 50;
 
   if (!r) {
+    iy += 25;
     ih = 25;
   }
 
