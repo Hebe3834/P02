@@ -141,3 +141,4 @@ justinZ -- 2022-03-18 09:21
 roshaniS -- 2022-03-19 00:07
     - Fixed the crouching animation for the square
     - Added a new canvas behind the game canvas for the background image
+    - Fixed background so that it only appears above the ground line
