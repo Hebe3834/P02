@@ -149,5 +149,10 @@ justinZ -- 2022-03-19 23:01
     
 roshaniS -- 2022-03-20 00:22
     - Disabled scrolling for up and down arrows so that it doesn't interfere with the game
-    - Added a new skin for S1
+    - Added S1 skin
     - Worked on changing skins for the user
+
+roshaniS -- 2022-03-20 15:41
+    - Fixed the positions of the start button and "Equipped Skin" on the game page
+    - Added S2 skin
+    
