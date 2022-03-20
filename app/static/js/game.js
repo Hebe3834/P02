@@ -47,6 +47,8 @@ var bg = document.getElementById('source');
 var revive, view_score;
 var invinc = false;
 var inv_btn = document.getElementById('inv');
+var coin_dub = document.getElementById('coin_dub');
+var coin_d = false;
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
@@ -203,7 +205,11 @@ var start = 500;
       // console.log(coins);
       // console.log(coins[i]);
       coins.splice(i,1);
+      if(coin_d){
+        usrCoinsEarned+=2;
+      }else{
       usrCoinsEarned++;
+    }
       i--;
     }
   }
@@ -329,13 +335,19 @@ start_btn.addEventListener('click',function(){
   }
   reset();
 });
+
 inv_btn.addEventListener('click',function(){
   invinc = true;
   setTimeout(function(){invinc = false;
     window.alert("invicibility has ended");
-  }, 3000);
+  }, 10000);
 
 });
+
+coin_dub.addEventListener('click', function(){
+  coin_d = true;
+  setTimeout(function(){coin_d = false;}, 10000);
+})
 
 var display_btns = () =>{
   let div = document.createElement("div");
