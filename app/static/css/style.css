@@ -26,6 +26,7 @@
   float: right;
   margin-top: 23%;
   margin-right: 24%;
+  margin-top: 25%;
 }
 #usrCoins{
   margin-top: 3%;
@@ -49,6 +50,10 @@ form{
   margin:auto;
   display: block;
   border: 2px solid black;
+}
+#skin {
+  margin-top: 2%;
+  margin-left: 1%;
 }
 
 canvas {
