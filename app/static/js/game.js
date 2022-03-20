@@ -6,7 +6,7 @@
 var c = document.getElementById("main_game");
 var b = document.getElementById("bgimg");
 var start_btn = document.getElementById("start");
-var ctx = c.getContext("2d", { alpha: false });
+var ctx = c.getContext("2d");
 var btx = b.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
 var coinEle = document.getElementById("usrCoins");
@@ -28,14 +28,20 @@ var coin = new Image(100);
 coin.src = 'static/sprites/coin.png';
 var coin_lv = [30,90,150];
 var coins = [];
+var skin;
+try {
+  skin = document.getElementById("skin").getAttribute("value");
+} catch {
+  skin = 'Default'
+}
 var zero = new Image(100);
-zero.src = 'static/sprites/tile000.png';
+zero.src = 'static/sprites/' + skin + '0.png';
 var one = new Image(100);
-one.src = 'static/sprites/tile001.png';
+one.src = 'static/sprites/' + skin + '1.png';
 var two = new Image(100);
-two.src = 'static/sprites/tile002.png';
-var four = new Image(100);
-four.src = 'static/sprites/tile004.png';
+two.src = 'static/sprites/' + skin + '2.png';
+var three = new Image(100);
+three.src = 'static/sprites/' + skin + '3.png';
 var highScore = parseInt(document.getElementById("highScore"));
 var bg = document.getElementById('source');
 var revive = false;
@@ -218,8 +224,6 @@ var playGame = () => {
 
   clear();
 
-  ctx.fillStyle = 'white';
-  ctx.fillRect(0, 0, c.clientWidth, c.clientHeight);
   btx.drawImage(bg, 0, 0, 800, 400);
 
   ctx.strokeStyle = "black";
@@ -232,6 +236,7 @@ var playGame = () => {
   var ih = 50;
 
   if (!r) {
+    iy += 25;
     ih = 25;
   }
 
@@ -270,7 +275,7 @@ var playGame = () => {
     run();
   }
   else{
-    ctx.drawImage(four, img[0], img[1] + 25,50,25);
+    ctx.drawImage(three, img[0], img[1] + 25,50,25);
   }
 
   jump();
@@ -290,9 +295,11 @@ var reset = () => {
 document.body.addEventListener('keydown', function(event) {
             var key = event.key;
             if(key=="ArrowDown" || key =="s"){
+              event.preventDefault();
               r = false;
             }
             if((key == "ArrowUp" || key =="w") && jmp == false){
+              event.preventDefault();
               up = true;
               jmp = true;
             }
