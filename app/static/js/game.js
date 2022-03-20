@@ -45,7 +45,8 @@ three.src = 'static/sprites/' + skin + '3.png';
 var highScore = parseInt(document.getElementById("highScore"));
 var bg = document.getElementById('source');
 var revive, view_score;
-
+var invinc = false;
+var inv_btn = document.getElementById('inv');
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
@@ -260,6 +261,7 @@ var playGame = () => {
   var dx = Math.max(ix, Math.min(cx, ix)) - cx;
   var dy = Math.max(iy, Math.min(cy, iy + ih)) - cy;
 
+if(invinc == false){
   if ((ix <= rx + rw && ix + iw >= rx && iy <= ry + rl && iy + ih >= ry) ||
   (dx * dx + dy * dy <= cr * cr)
   ){
@@ -267,6 +269,7 @@ var playGame = () => {
     stopIt(); // game over
     display_btns();
   }
+}
 
   // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
 
@@ -320,7 +323,19 @@ document.body.addEventListener('keyup', function(event) {
 
         });
 
-start_btn.addEventListener('click',reset);
+start_btn.addEventListener('click',function(){
+  if(document.getElementById('revive') != null){
+    document.body.removeChild(document.body.lastChild);
+  }
+  reset();
+});
+inv_btn.addEventListener('click',function(){
+  invinc = true;
+  setTimeout(function(){invinc = false;
+    window.alert("invicibility has ended");
+  }, 3000);
+
+});
 
 var display_btns = () =>{
   let div = document.createElement("div");
