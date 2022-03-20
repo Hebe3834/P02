@@ -62,6 +62,11 @@
         </div>
         <br/>
         <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
+        {% if session['username'] %}
+        <div class="container" value="{{ skin }}" id="skin">
+            Equipped Skin: {{ skin }}
+        </div>
+        {% endif %}
 
         
         <script src="../static/js/game.js"></script>

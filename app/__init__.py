@@ -26,7 +26,11 @@ def hello_world():
         user = session["username"]
         userHighScore = getScore(user)
         userCoins = getCoins(user)
-        return render_template('game.html', coins= userCoins, user = user, high = userHighScore)
+        try:
+            userSkin = get_stuff(user, 'skin')[0]
+        except:
+            userSkin = "Default"
+        return render_template('game.html', coins= userCoins, user = user, high = userHighScore, skin = userSkin)
     return render_template('game.html')
 
 
