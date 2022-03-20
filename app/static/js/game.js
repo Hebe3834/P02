@@ -37,8 +37,8 @@ two.src = 'static/sprites/tile002.png';
 var four = new Image(100);
 four.src = 'static/sprites/tile004.png';
 var highScore = parseInt(document.getElementById("highScore"));
-
 var bg = document.getElementById('source');
+var revive = false;
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -221,7 +221,7 @@ var playGame = () => {
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, c.clientWidth, c.clientHeight);
   btx.drawImage(bg, 0, 0, 800, 400);
-  
+
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
   generate_rect();
