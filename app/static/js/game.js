@@ -44,7 +44,7 @@ var three = new Image(100);
 three.src = 'static/sprites/' + skin + '3.png';
 var highScore = parseInt(document.getElementById("highScore"));
 var bg = document.getElementById('source');
-var revive = false;
+var revive, view_score;
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -265,8 +265,7 @@ var playGame = () => {
   ){
 
     stopIt(); // game over
-    gameOver(score);
-
+    display_btns();
   }
 
   // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
@@ -320,10 +319,33 @@ document.body.addEventListener('keyup', function(event) {
             }
 
         });
+
 start_btn.addEventListener('click',reset);
 
+var display_btns = () =>{
+  let div = document.createElement("div");
+  let revive_btn = document.createElement("button");
+  revive_btn.setAttribute("class", "btn btn-danger");
+  revive_btn.setAttribute("formaction", "/profile");
+  revive_btn.setAttribute("id", "revive");
+  revive_btn.innerHTML = "Revive";
 
+  let view_stat  = document.createElement("button");
+  view_stat.setAttribute("class", "btn btn-danger");
+  view_stat.setAttribute("formaction", "/profile");
+  view_stat.setAttribute("id", "view_score");
+  view_stat.innerHTML = "View Score";
 
+  document.body.appendChild(div);
+  div.appendChild(revive_btn);
+  div.appendChild(view_stat);
+
+  revive_btn.addEventListener('click',function(){
+    document.body.removeChild(document.body.lastChild);
+    reset();
+  });
+  view_stat.addEventListener('click',function(){gameOver(score);});
+}
 
 var gameOver = (score) => {
   let results = document.createElement("form");
