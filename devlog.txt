@@ -147,3 +147,7 @@ justinZ -- 2022-03-19 23:01
     - Made a bunch of css changes to the home page aligning everything properly 
     - Added coins to the store page 
     
+roshaniS -- 2022-03-20 00:22
+    - Disabled scrolling for up and down arrows so that it doesn't interfere with the game
+    - Added a new skin for S1
+    - Worked on changing skins for the user
