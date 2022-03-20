@@ -2,35 +2,60 @@
   z-index: 2;
 }
 
-#store {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-#powerups, #skins {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  background-color: black;
-  color: white;
-  border-style: dashed;
-}
-
 #bgimg {
   z-index: 1;
 }
+#btnInline{
+    display: inline-block;
+    vertical-align: top;
+}
 
+#coins{
+  text-align: center;
+}
+#Align{
+  margin-left: 3px;
+  margin-right: 3px;
+}
+#rightAlign{
+  float:right;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+#start{
+  float: right;
+  margin-top: 23%;
+  margin-right: 24%;
+}
+#usrCoins{
+  margin-top: 3%;
+  margin-left: 19%;
+}
+#usrScore{
+  margin-top: 3%;
+  margin-left: 20%;
+}
+form{
+  float: left;
+}
 #game {
   width: 700px;
   height: 300px;
-  position: relative;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin:auto;
+  display: block;
   border: 2px solid black;
 }
 
 canvas {
   position: absolute;
-  padding-left: 0;
-  padding-right: 0;
   margin-left: auto;
   margin-right: auto;
+  float: right;
   display: block;
+  display: inline;
 }

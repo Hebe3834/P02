@@ -18,47 +18,47 @@
 
     <body>
         {% if session['username'] %}
-        <form action="/logout" method='GET'>
-            <button type="submit" class="btn btn-danger" formaction="/logout">Logout</button>
-        </form>
-
-        <form action="/profile" method='GET'>
-            <button type="submit" class="btn btn-danger" formaction="/profile">Profile</button>
-        </form>
-        {% else %}
-        <form action="/login" method='GET'>
-            <button type="submit" class="btn btn-info" formaction="/login">Login</button>
-        </form>
-        {% endif %}
-
-        <form action="/store" method='GET'>
-            <button type="submit" class="btn btn-danger" formaction="/store">Store</button>
-        </form>
-
-        <form action="/leaderboard" method='GET'>
-            <button type="submit" class="btn btn-danger" formaction="/leaderboard">Leaderboard</button>
-        </form>
-        <div class="container">
-            {% if session['username'] %}
-            <h1> Welcome {{ user }} </h1>
-            <h1> Coins: </h1><h1 id="highScore"> {{ coins }} </h1>
-            <h1> HIGH SCORE: </h1> <h1 id="highScore"> {{ high }} </h1>
+            <form id ="rightAlign" action="/logout" method='GET'>
+                <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
+            </form>
+            <form id = "Align" action="/profile" method='GET'>
+                <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/profile">Profile</button>
+            </form>
+            <form id = "Align" action="/store" method='GET'>
+                <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/store">Store</button>
+            </form>
+            <form id = "Align" action="/leaderboard" method='GET'>
+                <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/leaderboard">Leaderboard</button>
+            </form>
             {% else %}
+            <form id ="rightAlign" action="/login" method='GET'>
+                <button type="submit" class="btn btn-info"class="btn btn-primary" formaction="/login">Login</button>
+            </form>
+        {% endif %}
+        <br>
+        <br>
+        {% if session['username'] %}
+        <div style="display: flex;justify-content: space-between;" class="container">
+            <h2> Welcome {{ user }} </h2>
+            <h2> Total coins: <div style="display: inline-block;" id="highScore"> {{ coins }} </div> </h2>
+            <h2> High Score: <div style="display: inline-block;" id="highScore"> {{ high }} </div> </h2>
+        {% else %}
             <h2> PLEASE LOG IN FOR YOUR HIGH SCORE AND COINS TO BE SAVED </h2>
-            {% endif %}
+        {% endif %}
         </div>
-        <h3 id="usrScore">SCORE: 00000</h3>
-        <h3 id="usrCoins">COINS EARNED: 00000</h3>
-        <div id="game">
-            <canvas width="700" height="200" id="bgimg">
-                <div style="display:none;">
-                    <img id="source"
-                         src="https://picsum.photos/700/200">
-                </div>
-            </canvas>
-            <div class="d-flex justify-content-center">
-                <canvas class="center" width="700" height="300" id="main_game"></canvas>
+        <div style="display: flex;" class="container">
+            <h3 id="usrScore">SCORE: 00000</h3>
+            <h3 id="usrCoins">COINS EARNED: 00000</h3>
+        </div>
+    <div id="game">
+        <canvas width="700" height="200" id="bgimg">
+            <div style="display:none;">
+                <img id="source"
+                        src="https://picsum.photos/700/200">
             </div>
+        </canvas>
+        <div class="d-flex justify-content-center">
+            <canvas width="700" height="300" id="main_game"></canvas>
         </div>
         <br/>
         <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
@@ -68,7 +68,7 @@
         </div>
         {% endif %}
 
-        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="../static/js/game.js"></script>
 
     </body>
