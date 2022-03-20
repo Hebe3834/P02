@@ -1,0 +1,13 @@
+
+#store {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  #powerups, #skins {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: black;
+    color: white;
+    border-style: dashed;
+  }

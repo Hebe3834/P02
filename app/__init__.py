@@ -124,7 +124,8 @@ def store():
     '''Displays the store page where users can buy powerups and skins'''
     powerups = get_store_stuff("powerup")
     skins = get_store_stuff("skin")
-    return render_template('store.html', powerups = powerups, skins = skins)
+    userCoins = getCoins(session['username'])
+    return render_template('store.html',  coins= userCoins,powerups = powerups, skins = skins)
 
 
 @app.route("/power", methods=['GET', 'POST'])
