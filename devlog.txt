@@ -156,3 +156,9 @@ roshaniS -- 2022-03-20 15:41
     - Fixed the positions of the start button and "Equipped Skin" on the game page
     - Added S2 skin
     
+yuqingW -- 2022-03-20 19:55
+    - Added powerups frontend (would implement the feature when the buttons are clicked but have not linked to backend database to check the number of powerups purchased)
+        - Revive and view score buttons would show up after the character hits an obstacle.
+            - When revive button is clicked, the user gets to restart the game and keeps the coins and scores earned. 
+        - Invincibility button would let the user get pass obstacles without jumping for 10 seconds. An alert would pop up after the invicibility session ends.
+        - Coin double button would double the coins collected by user for 10 seconds. 
