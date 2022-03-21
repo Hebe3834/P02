@@ -162,3 +162,8 @@ yuqingW -- 2022-03-20 19:55
             - When revive button is clicked, the user gets to restart the game and keeps the coins and scores earned. 
         - Invincibility button would let the user get pass obstacles without jumping for 10 seconds. An alert would pop up after the invicibility session ends.
         - Coin double button would double the coins collected by user for 10 seconds. 
+
+roshaniS -- 2022-03-20 23:21
+    - Added two more powerups to the frontend
+        - Magnet button lets the user collect coins that are a little farther away for 10 seconds
+        - Slow button lets the user slow down the game (half speed) for 10 seconds
