@@ -49,6 +49,10 @@ var invinc = false;
 var inv_btn = document.getElementById('inv');
 var coin_dub = document.getElementById('coin_dub');
 var coin_d = false;
+var mag_btn = document.getElementById('magnet');
+var magnet = false;
+var slow_btn = document.getElementById('slow');
+var slow = false;
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
@@ -133,10 +137,15 @@ var generate_rect = () =>{
 
 
 var last = 0;
+var shift_by = 6;
+if (slow) {
+  shift_by = 3;
+}
+
 for(i=0;i<rects.length;i++){
   ctx.fillStyle = "red";
   ctx.fillRect(rects[i][0],rects[i][1],rects[i][2],rects[i][3]);
-  rects[i][0]-=6;
+  rects[i][0]-=shift_by;
   if(rects[i][0] > last){
     last = rects[i][0];
   }
@@ -146,7 +155,7 @@ for(i=0;i<rects.length;i++){
     ctx.beginPath();
     ctx.arc(circs[i][0], circs[i][1], circs[i][2], 0, 2*Math.PI);
     ctx.fill();
-    circs[i][0]-=6;
+    circs[i][0]-=shift_by;
     if(circs[i][0] > last){
       last = circs[i][0];
     }
@@ -200,7 +209,11 @@ var start = 500;
   for (i=0;i<coins.length;i++){
     ctx.drawImage(coin, coins[i][0], coins[i][1],50,50);
     coins[i][0] -= 6;
-    if (img[0] <= coins[i][0] + 50 && img[0] + 50 >= coins[i][0] && img[1] <= coins[i][1] + 50 && img[1] + 50 >= coins[i][1]){
+    var imgsize = 50;
+    if (magnet) {
+      imgsize = 200;
+    }
+    if (img[0] <= coins[i][0] + 50 && img[0] + imgsize >= coins[i][0] && img[1] <= coins[i][1] + 50 && img[1] + imgsize >= coins[i][1]){
       // console.log(img);
       // console.log(coins);
       // console.log(coins[i]);
@@ -277,8 +290,6 @@ if(invinc == false){
   }
 }
 
-  // (ix <= cx + cr && ix + 95 >= cx - cr && iy <= cy + cr && iy + 95 >= cy - cr)
-
   if(r){
     run();
   }
@@ -311,6 +322,18 @@ document.body.addEventListener('keydown', function(event) {
               up = true;
               jmp = true;
             }
+            if (key == "1") {
+              invincibility();
+            }
+            if (key == "2") {
+              coin_doubler();
+            }
+            if (key == "3") {
+              magnet_power();
+            }
+            if (key == "4") {
+              slow_power();
+            }
             if (key == " ") {
               location.reload();
             }
@@ -336,18 +359,31 @@ start_btn.addEventListener('click',function(){
   reset();
 });
 
-inv_btn.addEventListener('click',function(){
+var invincibility = () => {
   invinc = true;
   setTimeout(function(){invinc = false;
-    window.alert("invicibility has ended");
+    window.alert("invincibility has ended");
   }, 10000);
+};
+inv_btn.addEventListener('click', invincibility);
 
-});
-
-coin_dub.addEventListener('click', function(){
+var coin_doubler = () => {
   coin_d = true;
   setTimeout(function(){coin_d = false;}, 10000);
-})
+};
+coin_dub.addEventListener('click', coin_doubler);
+
+var magnet_power = () => {
+  magnet = true;
+  setTimeout(function(){magnet = false;}, 10000);
+};
+mag_btn.addEventListener('click', magnet_power);
+
+var slow_power = () => {
+  slow = true;
+  setTimeout(function(){slow = false;}, 10000);
+};
+slow_btn.addEventListener('click', slow_power);
 
 var display_btns = () =>{
   let div = document.createElement("div");

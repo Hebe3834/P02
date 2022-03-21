@@ -55,6 +55,14 @@ form{
   margin-top: 2%;
   margin-left: 1%;
 }
+#inv, #coin_dub {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+#magnet, #slow {
+  margin-top: 2%;
+  margin-left: 2%;
+}
 
 canvas {
   position: absolute;
