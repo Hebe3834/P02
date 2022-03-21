@@ -51,6 +51,8 @@ var coin_dub = document.getElementById('COIN_DOUBLER');
 var coin_d = false;
 var mag_btn = document.getElementById('MAGNET');
 var magnet = false;
+// changes levels of circles
+var circs_lv = [130,150,160];
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -123,8 +125,9 @@ var generate_rect = () =>{
       rects.push([start,levels - block_height, block_len, block_height]);
       }
       else{
-        var rad = Math.floor(Math.random() * 10 + 17);
-        var circ_y = Math.floor(Math.random() * -60 + levels - 30);
+        // change radius of circle
+        var rad = 25;
+        var circ_y = circs_lv[Math.floor(Math.random() * 3)];
         start += 2*rad + Math.floor(Math.random() * 250) + 250;
         circs.push([start,circ_y,rad]);
         console.log(circs);
