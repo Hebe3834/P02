@@ -17,10 +17,17 @@
     </head>
 
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Optimistic Dinosaurs</span>
+            {% if session['username'] %}
+            <div style="display: flex;justify-content: space-between;" class="container">
+                <h2> Welcome {{ user }}! </h2>
+                <h2> Total coins: <div style="display: inline-block;" id="highScore"> {{ coins }} </div> </h2>
+                <h2> High Score: <div style="display: inline-block;" id="highScore"> {{ high }} </div> </h2>
+            {% else %}
+                <h2> PLEASE LOG IN FOR YOUR HIGH SCORE AND COINS TO BE SAVED </h2>
+            {% endif %}
         {% if session['username'] %}
-            <form id ="rightAlign" action="/logout" method='GET'>
-                <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
-            </form>
             <form id = "Align" action="/profile" method='GET'>
                 <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/profile">Profile</button>
             </form>
@@ -30,6 +37,9 @@
             <form id = "Align" action="/leaderboard" method='GET'>
                 <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/leaderboard">Leaderboard</button>
             </form>
+            <form id ="rightAlign" action="/logout" method='GET'>
+                <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
+            </form>
             {% else %}
             <form id ="rightAlign" action="/login" method='GET'>
                 <button type="submit" class="btn btn-info"class="btn btn-primary" formaction="/login">Login</button>
@@ -37,15 +47,8 @@
         {% endif %}
         <br>
         <br>
-        {% if session['username'] %}
-        <div style="display: flex;justify-content: space-between;" class="container">
-            <h2> Welcome {{ user }} </h2>
-            <h2> Total coins: <div style="display: inline-block;" id="highScore"> {{ coins }} </div> </h2>
-            <h2> High Score: <div style="display: inline-block;" id="highScore"> {{ high }} </div> </h2>
-        {% else %}
-            <h2> PLEASE LOG IN FOR YOUR HIGH SCORE AND COINS TO BE SAVED </h2>
-        {% endif %}
         </div>
+    </nav>
         <div style="display: flex;" class="container">
             <h3 id="usrScore">SCORE: 00000</h3>
             <h3 id="usrCoins">COINS EARNED: 00000</h3>

@@ -15,20 +15,34 @@
         <link href="../static/css/leaderboard.css" rel="stylesheet">
 
     </head>
-
     <body>
+      <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand h1">Optimistic Dinosaurs</span>
+        <form id = "Align" action="/" method='GET'>
+          <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/">Home</button>
+      </form>
+      <form id = "Align" action="/profile" method='GET'>
+          <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/profile">Profile</button>
+      </form>
+      <form id = "Align" action="/store" method='GET'>
+          <button id ="btnInline" type="submit"class="btn btn-primary" formaction="/store">Store</button>
+      </form>
+      <form id ="rightAlign" action="/logout" method='GET'>
+          <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
+      </form>
+      </nav>
       <h1 style="text-align: center;">Leaderboard: </h1>
-      {% for user, score in sortedUsers %}
-          {% if user == session['username'] %}
-          <div class="card" style="width: 26rem;margin-left: 35%;">
-            <div class="card-body">
-              <p style="color:brown;text-align: center;"> {{ user }} {{ score }} </p>
-              {% else %}
-              <p> {{ user }} {{ score }} </p>
-              {% endif %}
-            </div>
+          <div class="row">
+            <div class="col d-flex justify-content-center ">Position</div>
+            <div class="col d-flex justify-content-center ">Username</div>
+            <div class="col d-flex justify-content-center ">Score</div>
+            {% for user, score in sortedUsers %}
+            <div class="w-100"></div>
+              <div class="col d-flex justify-content-center ">Position</div>
+              <div class="col d-flex justify-content-center ">{{ user }}</div>
+              <div class="col d-flex justify-content-center ">{{ score }}</div>
+            {% endfor %}
           </div>
-      {% endfor %}
       <form action="/" method='GET'>
         <button style="display: block;margin-right: auto;margin-left: auto;" type="submit" class="btn btn-info"
                 formaction="/">Back Home
