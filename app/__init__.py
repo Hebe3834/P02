@@ -22,6 +22,9 @@ c = db.cursor()
 def hello_world():
     '''Displays the main game'''
     userHighScore = 0
+    userCoins = 0
+    powers = []
+    skins = []
     if 'username' in session:
         user = session["username"]
         userHighScore = getScore(user)
@@ -30,7 +33,9 @@ def hello_world():
             userSkin = get_stuff(user, 'skin')[0]
         except:
             userSkin = "Default"
-        return render_template('game.html', coins= userCoins, user = user, high = userHighScore, skin = userSkin)
+        powers = get_stuff(user, 'powerup')
+        skins = get_stuff(user, 'skin')
+        return render_template('game.html', coins= userCoins, user = user, high = userHighScore, skin = userSkin, powers=powers, skins=skins)
     return render_template('game.html')
 
 
@@ -127,9 +132,11 @@ def leaderboard():
 def store():
     '''Displays the store page where users can buy powerups and skins'''
     powerups = get_store_stuff("powerup")
+    power_prices = get_store_price("powerup")
     skins = get_store_stuff("skin")
+    skin_prices = get_store_price("skin")
     userCoins = getCoins(session['username'])
-    return render_template('store.html',  coins= userCoins,powerups = powerups, skins = skins)
+    return render_template('store.html',  coins= userCoins,powerups = powerups, power_prices=power_prices, skins = skins, skin_prices=skin_prices)
 
 
 @app.route("/power", methods=['GET', 'POST'])

@@ -24,7 +24,7 @@
         <form class="px-3" action = "/power" method = "POST">
           <select class="form-select form-select-lg" id="powerups" name="powerups">
           {% for power in powerups %}
-            <option value="{{power}}">{{power}}</option>
+            <option value="{{power}}">{{power}} ----- {{power_prices[loop.index-1]}}</option>
             <br>
           {% endfor %}
           </select>
@@ -35,7 +35,7 @@
         <br><br><h2>SKINS</h2> 
         <select class="form-select form-select-lg" id="skins" name="skins">
           {% for skin in skins %}
-            <option value="{{skin}}">{{skin}}</option>
+            <option value="{{skin}}">{{skin}} ----- {{skin_prices[loop.index-1]}}</option>
             <br>
           {% endfor %}
         </select>

@@ -167,3 +167,8 @@ roshaniS -- 2022-03-20 23:21
     - Added two more powerups to the frontend
         - Magnet button lets the user collect coins that are a little farther away for 10 seconds
         - Slow button lets the user slow down the game (half speed) for 10 seconds
+
+hebeH -- 2022-03-21 06:41
+    - Game page now shows buttons based on skins/powerups user owns
+        - Old number shortcuts are still in place and skins do not update after pressing buttons
+    - Added price tags to store.html

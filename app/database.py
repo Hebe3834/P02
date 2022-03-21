@@ -145,6 +145,16 @@ def get_store_stuff(type):
         items.append(row[0])
     return items
 
+def get_store_price(type):
+    '''Gets list of items in the store. Takes an item type.'''
+    items = []
+    query = "SELECT price FROM store WHERE item_type = \'" + type +"\';"
+    c.execute(query)
+    rows = c.fetchall()
+    for row in rows:
+        items.append(row[0])
+    return items
+
 def get_leaderboard():
     ''' '''
     query = "SELECT usernames, score FROM users ORDER BY score DESC;"

@@ -50,7 +50,7 @@
             <h3 id="usrScore">SCORE: 00000</h3>
             <h3 id="usrCoins">COINS EARNED: 00000</h3>
         </div>
-    <div id="game">
+    <div class="container" id="game">
         <canvas width="700" height="200" id="bgimg">
             <div style="display:none;">
                 <img id="source"
@@ -61,6 +61,7 @@
             <canvas width="700" height="300" id="main_game"></canvas>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
         <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
         <button id="inv" class="btn btn-danger" formaction="/profile">Invicibility (1)</button>
         <button id="coin_dub" class="btn btn-danger" formaction="/profile">Coin Double (2) </button>
@@ -70,6 +71,20 @@
         {% if session['username'] %}
         <div class="container" value="{{ skin }}" id="skin">
             Equipped Skin: {{ skin }}
+            <div class="row">
+                {% for p in powers %}
+                    <div class="col">
+                        <button id="{{p}}" class="btn btn-danger">{{p}} ({{loop.index}})</button>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                {% for s in skins %}
+                    <div class="col">
+                        <button id="{{s}}" class="btn btn-danger">{{s}}</button>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
         {% endif %}
 

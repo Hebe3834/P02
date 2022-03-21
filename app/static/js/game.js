@@ -46,12 +46,12 @@ var highScore = parseInt(document.getElementById("highScore"));
 var bg = document.getElementById('source');
 var revive, view_score;
 var invinc = false;
-var inv_btn = document.getElementById('inv');
-var coin_dub = document.getElementById('coin_dub');
+var inv_btn = document.getElementById('INVINCIBILITY');
+var coin_dub = document.getElementById('COIN_DOUBLER');
 var coin_d = false;
-var mag_btn = document.getElementById('magnet');
+var mag_btn = document.getElementById('MAGNET');
 var magnet = false;
-var slow_btn = document.getElementById('slow');
+var slow_btn = document.getElementById('SLOW');
 var slow = false;
 var clear = (e) => {
     console.log("clear invoked...")
@@ -353,7 +353,7 @@ document.body.addEventListener('keyup', function(event) {
         });
 
 start_btn.addEventListener('click',function(){
-  if(document.getElementById('revive') != null){
+  if(document.getElementById('REVIVAL') != null){
     document.body.removeChild(document.body.lastChild);
   }
   reset();
@@ -365,39 +365,53 @@ var invincibility = () => {
     window.alert("invincibility has ended");
   }, 10000);
 };
-inv_btn.addEventListener('click', invincibility);
+try{
+  inv_btn.addEventListener('click', invincibility);
+}
+catch{
+  
+}
 
 var coin_doubler = () => {
   coin_d = true;
   setTimeout(function(){coin_d = false;}, 10000);
 };
-coin_dub.addEventListener('click', coin_doubler);
+try{
+  coin_dub.addEventListener('click', coin_doubler);
+}
+catch{}
 
 var magnet_power = () => {
   magnet = true;
   setTimeout(function(){magnet = false;}, 10000);
 };
-mag_btn.addEventListener('click', magnet_power);
+try{
+  mag_btn.addEventListener('click', magnet_power);
+}
+catch{}
 
 var slow_power = () => {
   slow = true;
   setTimeout(function(){slow = false;}, 10000);
 };
-slow_btn.addEventListener('click', slow_power);
+try{
+  slow_btn.addEventListener('click', slow_power);
+}
+catch{}
 
 var display_btns = () =>{
   let div = document.createElement("div");
   let revive_btn = document.createElement("button");
   revive_btn.setAttribute("class", "btn btn-danger");
   revive_btn.setAttribute("formaction", "/profile");
-  revive_btn.setAttribute("id", "revive");
+  revive_btn.setAttribute("id", "REVIVAL");
   revive_btn.innerHTML = "Revive";
 
   let view_stat  = document.createElement("button");
   view_stat.setAttribute("class", "btn btn-danger");
   view_stat.setAttribute("formaction", "/profile");
   view_stat.setAttribute("id", "view_score");
-  view_stat.innerHTML = "View Score";
+  view_stat.innerHTML = "View Score/Save Coins";
 
   document.body.appendChild(div);
   div.appendChild(revive_btn);
