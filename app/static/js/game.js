@@ -51,8 +51,7 @@ var coin_dub = document.getElementById('COIN_DOUBLER');
 var coin_d = false;
 var mag_btn = document.getElementById('MAGNET');
 var magnet = false;
-var slow_btn = document.getElementById('SLOW');
-var slow = false;
+
 var clear = (e) => {
     console.log("clear invoked...")
     ctx.clearRect(0, 0, c.clientWidth, c.clientHeight);
@@ -137,15 +136,11 @@ var generate_rect = () =>{
 
 
 var last = 0;
-var shift_by = 6;
-if (slow) {
-  shift_by = 3;
-}
 
 for(i=0;i<rects.length;i++){
   ctx.fillStyle = "red";
   ctx.fillRect(rects[i][0],rects[i][1],rects[i][2],rects[i][3]);
-  rects[i][0]-=shift_by;
+  rects[i][0]-=6;
   if(rects[i][0] > last){
     last = rects[i][0];
   }
@@ -155,7 +150,7 @@ for(i=0;i<rects.length;i++){
     ctx.beginPath();
     ctx.arc(circs[i][0], circs[i][1], circs[i][2], 0, 2*Math.PI);
     ctx.fill();
-    circs[i][0]-=shift_by;
+    circs[i][0]-=6;
     if(circs[i][0] > last){
       last = circs[i][0];
     }
@@ -206,17 +201,22 @@ var start = 500;
   }
   c_generate = false;
 }
+
   for (i=0;i<coins.length;i++){
     ctx.drawImage(coin, coins[i][0], coins[i][1],50,50);
     coins[i][0] -= 6;
     var imgsize = 50;
     if (magnet) {
       imgsize = 200;
+      if(coins[i][1] <= img[1]){
+      coins[i][1] += 2;
+    }
+    if(coins[i][0] >= img[0]+50)
+    {
+      coins[i][0] -= 4;
+    }
     }
     if (img[0] <= coins[i][0] + 50 && img[0] + imgsize >= coins[i][0] && img[1] <= coins[i][1] + 50 && img[1] + imgsize >= coins[i][1]){
-      // console.log(img);
-      // console.log(coins);
-      // console.log(coins[i]);
       coins.splice(i,1);
       if(coin_d){
         usrCoinsEarned+=2;
@@ -331,9 +331,6 @@ document.body.addEventListener('keydown', function(event) {
             if (key == "3") {
               magnet_power();
             }
-            if (key == "4") {
-              slow_power();
-            }
             if (key == " ") {
               location.reload();
             }
@@ -356,6 +353,9 @@ start_btn.addEventListener('click',function(){
   if(document.getElementById('REVIVAL') != null){
     document.body.removeChild(document.body.lastChild);
   }
+  revive = false;
+  magnet = false;
+  invinc = false;
   reset();
 });
 
@@ -369,7 +369,7 @@ try{
   inv_btn.addEventListener('click', invincibility);
 }
 catch{
-  
+
 }
 
 var coin_doubler = () => {
@@ -387,15 +387,6 @@ var magnet_power = () => {
 };
 try{
   mag_btn.addEventListener('click', magnet_power);
-}
-catch{}
-
-var slow_power = () => {
-  slow = true;
-  setTimeout(function(){slow = false;}, 10000);
-};
-try{
-  slow_btn.addEventListener('click', slow_power);
 }
 catch{}
 
