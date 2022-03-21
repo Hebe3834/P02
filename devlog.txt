@@ -172,3 +172,6 @@ hebeH -- 2022-03-21 06:41
     - Game page now shows buttons based on skins/powerups user owns
         - Old number shortcuts are still in place and skins do not update after pressing buttons
     - Added price tags to store.html
+    
+yuqingW -- 2022-03-21 09:@6
+    - Finished magnet animation. 
