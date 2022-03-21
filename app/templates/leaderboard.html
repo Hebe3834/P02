@@ -15,20 +15,19 @@
         <link href="../static/css/leaderboard.css" rel="stylesheet">
 
     </head>
-
     <body>
       <h1 style="text-align: center;">Leaderboard: </h1>
-      {% for user, score in sortedUsers %}
-          {% if user == session['username'] %}
-          <div class="card" style="width: 26rem;margin-left: 35%;">
-            <div class="card-body">
-              <p style="color:brown;text-align: center;"> {{ user }} {{ score }} </p>
-              {% else %}
-              <p> {{ user }} {{ score }} </p>
-              {% endif %}
-            </div>
+          <div class="row">
+            <div class="col">Position</div>
+            <div class="col">Username</div>
+            <div class="col">Score</div>
+            <div class="w-100"></div>
+            {% for user, score in sortedUsers %}
+              <div class="col">Position</div>
+              <div class="col">{{ user }}</div>
+              <div class="col">{{ score }}</div>
+            {% endfor %}
           </div>
-      {% endfor %}
       <form action="/" method='GET'>
         <button style="display: block;margin-right: auto;margin-left: auto;" type="submit" class="btn btn-info"
                 formaction="/">Back Home
