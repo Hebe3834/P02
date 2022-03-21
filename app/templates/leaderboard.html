@@ -18,14 +18,14 @@
     <body>
       <h1 style="text-align: center;">Leaderboard: </h1>
           <div class="row">
-            <div class="col">Position</div>
-            <div class="col">Username</div>
-            <div class="col">Score</div>
-            <div class="w-100"></div>
+            <div class="col d-flex justify-content-center ">Position</div>
+            <div class="col d-flex justify-content-center ">Username</div>
+            <div class="col d-flex justify-content-center ">Score</div>
             {% for user, score in sortedUsers %}
-              <div class="col">Position</div>
-              <div class="col">{{ user }}</div>
-              <div class="col">{{ score }}</div>
+            <div class="w-100"></div>
+              <div class="col d-flex justify-content-center ">Position</div>
+              <div class="col d-flex justify-content-center ">{{ user }}</div>
+              <div class="col d-flex justify-content-center ">{{ score }}</div>
             {% endfor %}
           </div>
       <form action="/" method='GET'>
