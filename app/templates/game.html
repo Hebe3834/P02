@@ -65,31 +65,28 @@
         </div>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
-        <button id="inv" class="btn btn-danger" formaction="/profile">Invicibility (1)</button>
-        <button id="coin_dub" class="btn btn-danger" formaction="/profile">Coin Double (2) </button>
+        
         <br>
-        <button id="magnet" class="btn btn-danger" formaction="/profile">Magnet (3)</button>
         {% if session['username'] %}
-        <div class="container" value="{{ skin }}" id="skin">
+        <div class="container mx-auto" value="{{ skin }}" id="skin">
             Equipped Skin: {{ skin }}
             <div class="row">
                 {% for p in powers %}
-                    <div class="col">
-                        <button id="{{p}}" class="btn btn-danger">{{p}} ({{loop.index}})</button>
+                    <div class="col" id="userPowers">
+                        <button id="{{p}}" class="btn btn-danger">{{p}} ({{shortcut[loop.index-1]}})</button>
                     </div>
                 {% endfor %}
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 {% for s in skins %}
                     <div class="col">
                         <button id="{{s}}" class="btn btn-danger">{{s}}</button>
                     </div>
                 {% endfor %}
             </div>
-        </div>
         {% endif %}
-
+            <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
+        </div>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="../static/js/game.js"></script>
 

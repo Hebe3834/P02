@@ -38,9 +38,15 @@
             <div class="col d-flex justify-content-center ">Score</div>
             {% for user, score in sortedUsers %}
             <div class="w-100"></div>
-              <div class="col d-flex justify-content-center ">Position</div>
-              <div class="col d-flex justify-content-center ">{{ user }}</div>
-              <div class="col d-flex justify-content-center ">{{ score }}</div>
+              {% if user == session['username'] %}
+                  <div class="col d-flex justify-content-center " style="color:teal; font-weight: bold;">{{loop.index}}</div>
+                  <div class="col d-flex justify-content-center " style="color:teal; font-weight: bold;">{{ user }}</div>
+                  <div class="col d-flex justify-content-center " style="color:teal; font-weight: bold;">{{ score }}</div>
+              {% else %}
+                <div class="col d-flex justify-content-center ">Position</div>
+                <div class="col d-flex justify-content-center ">{{ user }}</div>
+                <div class="col d-flex justify-content-center ">{{ score }}</div>
+              {% endif %}
             {% endfor %}
           </div>
       <form action="/" method='GET'>

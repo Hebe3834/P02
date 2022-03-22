@@ -35,9 +35,20 @@ def hello_world():
             userSkin = "Default"
         powers = get_stuff(user, 'powerup')
         skins = get_stuff(user, 'skin')
-        return render_template('game.html', coins= userCoins, user = user, high = userHighScore, skin = userSkin, powers=powers, skins=skins)
+        return render_template('game.html', coins= userCoins, user = user, high = userHighScore, skin = userSkin, powers=powers, skins=skins, shortcut=get_shortcuts(powers))
     return render_template('game.html')
 
+def get_shortcuts(powers):
+    '''Returns a list of shortcuts based on powerups list'''
+    all_keys = {}
+    all_keys['INVINCIBILITY'] = 1
+    all_keys['COIN_DOUBLER'] = 2
+    all_keys['MAGNET'] = 3
+    all_keys['REVIVAL'] = 'passive'
+    sel_keys = []
+    for p in powers:
+        sel_keys.append(all_keys[p])
+    return sel_keys
 
 @app.route("/auth", methods=['GET', 'POST'])
 def authenticate():
@@ -132,9 +143,9 @@ def leaderboard():
 def store():
     '''Displays the store page where users can buy powerups and skins'''
     powerups = get_store_stuff("powerup")
-    power_prices = get_store_price("powerup")
+    power_prices = get_store_price(powerups)
     skins = get_store_stuff("skin")
-    skin_prices = get_store_price("skin")
+    skin_prices = get_store_price(skins)
     userCoins = getCoins(session['username'])
     return render_template('store.html',  coins= userCoins,powerups = powerups, power_prices=power_prices, skins = skins, skin_prices=skin_prices)
 

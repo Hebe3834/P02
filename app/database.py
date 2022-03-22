@@ -1,4 +1,5 @@
 import sqlite3
+from flask import session
 
 DB_FILE = "discobandit.db"
 db = sqlite3.connect(DB_FILE, check_same_thread=False)
@@ -112,7 +113,6 @@ def restock_store():
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("MAGNET", "powerup", 500))
-    c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("SLOW", "powerup", 500))
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("REVIVAL", "powerup", 500))
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("COIN_DOUBLER", "powerup", 500))
     c.execute("INSERT OR IGNORE INTO store VALUES (?, ?, ?);", ("INVINCIBILITY", "powerup", 500))
@@ -143,17 +143,23 @@ def get_store_stuff(type):
     rows = c.fetchall()
     for row in rows:
         items.append(row[0])
-    return items
+    userStuff = get_stuff(session['username'], type)
+    uniqueItems = []
+    for i in items:
+        if not i in userStuff:
+            uniqueItems.append(i)
+    return uniqueItems
 
-def get_store_price(type):
-    '''Gets list of items in the store. Takes an item type.'''
-    items = []
-    query = "SELECT price FROM store WHERE item_type = \'" + type +"\';"
-    c.execute(query)
-    rows = c.fetchall()
-    for row in rows:
-        items.append(row[0])
-    return items
+def get_store_price(items):
+    '''Gets list of item prices in the store. Takes a list of item names'''
+    prices = []
+    for i in items:
+        query = "SELECT price FROM store WHERE item = \'" + i +"\';"
+        c.execute(query)
+        rows = c.fetchall()
+        for row in rows:
+            prices.append(row[0])
+    return prices
 
 def get_leaderboard():
     ''' '''

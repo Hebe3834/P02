@@ -47,12 +47,20 @@ var bg = document.getElementById('source');
 var revive, view_score;
 var invinc = false;
 var inv_btn = document.getElementById('INVINCIBILITY');
+var invin_cooldown = false;
 var coin_dub = document.getElementById('COIN_DOUBLER');
 var coin_d = false;
 var mag_btn = document.getElementById('MAGNET');
+var mag_cooldown = false;
+var rev_btn = document.getElementById('REVIVAL');
+var canRevive = true;
 var magnet = false;
 // changes levels of circles
 var circs_lv = [130,150,160];
+
+if(rev_btn){
+  rev_btn.disabled = true;
+}
 
 var clear = (e) => {
     console.log("clear invoked...")
@@ -289,7 +297,16 @@ if(invinc == false){
   ){
 
     stopIt(); // game over
-    display_btns();
+    // display_btns();
+    if(canRevive){
+      reset();
+      window.alert("you have revived (alert to be replaced)");
+      rev_btn.remove(); 
+      canRevive = false; // removes revival power for next death
+    }
+    else{
+      gameOver(score);
+    }
   }
 }
 
@@ -325,13 +342,13 @@ document.body.addEventListener('keydown', function(event) {
               up = true;
               jmp = true;
             }
-            if (key == "1") {
+            if (key == "1" && inv_btn) {
               invincibility();
             }
-            if (key == "2") {
+            if (key == "2" && coin_dub) {
               coin_doubler();
             }
-            if (key == "3") {
+            if (key == "3" && mag_btn) {
               magnet_power();
             }
             if (key == " ") {
@@ -363,17 +380,27 @@ start_btn.addEventListener('click',function(){
 });
 
 var invincibility = () => {
-  invinc = true;
-  setTimeout(function(){invinc = false;
-    window.alert("invincibility has ended");
-  }, 10000);
+  if(!invin_cooldown){
+    window.alert("you are invincible for 10 sec");
+    invinc = true;
+    inv_btn.disabled = true;
+    setTimeout(function(){
+      invinc = false;
+      window.alert("invincibility has ended");
+      invin_cooldown = true;
+      
+      setTimeout(function(){
+        console.log("invincibility cooldown has ended");
+        invin_cooldown = false;
+        inv_btn.disabled = false;
+      }, 10000);
+    }, 10000);
+  }
 };
 try{
   inv_btn.addEventListener('click', invincibility);
 }
-catch{
-
-}
+catch{}
 
 var coin_doubler = () => {
   coin_d = true;
@@ -385,38 +412,50 @@ try{
 catch{}
 
 var magnet_power = () => {
-  magnet = true;
-  setTimeout(function(){magnet = false;}, 10000);
+  if(!mag_cooldown){
+    magnet = true;
+    mag_btn.disabled = true;
+    setTimeout(function(){
+      magnet = false;
+      mag_cooldown = true;
+      
+      setTimeout(function(){
+        console.log("magnet cooldown has ended");
+        mag_cooldown = false;
+        mag_btn.disabled = false;
+      }, 10000);
+    }, 10000);
+  }
 };
 try{
   mag_btn.addEventListener('click', magnet_power);
 }
 catch{}
 
-var display_btns = () =>{
-  let div = document.createElement("div");
-  let revive_btn = document.createElement("button");
-  revive_btn.setAttribute("class", "btn btn-danger");
-  revive_btn.setAttribute("formaction", "/profile");
-  revive_btn.setAttribute("id", "REVIVAL");
-  revive_btn.innerHTML = "Revive";
+// var display_btns = () =>{
+//   let div = document.createElement("div");
+//   let revive_btn = document.createElement("button");
+//   revive_btn.setAttribute("class", "btn btn-danger");
+//   revive_btn.setAttribute("formaction", "/profile");
+//   revive_btn.setAttribute("id", "REVIVAL");
+//   revive_btn.innerHTML = "Revive";
 
-  let view_stat  = document.createElement("button");
-  view_stat.setAttribute("class", "btn btn-danger");
-  view_stat.setAttribute("formaction", "/profile");
-  view_stat.setAttribute("id", "view_score");
-  view_stat.innerHTML = "View Score/Save Coins";
+//   let view_stat  = document.createElement("button");
+//   view_stat.setAttribute("class", "btn btn-danger");
+//   view_stat.setAttribute("formaction", "/profile");
+//   view_stat.setAttribute("id", "view_score");
+//   view_stat.innerHTML = "View Score/Save Coins";
 
-  document.body.appendChild(div);
-  div.appendChild(revive_btn);
-  div.appendChild(view_stat);
+//   document.body.appendChild(div);
+//   div.appendChild(revive_btn);
+//   div.appendChild(view_stat);
 
-  revive_btn.addEventListener('click',function(){
-    document.body.removeChild(document.body.lastChild);
-    reset();
-  });
-  view_stat.addEventListener('click',function(){gameOver(score);});
-}
+//   revive_btn.addEventListener('click',function(){
+//     document.body.removeChild(document.body.lastChild);
+//     reset();
+//   });
+//   view_stat.addEventListener('click',function(){gameOver(score);});
+// }
 
 var gameOver = (score) => {
   let results = document.createElement("form");
