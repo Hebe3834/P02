@@ -50,6 +50,7 @@ var mag_btn = document.getElementById('MAGNET');
 var mag_cooldown = false;
 var rev_btn = document.getElementById('REVIVAL');
 var canRevive = false;
+var game_start = false;
 if(rev_btn){
   canRevive = true;
 }
@@ -299,9 +300,13 @@ if(invinc == false){
     // display_btns();
     if(canRevive){
       reset();
-      window.alert("you have revived (alert to be replaced)");
-      rev_btn.remove(); 
+      if (window.confirm("Do you want to revive?")){
+      rev_btn.remove();
       canRevive = false; // removes revival power for next death
+      }
+      else{
+        gameOver(score);
+      }
     }
     else{
       gameOver(score);
@@ -378,6 +383,7 @@ var start = () => {
   revive = false;
   magnet = false;
   invinc = false;
+  game_start = true;
   reset();
 }
 
@@ -392,7 +398,7 @@ var invincibility = () => {
       invinc = false;
       window.alert("invincibility has ended");
       invin_cooldown = true;
-      
+
       setTimeout(function(){
         console.log("invincibility cooldown has ended");
         invin_cooldown = false;
@@ -422,7 +428,7 @@ var magnet_power = () => {
     setTimeout(function(){
       magnet = false;
       mag_cooldown = true;
-      
+
       setTimeout(function(){
         console.log("magnet cooldown has ended");
         mag_cooldown = false;
