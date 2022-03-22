@@ -38,10 +38,6 @@ var zero = new Image(100);
 zero.src = 'static/sprites/' + skin + '0.png';
 var one = new Image(100);
 one.src = 'static/sprites/' + skin + '1.png';
-var two = new Image(100);
-two.src = 'static/sprites/' + skin + '2.png';
-var three = new Image(100);
-three.src = 'static/sprites/' + skin + '3.png';
 var highScore = parseInt(document.getElementById("highScore"));
 var bg = document.getElementById('source');
 var revive, view_score;
@@ -82,10 +78,10 @@ var stopIt = () => {
 var run = () =>{
   console.log("run invoked...");
   if (counter <= 10) {
-    ctx.drawImage(one, img[0], img[1], 50, 50);
+    ctx.drawImage(zero, img[0], img[1], 50, 50);
   }
   else if (counter <= 20) {
-    ctx.drawImage(two, img[0], img[1], 50, 50);
+    ctx.drawImage(one, img[0], img[1], 50, 50);
   }
   else {
     counter = 0;
@@ -314,7 +310,7 @@ if(invinc == false){
     run();
   }
   else{
-    ctx.drawImage(three, img[0], img[1] + 25,50,25);
+    ctx.drawImage(zero, img[0], img[1] + 25,50,25);
   }
 
   jump();
