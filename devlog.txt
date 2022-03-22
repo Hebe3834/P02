@@ -178,3 +178,7 @@ yuqingW -- 2022-03-21 09:26
 
 roshaniS -- 2022-03-21 09:51
     - Added S3 and S4 skins
+
+justinZ -- 2022-03-21 20:26
+    - Finished up the leaderboard css and positions
+    - added in navbar for the website
