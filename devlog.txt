@@ -191,5 +191,6 @@ roshaniS -- 2022-03-22 00:54
     - Added S5 skin
     - Made new skin for S1 and replaced the previous skin design
 
-yuqingW -- 2022-03-22 9:40
+yuqingW -- 2022-03-22 10:14
     - Fixed background not fitting the screen because of text alignment. 
+    - Fixed button alignments on game page. 
