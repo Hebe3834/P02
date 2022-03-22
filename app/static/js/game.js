@@ -353,6 +353,9 @@ document.body.addEventListener('keydown', function(event) {
             if (key == " ") {
               location.reload();
             }
+            if (key == "b") {
+              start();
+            }
 
             // for debugging
             if(key == "q"){
@@ -368,7 +371,7 @@ document.body.addEventListener('keyup', function(event) {
 
         });
 
-start_btn.addEventListener('click',function(){
+var start = () => {
   if(document.getElementById('REVIVAL') != null){
     document.body.removeChild(document.body.lastChild);
   }
@@ -376,7 +379,9 @@ start_btn.addEventListener('click',function(){
   magnet = false;
   invinc = false;
   reset();
-});
+}
+
+start_btn.addEventListener('click', start);
 
 var invincibility = () => {
   if(!invin_cooldown){
