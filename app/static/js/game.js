@@ -49,7 +49,10 @@ var coin_d = false;
 var mag_btn = document.getElementById('MAGNET');
 var mag_cooldown = false;
 var rev_btn = document.getElementById('REVIVAL');
-var canRevive = true;
+var canRevive = false;
+if(rev_btn){
+  canRevive = true;
+}
 var magnet = false;
 // changes levels of circles
 var circs_lv = [130,150,160];
