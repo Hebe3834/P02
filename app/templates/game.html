@@ -64,29 +64,28 @@
             <canvas width="700" height="300" id="main_game"></canvas>
         </div>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-        <br>
         {% if session['username'] %}
-        <div class="container mx-auto" value="{{ skin }}" id="skin">
+        <div class="container mx-auto" value="{{ skin }}" id="skin" style="position:relative;top:470px;">
             Equipped Skin: {{ skin }}
-            <div class="row">
+            <div class="row" style="position:relative;top:20px;">
                 {% for p in powers %}
-                    <div class="col" id="userPowers">
+                    <div class="col">
                         <button id="{{p}}" class="btn btn-danger">{{p}} ({{shortcut[loop.index-1]}})</button>
                     </div>
                 {% endfor %}
             </div>
-            <div class="row mt-5">
+            <div class="row mt-5" style="position:relative;top:20px;">
                 {% for s in skins %}
                     <div class="col">
-                        <button id="{{s}}" class="btn btn-danger">{{s}}</button>
+                        <button id="{{s}}" class="btn btn-primary">{{s}}</button>
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
-            <button id="start" class="btn btn-danger" formaction="/profile">Start</button>
+            <button id="start" class="btn btn-danger" formaction="/profile" style="position:relative;top:10px;">Start</button>
         </div>
+
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="../static/js/game.js"></script>
 
