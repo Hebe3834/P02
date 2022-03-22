@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <!-- 
+    <!--
     Optimistic Dinosaurs -- Hebe Huang, Yuqing Wu, Roshani Shrestha, Justin Zou
     SoftDev
     P02 -- Run for Your Life
@@ -19,7 +19,7 @@
     <body>
 
         <h1>X_X GAME OVER X_X</h1>
-        <h3>Coins earned: </h3> 
+        <h3>Coins earned: </h3>
         <p> {{ coins }} </p>
         <h3>Score reached: </h3>
         <p> {{ score }} </p>
@@ -41,14 +41,15 @@
             <p> {{ user }} {{ score }} </p>
             {% endif %}
         {% endfor %}
-      
+
       <br><br><br>
-      <form action="/" method='GET'>
-        <button style="display: block;margin-right: auto;margin-left: auto;" type="submit" class="btn btn-info"
+      <form action="/" method='GET' style="position:relative;left:780px">
+        <button type="submit" class="btn btn-info"
                 formaction="/">Back Home
         </button>
     </form>
+
       </body>
-      
+
 
 </html>
