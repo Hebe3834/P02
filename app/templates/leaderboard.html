@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <!-- 
+    <!--
     Optimistic Dinosaurs -- Hebe Huang, Yuqing Wu, Roshani Shrestha, Justin Zou
     SoftDev
     P02 -- Run for Your Life
@@ -43,7 +43,7 @@
                   <div class="col d-flex justify-content-center " style="color:teal; font-weight: bold;">{{ user }}</div>
                   <div class="col d-flex justify-content-center " style="color:teal; font-weight: bold;">{{ score }}</div>
               {% else %}
-                <div class="col d-flex justify-content-center ">Position</div>
+                <div class="col d-flex justify-content-center ">{{loop.index}}</div>
                 <div class="col d-flex justify-content-center ">{{ user }}</div>
                 <div class="col d-flex justify-content-center ">{{ score }}</div>
               {% endif %}
