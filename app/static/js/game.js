@@ -254,7 +254,7 @@ var playGame = () => {
 
   clear();
 
-  btx.drawImage(bg, 0, 0, 800, 400);
+  btx.drawImage(bg, 0, 0);
 
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
