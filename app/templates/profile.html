@@ -35,11 +35,15 @@
       <!-- {{test}} -->
       <h1>Powers owned:</h1>
       <div class="container">
+        <div class="card">
+          <div class="card-body">
         {% for power in powerups %}
-          <div class="container">{{power}}</div>
+                <p class="card-text">{{power}}</p>
           <br>
         {% endfor %}
       </div>
+    </div>
+  </div>
 
       <h1>Skins owned:</h1>
       <div class="container">
