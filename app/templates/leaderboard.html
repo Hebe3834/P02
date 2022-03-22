@@ -38,7 +38,7 @@
             <div class="col d-flex justify-content-center ">Score</div>
             {% for user, score in sortedUsers %}
             <div class="w-100"></div>
-              <div class="col d-flex justify-content-center ">Position</div>
+              <div class="col d-flex justify-content-center ">{{loop.index}}</div>
               <div class="col d-flex justify-content-center ">{{ user }}</div>
               <div class="col d-flex justify-content-center ">{{ score }}</div>
             {% endfor %}
