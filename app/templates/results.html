@@ -18,6 +18,9 @@
 
     <body>
 
+        <img style="float: left;width: 450px;height: 360px;margin-top: 10%;" src="../static/sprites/chrome-trex-dinosaur.jpg">
+        <img style="float: right;width: 450px;height: 360px;margin-top: 10%;transform: scaleX(-1);" src="../static/sprites/chrome-trex-dinosaur.jpg">
+        <div class="container">
         <h1>X_X GAME OVER X_X</h1>
         <h3>Coins earned: </h3>
         <p> {{ coins }} </p>
@@ -43,6 +46,7 @@
         {% endfor %}
 
       <br><br><br>
+    </div>
       <form action="/" method='GET' class="col-md-12 text-center">
         <button type="submit" class="btn btn-info"
                 formaction="/">Back Home
