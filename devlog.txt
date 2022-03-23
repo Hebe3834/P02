@@ -215,3 +215,10 @@ justinZ -- 2022-03-23 00:14
 
 roshaniS -- 2022-03-23 00:55
     - Fixed the layout of the bottom buttons on the game page
+
+hebeH -- 2022-03-23 21:22
+    - Fixed login error formatting and coin/score progress being covered by background
+    - Added backgrounds to website pages
+
+hebeH -- 2022-03-23 10:36
+    - Ordered ppowerup/skin buttons on game page
