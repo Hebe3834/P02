@@ -9,6 +9,15 @@ body {
       );
 }
 
+
+.dino{
+  float: left;
+}
+.powerups{
+  width: 100px;
+  height: 100px;
+}
+
 span {
   padding: 3px;
   background-color: rgb(236, 201, 0);

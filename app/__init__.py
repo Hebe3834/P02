@@ -114,7 +114,7 @@ def rAuthenticate():
                 return render_template('register.html', mismatch=True)
             else:
                 # creates user account b/c no fails
-                if create_user(username, password0, 0, 500):
+                if create_user(username, password0, 0, 10000):
                     return render_template('login.html', input='success')
                 # does not create account because create_user failed (username is taken)
                 else:
@@ -186,6 +186,7 @@ def profile():
     user = session['username']
     powerups = get_stuff(user,'powerup')
     skins = get_stuff(user,'skin')
+    print(skins)
     return render_template('profile.html', powerups = powerups, skins = skins)
 
 

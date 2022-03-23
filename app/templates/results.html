@@ -40,9 +40,9 @@
         <h3>Leaderboard: </h3>
         {% for user, score in sortedUsers %}
             {% if user == session['username'] %}
-            <p style="color:teal;"><strong> {{ user }} {{ score }} </strong></p>
+            <p style="color:teal;"><strong> {{ loop.index }}. {{ user }} score: {{ score }} </strong></p>
             {% else %}
-            <p> {{ user }} {{ score }} </p>
+            <p> {{ loop.index }}. {{ user }} score: {{ score }} </p>
             {% endif %}
         {% endfor %}
 

@@ -32,16 +32,27 @@
           <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
       </form>
       </nav>
+
+
+      <img src="../static/sprites/chrome-trex-dinosaur.jpg" alt="hey there its me" class="rounded-circle dino">
       <div class="container">
         <div class="row align-items-start">
       <div class="col">
       <!-- {{test}} -->
       <h1>Powers owned:</h1>
-      <div class="container">
-        <div class="card border-dark">
-          <div class="card-body">
+      <div style="height: 30%;"class="container">
+        <div style="height: 30%;" class="card border-dark">
+          <div style="height: 30%;"class="card-body">
         {% for power in powerups %}
-                <p class="card-text">{{power}}</p>
+          {% if power == 'MAGNET' %}
+              <p class="card-text">{{power}}<img src="../static/sprites/MAGNET.png" alt="hey there its me" class="rounded-circle powerups"></p>
+          {% elif power == 'REVIVAL' %}
+            <p class="card-text">{{power}}<img src="../static/sprites/REVIVAL.png" alt="hey there its me" class="rounded-circle powerups"></p>
+          {% elif power == 'COIN_DOUBLER' %}
+            <p class="card-text">{{power}}<img src="../static/sprites/COIN_DOUBLER.png" alt="hey there its me" class="rounded-circle powerups"></p>
+          {% elif power == 'INVINCIBILITY' %}
+            <p class="card-text">{{power}}<img src="../static/sprites/INVINCIBILITY.png" alt="hey there its me" class="rounded-circle powerups"></p>
+          {% endif %}
         {% endfor %}
       </div>
     </div>
@@ -52,8 +63,19 @@
       <div class="container">
         <div class="card border-dark">
           <div class="card-body">
-        {% for skin in skins %}
-        <p class="card-text">{{skin}}</p>
+      {% for skin in skins %}
+      <p class="card-text">{{skin}}</p>
+        <!-- {% if skin == 'S1' %}
+        <p class="card-text">{{skin}}<img src="../static/sprites/S10.png" alt="hey there its me" class="rounded-circle"></p>
+      {% elif skin == 'S2' %}
+      <p class="card-text">{{skin}}<img src="../static/sprites/S20.png" alt="hey there its me" class="rounded-circle"></p>
+      {% elif skin == 'S3' %}
+      <p class="card-text">{{skin}}<img src="../static/sprites/S30.png" alt="hey there its me" class="rounded-circle"></p>
+      {% elif skin == 'S4' %}
+      <p class="card-text">{{skin}}<img src="../static/sprites/S40.png" alt="hey there its me" class="rounded-circle"></p>
+      {% elif skin == 'S5' %}
+      <p class="card-text">{{skin}}<img src="../static/sprites/S50.png" alt="hey there its me" class="rounded-circle"></p>
+      {% endif %} -->
         {% endfor %}
             </div>
           </div>
@@ -63,12 +85,6 @@
     </div>
     </div>
     <br>
-      <form action="/" method='GET' class="col-md-12 text-center">
-        <button class= "btn btn-info" type="submit"
-                formaction="/">Back Home
-        </button>
-    </form>
-
     </body>
 
 </html>
