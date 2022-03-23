@@ -18,8 +18,6 @@
 
     <body>
 
-        <img style="float: left;width: 450px;height: 360px;margin-top: 10%;" src="../static/sprites/chrome-trex-dinosaur.jpg">
-        <img style="float: right;width: 450px;height: 360px;margin-top: 10%;transform: scaleX(-1);" src="../static/sprites/chrome-trex-dinosaur.jpg">
         <div class="container">
         <h1>X_X GAME OVER X_X</h1>
         <h3>Coins earned: </h3>
@@ -28,7 +26,10 @@
         <p> {{ score }} </p>
         {% if session['username'] %}
             {% if dist_from_hi == 0 %}
+            <img style="float: left;width: 30%;height: 360px;margin-bottom: 15%;" src="../static/sprites/chrome-trex-dinosaur.jpg">
+            <img style="float: right;width:  30%;height: 360px;margin-bottom: 15%;transform: scaleX(-1);" src="../static/sprites/chrome-trex-dinosaur.jpg">
                 <p style="color:green"><strong> You got a new high score!!!</strong></p>
+                
             {% else %}
                 <p style="color:brown">u are {{ dist_from_hi }} away from beating ur high score</p>
             {% endif %}
@@ -45,7 +46,6 @@
             {% endif %}
         {% endfor %}
 
-      <br><br><br>
     </div>
       <form action="/" method='GET' class="col-md-12 text-center">
         <button type="submit" class="btn btn-info"
