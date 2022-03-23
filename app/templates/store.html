@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <!-- 
+    <!--
     Optimistic Dinosaurs -- Hebe Huang, Yuqing Wu, Roshani Shrestha, Justin Zou
     SoftDev
     P02 -- Run for Your Life
@@ -53,7 +53,7 @@
 
       <h1 class="my-2">STORE</h1> <br>
       <h2> Coins: <div style="display: inline-block;" id="highScore"> {{ coins }} </div> </h2>
-        
+
       <div class="container">
         <div class="row">
 
@@ -106,7 +106,7 @@
                       </div>
                   {% endfor %}
               </div>
-              
+
               <a class="carousel-control-prev" href="#powerCarousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               </a>
@@ -156,13 +156,12 @@
                             <br>
                             {% if i == "S1" %}
                               <strong style="font-size:small;">THE DRAGON<br><br></strong>
-<<<<<<< HEAD
+
                               v pretty highly reccomend<br><br>
-                              <i style="font-size:x-small;">Omg its a dragon</i>
-=======
-                              Fearsome, magestic, likes wafles<br><br>
+                              Omg its a dragon!
+                              Fearsome, magestic, likes waffles<br><br>
                               <i style="font-size:x-small;">his name is alex</i>
->>>>>>> refs/remotes/origin/main
+
                             {% elif i == "S2" %}
                               <strong style="font-size:small;">THE SKULL<br><br></strong>
                               Features a sleek design and soulless eyes<br><br>
@@ -187,7 +186,7 @@
                       </div>
                   {% endfor %}
               </div>
-              
+
               <a class="carousel-control-prev" href="#skinCarousel" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               </a>
@@ -207,15 +206,15 @@
               <input class="btn btn-dark" type="submit" name="buypowerups" id="buypowerups"  value="Buy">
             </form>
           </div>
-        
+
 
         </div>
       </div>
-        
+
       {% if msg %}
       <p style="color:rgb(255, 0, 0);"> {{ msg }} </p>
       {% endif %}
-        
+
       <br>
     </body>
     <!-- will use this form input to buy and insert into items owned db -->
