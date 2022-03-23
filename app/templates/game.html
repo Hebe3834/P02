@@ -68,17 +68,17 @@
     </div>
 
         {% if session['username'] %}
-        <div class="container mx-auto" style="position:relative;top:470px;">
-            <div id="skin"> 
-            </div>
-            <div class="row" style="position:relative;top:20px;">
+        <div class="container mx-auto" style="position:relative;">
+            <div class="row" style="position:relative;top:5px;">
                 {% for p in powers %}
                     <div class="col">
                         <button id="{{p}}" class="btn btn-danger">{{p}} ({{shortcut[loop.index-1]}})</button>
                     </div>
                 {% endfor %}
             </div>
-            <div class="row mt-5" style="position:relative;top:20px;">
+            <div id="skin"> 
+            </div>
+            <div class="row mt-4" style="position:relative;">
                 {% for s in skins %}
                     <div class="col">
                         <button id="{{s}}" class="btn btn-primary">{{s}}</button>
@@ -86,7 +86,7 @@
                 {% endfor %}
             </div>
         {% endif %}
-            <button id="start" class="btn btn-danger" formaction="/profile" style="position:relative;top:10px;">Start</button>
+            <button id="start" class="btn btn-danger" formaction="/profile" style="position:relative;top:-15px;">Start</button>
         </div>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
