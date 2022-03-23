@@ -47,11 +47,11 @@
             <br><br>
             <div class="row">
               <div>
-                <img class="img-responsive itemimg" src="../static/sprites/{{i}}.png" alt="slide {{loop.index}}" style="float:left">
-                <div class="desc">
-                  <h5>{{i}}</h5>
-                  <br>
-                  {% if i == "INVINCIBILITY" %}
+                {{i}}<img class="img-responsive itemimg powerups rounded-circle" src="../static/sprites/{{i}}.png" alt="slide {{loop.index}}">
+                <!-- <div class="desc"> -->
+                  <!-- <h5>{{i}}</h5> -->
+                  <!-- <br> -->
+                  <!-- {% if i == "INVINCIBILITY" %}
                     <strong style="font-size:small;">Duration: 10 sec<br>Cooldown: 10 sec<br>Shortcut: [1]<br><br></strong>
                     Allows you to pass through obstacles for a set amount of time<br><br>
                     <i style="font-size:x-small;">Immovable object!</i>
@@ -69,8 +69,8 @@
                     <i style="font-size:x-small;">It's alive!</i>
                   {% else %}
                     v good highly reccomend
-                  {% endif %}
-                </div>
+                  {% endif %} -->
+                <!-- </div> -->
               </div>
             </div>
         {% endfor %}
@@ -87,8 +87,8 @@
             <br><br>
               <div class="row">
                 <div>
-                  <img class="img-responsive itemimg" src="../static/sprites/{{i}}0.png" alt="slide {{loop.index}}" style="float:left">
-                  <div class="desc">
+                  <img class="img-responsive itemimg powerups rounded-circle" src="../static/sprites/{{i}}0.png" alt="slide {{loop.index}}">
+                  <!-- <div class="desc">
                     <h5>{{i}}</h5>
                     <br>
                     {% if i == "S1" %}
@@ -114,7 +114,7 @@
                     {% else %}
                       v pretty highly reccomend
                     {% endif %}
-                  </div>
+                  </div> -->
                 </div>
               </div>
           {% endfor %}

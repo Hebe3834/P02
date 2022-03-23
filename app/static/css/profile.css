@@ -30,14 +30,14 @@ span:hover {
 }
 
 .itemimg {
-    width: 50%;
-    height: 300px;
+    width: 100px;
+    height: 100px;
 }
 
 .desc {
     display: inline-block;
-    width: 50%;
-    height: 300px;
+    width: 100px;
+    height: 100px;
     background: radial-gradient(80% 40%, rgb(255, 255, 255), rgb(190, 221, 220));
     padding: 7px;
 }

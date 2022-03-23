@@ -85,6 +85,8 @@ def login():
     ''' Displays login page '''
     return render_template('login.html')
 
+def demo():
+    create_user("Demo", "superDemo123", 0, 10000)
 
 @app.route("/rAuth", methods=['GET', 'POST'])
 def rAuthenticate():
@@ -114,7 +116,7 @@ def rAuthenticate():
                 return render_template('register.html', mismatch=True)
             else:
                 # creates user account b/c no fails
-                if create_user(username, password0, 0, 10000):
+                if create_user(username, password0, 0, 500):
                     return render_template('login.html', input='success')
                 # does not create account because create_user failed (username is taken)
                 else:
@@ -211,4 +213,5 @@ def results():
 
 if __name__ == "__main__":
     app.debug = True
+    demo()
     app.run()
