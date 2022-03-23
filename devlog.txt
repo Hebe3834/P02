@@ -221,4 +221,6 @@ hebeH -- 2022-03-23 21:22
     - Added backgrounds to website pages
 
 hebeH -- 2022-03-23 10:36
-    - Ordered ppowerup/skin buttons on game page
+    - Ordered powerup/skin buttons on game page
+    - Start button now resets current score
+    - Made pausing a more formal part of the game
