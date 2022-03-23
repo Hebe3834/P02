@@ -116,7 +116,7 @@
             </div>
 
             <br><h3>Select a powerup to purchase:</h3>
-            <form class="px-3" action = "/power" method = "POST">
+            <form class="px-3" action = "/power" method = "POST" id="selectPower">
               <select class="form-select form-select-lg" id="powerups" name="powerups">
               {% for power in powerups %}
                 <option value="{{power}}">{{power}} ----- {{power_prices[loop.index-1]}} coins</option>
@@ -192,8 +192,8 @@
             </div>
 
             <br><h3>Select a skin to purchase:</h3>
-            <form class="px-3" action = "/power" method = "POST">
-              <select class="form-select form-select-lg" id="powerups" name="powerups">
+            <form class="px-3" action = "/skin" method = "POST" id="selectSkin">
+              <select class="form-select form-select-lg" id="skins" name="skins">
                 {% for skin in skins %}
                 <option value="{{skin}}">{{skin}} ----- {{skin_prices[loop.index-1]}} coins</option>
                   <br>
