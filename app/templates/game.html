@@ -68,8 +68,9 @@
     </div>
 
         {% if session['username'] %}
-        <div class="container mx-auto" value="{{ skin }}" id="skin" style="position:relative;top:470px;">
-            Equipped Skin: {{ skin }}
+        <div class="container mx-auto" style="position:relative;top:470px;">
+            <div id="skin"> 
+            </div>
             <div class="row" style="position:relative;top:20px;">
                 {% for p in powers %}
                     <div class="col">

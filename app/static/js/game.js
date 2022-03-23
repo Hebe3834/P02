@@ -28,11 +28,30 @@ var coin = new Image(100);
 coin.src = 'static/sprites/coin.png';
 var coin_lv = [30,90,150];
 var coins = [];
-var skin;
-try {
-  skin = document.getElementById("skin").getAttribute("value");
-} catch {
-  skin = 'Default'
+
+var skin = "Default";
+var s1_btn;
+var s2_btn;
+var s3_btn;
+var s4_btn;
+var s5_btn; 
+btns = document.getElementsByTagName("button");
+for (i=0; i<btns.length; i++) {
+  if (btns[i].getAttribute("id") == "S1") {
+    s1_btn = document.getElementById("S1");
+  }
+  else if (btns[i].getAttribute("id") == "S2") {
+    s2_btn = document.getElementById("S2");
+  }
+  else if (btns[i].getAttribute("id") == "S3") {
+    s3_btn = document.getElementById("S3");
+  }
+  else if (btns[i].getAttribute("id") == "S4") {
+    s4_btn = document.getElementById("S4");
+  }
+  else if (btns[i].getAttribute("id") == "S5") {
+    s5_btn = document.getElementById("S5");
+  }
 }
 var zero = new Image(100);
 zero.src = 'static/sprites/' + skin + '0.png';
@@ -256,6 +275,8 @@ var playGame = () => {
   clear();
 
   btx.drawImage(bg, 0, 0);
+  zero.src = 'static/sprites/' + skin + '0.png';
+  one.src = 'static/sprites/' + skin + '1.png';
 
   ctx.strokeStyle = "black";
   ctx.strokeRect(0,levels, c.clientWidth, c.clientWidth);
@@ -388,6 +409,31 @@ var start = () => {
 }
 
 start_btn.addEventListener('click', start);
+
+s1_btn.addEventListener('click', function(){
+  skin = "S1";
+  document.getElementById("skin").innerHTML = "Equipped Skin: S1";
+});
+
+s2_btn.addEventListener('click', function(){
+  skin = "S2";
+  document.getElementById("skin").innerHTML = "Equipped Skin: S2";
+});
+
+s3_btn.addEventListener('click', function(){
+  skin = "S3";
+  document.getElementById("skin").innerHTML = "Equipped Skin: S3";
+});
+
+s4_btn.addEventListener('click', function(){
+  skin = "S4";
+  document.getElementById("skin").innerHTML = "Equipped Skin: S4";
+});
+
+s5_btn.addEventListener('click', function(){
+  skin = "S5";
+  document.getElementById("skin").innerHTML = "Equipped Skin: S5";
+});
 
 var invincibility = () => {
   if(!invin_cooldown){
