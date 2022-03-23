@@ -32,26 +32,36 @@
           <button id ="btnInline" type="submit"class="btn btn-danger"  formaction="/logout">Logout</button>
       </form>
       </nav>
+      <div class="container">
+        <div class="row align-items-start">
+      <div class="col">
       <!-- {{test}} -->
       <h1>Powers owned:</h1>
       <div class="container">
-        <div class="card">
+        <div class="card border-dark">
           <div class="card-body">
         {% for power in powerups %}
                 <p class="card-text">{{power}}</p>
-          <br>
         {% endfor %}
       </div>
     </div>
   </div>
-
+</div>
+  <div class="col">
       <h1>Skins owned:</h1>
       <div class="container">
+        <div class="card border-dark">
+          <div class="card-body">
         {% for skin in skins %}
-          <div class="container">{{skin}}</div>
-          <br>
+        <p class="card-text">{{skin}}</p>
         {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    </div>
+    </div>
       <form action="/" method='GET' class="col-md-12 text-center">
         <button class= "btn btn-info" type="submit"
                 formaction="/">Back Home
