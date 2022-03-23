@@ -230,5 +230,7 @@ roshaniS -- 2022-03-23 14:28
     - Added some color to the navbar
     - Fixed the navbar for the profile and store pages so that the buttons are all in one line
 
-hebeH -- 2022-03-23 16:28
+hebeH -- 2022-03-23 17:24
     - Added carousels with item imgs/descriptions to store.html 
+    - Added item imgs/descriptions to profile.html and icons to game.html
+    - Added message/deleted images in store when user has brought everything
