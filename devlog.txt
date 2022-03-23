@@ -191,6 +191,13 @@ roshaniS -- 2022-03-22 00:54
     - Added S5 skin
     - Made new skin for S1 and replaced the previous skin design
 
+hebeH -- 2022-03-22 07:13
+    - Powerup buttons on the game page now have shortcuts
+    - Store only shows items that the user doesn't have
+    - Added website background, css; text-align: center currently messes up canvas background
+    - Magnet and invincibility buttons have a cooldown and alerts; revive can only be used once per game
+    - Game end automatically goes to game results again to prevent user results from not being saved
+
 yuqingW -- 2022-03-22 12:52
     - Fixed background not fitting the screen because of text alignment. 
     - Fixed button alignments on game page. 
