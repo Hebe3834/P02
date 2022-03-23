@@ -224,3 +224,8 @@ hebeH -- 2022-03-23 10:36
     - Ordered powerup/skin buttons on game page
     - Start button now resets current score
     - Made pausing a more formal part of the game
+
+roshaniS -- 2022-03-23 14:28
+    - Made some changes to make the site look better
+    - Added some color to the navbar
+    - Fixed the navbar for the profile and store pages so that the buttons are all in one line

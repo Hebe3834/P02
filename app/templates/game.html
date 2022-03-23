@@ -20,9 +20,9 @@
         <nav class="navbar navbar-light bg-light">
             <span>Optimistic Dinosaurs</span>
             {% if session['username'] %}
-                <h3> Welcome {{user}}!</h3>
-                <h3 > Total coins: {{ coins }}  </h3>
-                <h3 > High Score: {{ high }}  </h3>
+                <h3 id="welcome"> Welcome {{user}}!</h3>
+                <h3 id="totalcoins"> Total coins: {{ coins }}  </h3>
+                <h3 id="highscore"> High Score: {{ high }}  </h3>
             {% else %}
                 <h2> PLEASE LOG IN FOR YOUR HIGH SCORE AND COINS TO BE SAVED </h2>
             {% endif %}
