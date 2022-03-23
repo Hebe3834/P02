@@ -6,6 +6,7 @@
 var c = document.getElementById("main_game");
 var b = document.getElementById("bgimg");
 var start_btn = document.getElementById("start");
+var pause_btn = document.getElementById("pause");
 var ctx = c.getContext("2d");
 var btx = b.getContext("2d");
 var scoreEle = document.getElementById("usrScore");
@@ -13,6 +14,7 @@ var coinEle = document.getElementById("usrCoins");
 var score = 0;
 var usrCoinsEarned = 0;
 var requestID;  //init global var for use with animation frames
+var paused = false;
 var radius = 1;
 var levels = 200;
 var rects = [];
@@ -403,9 +405,9 @@ document.body.addEventListener('keydown', function(event) {
               start();
             }
 
-            // for debugging
+            // for debugging but its cool so now it's a part of the game
             if(key == "q"){
-              window.cancelAnimationFrame(requestID);
+              togglePause();
             }
         });
 
@@ -418,17 +420,28 @@ document.body.addEventListener('keyup', function(event) {
         });
 
 var start = () => {
-  if(document.getElementById('REVIVAL') != null){
-    document.body.removeChild(document.body.lastChild);
-  }
   revive = false;
   magnet = false;
   invinc = false;
+  score = 0;
+  paused = false;
   game_start = true;
   reset();
 }
 
+var togglePause = () => {
+  if(paused){
+    playGame();
+    paused = !paused;
+  }
+  else{
+    window.cancelAnimationFrame(requestID);
+    paused = !paused;
+  }
+}
+
 start_btn.addEventListener('click', start);
+pause_btn.addEventListener('click', togglePause);
 
 
 var invincibility = () => {
