@@ -125,25 +125,34 @@ def restock_store():
 
     db.commit()
 
-def get_stuff(user, type):
+def get_stuff(user, itemType):
     '''Gets list of items the user owns. Takes a username and an item type.'''
     items = []
-    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'" + type +"\';"
+    query = "SELECT item_owned FROM items WHERE player = \'" + user + "\' AND item_type = \'" + itemType +"\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
         items.append(row[0])
-    return items
+    ordered = []
+    if itemType == "powerup":
+        for i in ["INVINCIBILITY", "COIN_DOUBLER", "MAGNET", "REVIVAL"]:
+            if i in items:
+                ordered.append(i)
+    elif itemType == "skin":
+        for i in ["S1", "S2", "S3", "S4", "S5"]:
+            if i in items:
+                ordered.append(i)
+    return ordered
 
-def get_store_stuff(type):
+def get_store_stuff(itemType):
     '''Gets list of items in the store. Takes an item type.'''
     items = []
-    query = "SELECT item FROM store WHERE item_type = \'" + type +"\';"
+    query = "SELECT item FROM store WHERE item_type = \'" + itemType +"\';"
     c.execute(query)
     rows = c.fetchall()
     for row in rows:
         items.append(row[0])
-    userStuff = get_stuff(session['username'], type)
+    userStuff = get_stuff(session['username'], itemType)
     uniqueItems = []
     for i in items:
         if not i in userStuff:
