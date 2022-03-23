@@ -39,18 +39,38 @@ btns = document.getElementsByTagName("button");
 for (i=0; i<btns.length; i++) {
   if (btns[i].getAttribute("id") == "S1") {
     s1_btn = document.getElementById("S1");
+    s1_btn.addEventListener('click', function(){
+      skin = "S1";
+      document.getElementById("skin").innerHTML = "Equipped Skin: S1";
+    });
   }
   else if (btns[i].getAttribute("id") == "S2") {
     s2_btn = document.getElementById("S2");
+    s2_btn.addEventListener('click', function(){
+      skin = "S2";
+      document.getElementById("skin").innerHTML = "Equipped Skin: S2";
+    });
   }
   else if (btns[i].getAttribute("id") == "S3") {
     s3_btn = document.getElementById("S3");
+    s3_btn.addEventListener('click', function(){
+      skin = "S3";
+      document.getElementById("skin").innerHTML = "Equipped Skin: S3";
+    });
   }
   else if (btns[i].getAttribute("id") == "S4") {
     s4_btn = document.getElementById("S4");
+    s4_btn.addEventListener('click', function(){
+      skin = "S4";
+      document.getElementById("skin").innerHTML = "Equipped Skin: S4";
+    });
   }
   else if (btns[i].getAttribute("id") == "S5") {
     s5_btn = document.getElementById("S5");
+    s5_btn.addEventListener('click', function(){
+      skin = "S5";
+      document.getElementById("skin").innerHTML = "Equipped Skin: S5";
+    });
   }
 }
 var zero = new Image(100);
@@ -410,30 +430,6 @@ var start = () => {
 
 start_btn.addEventListener('click', start);
 
-s1_btn.addEventListener('click', function(){
-  skin = "S1";
-  document.getElementById("skin").innerHTML = "Equipped Skin: S1";
-});
-
-s2_btn.addEventListener('click', function(){
-  skin = "S2";
-  document.getElementById("skin").innerHTML = "Equipped Skin: S2";
-});
-
-s3_btn.addEventListener('click', function(){
-  skin = "S3";
-  document.getElementById("skin").innerHTML = "Equipped Skin: S3";
-});
-
-s4_btn.addEventListener('click', function(){
-  skin = "S4";
-  document.getElementById("skin").innerHTML = "Equipped Skin: S4";
-});
-
-s5_btn.addEventListener('click', function(){
-  skin = "S5";
-  document.getElementById("skin").innerHTML = "Equipped Skin: S5";
-});
 
 var invincibility = () => {
   if(!invin_cooldown){
