@@ -15,6 +15,28 @@ body {
   z-index: 2;
 }
 
+span {
+  padding: 3px;
+  background-color: rgb(236, 201, 0);
+  color: teal;
+}
+
+span:hover {
+  background-color: teal;
+  color: rgb(236, 201, 0);
+}
+
+#welcome, #totalcoins, #highscore {
+  padding: 3px;
+  background-color: teal;
+  color: rgb(236, 201, 0);
+}
+
+#welcome:hover, #totalcoins:hover, #highscore:hover {
+  background-color: rgb(236, 201, 0);
+  color: teal;
+}
+
 #bgimg {
   z-index: 1;
 }

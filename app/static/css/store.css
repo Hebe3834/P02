@@ -22,3 +22,13 @@ body {
   border-style: dashed;
 }
 
+span {
+  padding: 3px;
+  background-color: rgb(236, 201, 0);
+  color: teal;
+}
+
+span:hover {
+  background-color: teal;
+  color: rgb(236, 201, 0);
+}
