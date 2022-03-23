@@ -30,26 +30,24 @@
           </form>
       </div>
       <h5 class="fw-normal" id=""> New user? <a href="{{ url_for('register') }}" class="link-info">Create an account.</a></h5>
-      
-      {% if input == "bad_user" %}
-      <div class="container-fluid px-5">
-          <div class="alert-danger alert text-center marginy py-2" role="alert">
-              Username not found.
-          </div>
+
+      <div class="container-fluid" style="float:left; width:300px">
+        {% if input == "bad_user" %}
+            <div class="alert-danger alert text-center marginy py-2" role="alert">
+                Username not found.
+            </div>
+        {% elif input == "bad_pass" %}
+        <div class="container-fluid" style="float:left; width:300px">
+            <div class="alert-danger alert text-center marginy py-2" role="alert">
+                Password incorrect.
+            </div>
+        {% endif %}
+        <form action="/" method='GET'>
+            <button style="display: block;margin-right: auto;margin-left: auto;" type="submit" class="btn btn-info"
+                    formaction="/">Back Home
+            </button>
+        </form>
       </div>
-      {% elif input == "bad_pass" %}
-      <div class="container-fluid px-5">
-          <div class="alert-danger alert text-center marginy py-2" role="alert">
-              Password incorrect.
-          </div>
-      </div>
-      {% endif %}
-      
-      <form action="/" method='GET'>
-          <button style="display: block;margin-right: auto;margin-left: auto;" type="submit" class="btn btn-info"
-                  formaction="/">Back Home
-          </button>
-      </form>
       
       <br><br><br>
       
