@@ -40,8 +40,36 @@
       <div class="container">
         <div class="card border-dark">
           <div class="card-body">
-        {% for power in powerups %}
-                <p class="card-text">{{power}}</p>
+        {% for i in powerups %}
+            <br><br>
+            <div class="row">
+              <div>
+                <img class="img-responsive itemimg" src="../static/sprites/{{i}}.png" alt="slide {{loop.index}}" style="float:left">
+                <div class="desc">
+                  <h5>{{i}}</h5>
+                  <br>
+                  {% if i == "INVINCIBILITY" %}
+                    <strong style="font-size:small;">Duration: 10 sec<br>Cooldown: 10 sec<br>Shortcut: [1]<br><br></strong>
+                    Allows you to pass through obstacles for a set amount of time<br><br>
+                    <i style="font-size:x-small;">Immovable object!</i>
+                  {% elif i == "COIN_DOUBLER" %}
+                    <strong style="font-size:small;">Duration: 10 sec<br>Cooldown: 10 sec<br>Shortcut: [2]<br><br></strong>
+                    Coins that you collect for a set amount of time will be worth double<br><br>
+                    <i style="font-size:x-small;">Geminio!!</i>
+                  {% elif i == "MAGNET" %}
+                    <strong style="font-size:small;">Duration: 10 sec<br>Cooldown: 10 sec<br>Shortcut: [3]<br><br></strong>
+                    Makes you magnetic.<br>Coins are attracted to magnets.<br><br>
+                    <i style="font-size:x-small;">Statistically proven to be more effective than coin doubler (or maybe not someone check pls)</i>
+                  {% elif i == "REVIVAL" %}
+                    <strong style="font-size:small;">Duration: Once per game<br>Cooldown: Once per game<br>Shortcut: Auto<br><br></strong>
+                    Gives you a second chance when you die without resetting your progress<br><br>
+                    <i style="font-size:x-small;">It's alive!</i>
+                  {% else %}
+                    v good highly reccomend
+                  {% endif %}
+                </div>
+              </div>
+            </div>
         {% endfor %}
       </div>
     </div>
@@ -52,9 +80,41 @@
       <div class="container">
         <div class="card border-dark">
           <div class="card-body">
-        {% for skin in skins %}
-        <p class="card-text">{{skin}}</p>
-        {% endfor %}
+            {% for i in skins %}
+            <br><br>
+              <div class="row">
+                <div>
+                  <img class="img-responsive itemimg" src="../static/sprites/{{i}}0.png" alt="slide {{loop.index}}" style="float:left">
+                  <div class="desc">
+                    <h5>{{i}}</h5>
+                    <br>
+                    {% if i == "S1" %}
+                      <strong style="font-size:small;">THE DRAGON<br><br></strong>
+                      Fearsome, magestic, likes wafles<br><br>
+                      <i style="font-size:x-small;">his name is alex</i>
+                    {% elif i == "S2" %}
+                      <strong style="font-size:small;">THE SKULL<br><br></strong>
+                      Features a sleek design and soulless eyes<br><br>
+                      <i style="font-size:x-small;">Roshani's favorite</i>
+                    {% elif i == "S3" %}
+                      <strong style="font-size:small;">THE DUCC<br><br></strong>
+                      Alex's best friend<br><br>
+                      <i style="font-size:x-small;">you can always talk to him when you need help</i>
+                    {% elif i == "S4" %}
+                      <strong style="font-size:small;">THE UH BEAVER?<br><br></strong>
+                      She doesn't talk much<br><br>
+                      <i style="font-size:x-small;">maybe it's a capybara</i>
+                    {% elif i == "S5" %}
+                      <strong style="font-size:small;">THE UNICORN<br><br></strong>
+                      >:33333<br><br>
+                      <i style="font-size:x-small;">Roshani's second favorite</i>
+                    {% else %}
+                      v pretty highly reccomend
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
             </div>
           </div>
         </div>
