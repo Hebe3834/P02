@@ -206,3 +206,6 @@ yuqingW -- 2022-03-22 12:52
 roshaniS -- 2022-03-22 16:45
     - Replaced the background a better image 
     - Added a condition so that when the user presses "b" on the keyboard, the game starts 
+
+roshaniS -- 2022-03-22 23:33
+    - Added functionality to the buttons for skins; pressing them now changes the skin of the user while they play the game.
