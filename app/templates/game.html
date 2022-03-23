@@ -18,12 +18,11 @@
 
     <body>
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Optimistic Dinosaurs</span>
+            <span>Optimistic Dinosaurs</span>
             {% if session['username'] %}
-            <div style="display: flex;justify-content: space-between;" class="container">
-                <h2> Welcome {{ user }}! </h2>
-                <h2> Total coins: <div style="display: inline-block;" id="highScore"> {{ coins }} </div> </h2>
-                <h2> High Score: <div style="display: inline-block;" id="highScore"> {{ high }} </div> </h2>
+                <h3> Welcome {{user}}!</h3>
+                <h3 > Total coins: {{ coins }}  </h3>
+                <h3 > High Score: {{ high }}  </h3>
             {% else %}
                 <h2> PLEASE LOG IN FOR YOUR HIGH SCORE AND COINS TO BE SAVED </h2>
             {% endif %}
@@ -47,7 +46,6 @@
         {% endif %}
         <br>
         <br>
-        </div>
     </nav>
     <div class="rows" style="margin-top: 3%;">
         <h3></h3>
