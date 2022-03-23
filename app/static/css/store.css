@@ -20,14 +20,26 @@ body {
 }
 
 .powerimg {
-  width: 450px;
-  height: 450px;
+  width: 50%;
+  height: 300px;
+}
+
+.desc {
+  display: inline-block;
+  width: 50%;
+  height: 300px;
+  background: radial-gradient(80% 40%, rgb(255, 255, 255), rgb(190, 221, 220));
 }
 
 span {
   padding: 3px;
   background-color: rgb(236, 201, 0);
   color: teal;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-color: transparent;
+  filter: invert(100%);
 }
 
 span:hover {
