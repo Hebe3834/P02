@@ -9,10 +9,6 @@ body {
     );
 }
 
-#store {
-  margin-left: 5px;
-  margin-right: 5px;
-}
 
 #powerups, #skins {
   margin-top: 5px;
@@ -20,5 +16,10 @@ body {
   background-color: black;
   color: white;
   border-style: dashed;
+  text-align: center;
 }
 
+.powerimg {
+  width: 450px;
+  height: 450px;
+}
