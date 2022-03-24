@@ -31,6 +31,16 @@ coin.src = 'static/sprites/coin.png';
 var coin_lv = [30,90,150];
 var coins = [];
 
+var imgs = document.getElementsByTagName("img");
+var clear_highlight = () => {
+  for (i=0; i<imgs.length; i++) {
+    img_id = imgs[i].getAttribute("id");
+    if (img_id.endsWith("_img") && !img_id.startsWith(skin)) {
+      imgs[i].removeAttribute("class");
+    }
+  }
+};
+
 var skin = "Default";
 var s1_btn;
 var s2_btn;
@@ -43,38 +53,49 @@ for (i=0; i<btns.length; i++) {
     s1_btn = document.getElementById("S1");
     s1_btn.addEventListener('click', function(){
       skin = "S1";
+      clear_highlight();
       document.getElementById("skin").innerHTML = "Equipped Skin: S1";
+      document.getElementById("S1_img").setAttribute("class", "selected");
     });
   }
   else if (btns[i].getAttribute("id") == "S2") {
     s2_btn = document.getElementById("S2");
     s2_btn.addEventListener('click', function(){
       skin = "S2";
+      clear_highlight();
       document.getElementById("skin").innerHTML = "Equipped Skin: S2";
+      document.getElementById("S2_img").setAttribute("class", "selected");
     });
   }
   else if (btns[i].getAttribute("id") == "S3") {
     s3_btn = document.getElementById("S3");
     s3_btn.addEventListener('click', function(){
       skin = "S3";
+      clear_highlight();
       document.getElementById("skin").innerHTML = "Equipped Skin: S3";
+      document.getElementById("S3_img").setAttribute("class", "selected");
     });
   }
   else if (btns[i].getAttribute("id") == "S4") {
     s4_btn = document.getElementById("S4");
     s4_btn.addEventListener('click', function(){
       skin = "S4";
+      clear_highlight();
       document.getElementById("skin").innerHTML = "Equipped Skin: S4";
+      document.getElementById("S4_img").setAttribute("class", "selected");
     });
   }
   else if (btns[i].getAttribute("id") == "S5") {
     s5_btn = document.getElementById("S5");
     s5_btn.addEventListener('click', function(){
       skin = "S5";
+      clear_highlight();
       document.getElementById("skin").innerHTML = "Equipped Skin: S5";
+      document.getElementById("S5_img").setAttribute("class", "selected");
     });
   }
 }
+
 var zero = new Image(100);
 zero.src = 'static/sprites/' + skin + '0.png';
 var one = new Image(100);
