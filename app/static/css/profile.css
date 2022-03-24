@@ -8,6 +8,13 @@ body {
       rgb(235, 226, 255) 30px
       );
 }
+* {
+  font-family: fantasy;
+}
+
+button{
+  font-family: Courier New, monospace !important;
+}
 
 
 .dino{

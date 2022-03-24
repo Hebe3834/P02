@@ -11,6 +11,15 @@ body {
     );
 }
 
+* {
+  font-family: fantasy;
+}
+
+
+button{
+  font-family: Courier New, monospace !important;
+}
+
 #main_game {
   z-index: 2;
 }

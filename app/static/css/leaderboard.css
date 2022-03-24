@@ -8,11 +8,17 @@ body {
       rgb(223, 248, 255) 30px
       );
 }
-
+* {
+  font-family: fantasy;
+}
 span {
   padding: 3px;
   background-color: rgb(236, 201, 0);
   color: teal;
+}
+
+button{
+  font-family: Courier New, monospace !important;
 }
 
 span:hover {

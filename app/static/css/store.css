@@ -9,6 +9,13 @@ body {
     );
 }
 
+* {
+  font-family: fantasy;
+}
+
+button{
+  font-family: Courier New, monospace !important;
+}
 
 #powerups, #skins {
   margin-top: 5px;

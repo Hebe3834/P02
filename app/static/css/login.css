@@ -9,3 +9,11 @@ body {
       rgb(255, 235, 230) 30px
       );
 }
+
+button{
+  font-family: Courier New, monospace !important;
+}
+
+* {
+  font-family: fantasy;
+}

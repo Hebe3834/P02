@@ -424,6 +424,7 @@ var start = () => {
   magnet = false;
   invinc = false;
   score = 0;
+  usrCoinsEarned = 0;
   paused = false;
   game_start = true;
   reset();
