@@ -247,3 +247,14 @@ roshaniS -- 2022-03-23 20:08
 justinZ -- 2022-03-23 20:19
     - changed the font of all of the sprites
     - fixed bug with coins earned
+
+hebeH, yuqingW, roshaniS, justinZ -- 2022-03-23 22:22
+    - Collaborated on making changes to the design doc for our project
+    - Changes:
+        - Replaced templates with screenshots of the website
+        - Updated program components 
+        - Updated site map
+        - Removed API from the API section and added that no APIs were used for this project
+        - Updated task division
+        - Removed timeline
+        - Updated target ship date
