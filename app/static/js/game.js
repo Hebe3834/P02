@@ -441,6 +441,7 @@ document.body.addEventListener('keydown', function(event) {
             if(key == "q"){
               togglePause();
             }
+            key.blur();
         });
 
 document.body.addEventListener('keyup', function(event) {
