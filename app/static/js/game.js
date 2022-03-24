@@ -108,6 +108,7 @@ var inv_btn = document.getElementById('INVINCIBILITY');
 var invin_cooldown = false;
 var coin_dub = document.getElementById('COIN_DOUBLER');
 var coin_d = false;
+var coinDub_cooldown = false;
 var mag_btn = document.getElementById('MAGNET');
 var mag_cooldown = false;
 var rev_btn = document.getElementById('REVIVAL');
@@ -120,8 +121,18 @@ var magnet = false;
 // changes levels of circles
 var circs_lv = [130,150,160];
 
+
 if(rev_btn){
   rev_btn.disabled = true;
+}
+if(inv_btn){
+  inv_btn.disabled = true;
+}
+if(coin_dub){
+  coin_dub.disabled = true;
+}
+if(mag_btn){
+  mag_btn.disabled = true;
 }
 
 var clear = (e) => {
@@ -444,6 +455,15 @@ var start = () => {
   revive = false;
   magnet = false;
   invinc = false;
+  if(inv_btn){
+    inv_btn.disabled = false;
+  }
+  if(mag_btn){
+    mag_btn.disabled = false;
+  }
+  if(coin_dub){
+    coin_dub.disabled = false;
+  }
   score = 0;
   paused = false;
   game_start = true;
@@ -489,8 +509,21 @@ try{
 catch{}
 
 var coin_doubler = () => {
-  coin_d = true;
-  setTimeout(function(){coin_d = false;}, 10000);
+  if(!coinDub_cooldown){
+    coin_d = true;
+    coin_dub.disabled = true;
+    setTimeout(function(){
+      coin_d = false;
+      coinDub_cooldown = true;
+
+      setTimeout(function(){
+        console.log("coin_doubler cooldown has ended");
+        coinDub_cooldown = false;
+        coin_dub.disabled = false;
+      }, 10000);
+    }, 10000);
+  }
+  
 };
 try{
   coin_dub.addEventListener('click', coin_doubler);
