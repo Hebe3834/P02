@@ -9,17 +9,17 @@ Justin Zou
 
 ### Task Division:
 Frontend/Templates:
-- Game.html (Justin)
+- Game.html (Everyone)
 - Login.html (Justin)
 - Register.html (Justin)
-- Leaderboard.html (Roshani)
-- Store.html (Roshani)
-- Profile.html (Hebe)
+- Leaderboard.html (Justin, Hebe)
+- Store.html (Hebe)
+- Profile.html (Justin)
+- Results.html (Hebe)
 
 Flask/Python:
 - Buy things (Justin)
 - Rendering pages (Everyone)
-- Setting skins/items the user selects from profile page (Justin)
 
 Leaderboard/backend database:
 - Login + score database (Justin)
@@ -27,13 +27,14 @@ Leaderboard/backend database:
 - Items owned database (Roshani)
 	
 Game Tasks:
-- Moving the map, increasing speed, updating score based on distance (Hebe)
-- Implementing backgrounds/sprites/skins (Yuqing)
-- Generating, collecting, updating coins (Hebe)
+- Updating score based on distance (Hebe)
+- Implementing backgrounds/sprites/skins (Roshani)
+- Generating, collecting, updating coins (Yuqing)
 - Generate Obstacles (Yuqing)
 - Making the character jump/duck (Roshani)
 - Detect game ends (Roshani)
-- Power-ups/skills (Yuqing)
+- Power-ups/skills (Yuqing, Roshani, Hebe)
+- Setting skins the user selects from game page (Roshani)
 
 ## API Cards:
 
