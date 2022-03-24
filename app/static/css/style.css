@@ -113,3 +113,8 @@ canvas {
   justify-content: space-around;
   align-items: center;
 }
+
+.selected {
+  filter: brightness(120%);
+  box-shadow: 5px 5px 5px purple;
+}
