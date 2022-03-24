@@ -24,7 +24,7 @@ Flask/Python:
 Leaderboard/backend database:
 - Login + score database (Justin)
 - Store database (Hebe)
-- Items owned database (Roshani)
+- Items owned database (Roshani, Hebe, Justin)
 	
 Game Tasks:
 - Updating score based on distance (Hebe)
@@ -33,7 +33,7 @@ Game Tasks:
 - Generate Obstacles (Yuqing)
 - Making the character jump/duck (Roshani)
 - Detect game ends (Roshani)
-- Power-ups/skills (Yuqing, Roshani, Hebe)
+- Power-ups/skills (Yuqing, Roshani)
 - Setting skins the user selects from game page (Roshani)
 
 ## API Cards:
