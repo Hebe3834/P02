@@ -37,6 +37,7 @@ Game Tasks:
 - Setting skins the user selects from game page (Roshani)
 
 ## API Cards:
+None used.
 
 ## Launch Codes
 - Install and activate virtual environment <br>
