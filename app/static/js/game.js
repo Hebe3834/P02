@@ -465,6 +465,7 @@ var start = () => {
     coin_dub.disabled = false;
   }
   score = 0;
+  usrCoinsEarned = 0;
   paused = false;
   game_start = true;
   reset();

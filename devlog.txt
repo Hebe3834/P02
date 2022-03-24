@@ -234,3 +234,16 @@ hebeH -- 2022-03-23 17:24
     - Added carousels with item imgs/descriptions to store.html 
     - Added item imgs/descriptions to profile.html and icons to game.html
     - Added message/deleted images in store when user has brought everything
+
+justinZ -- 2022-03-23 19:55
+    - worked on making the profile page look better and added logo
+    - created demo account
+    - updated on design document
+    - added dinosaurs to page for highscores
+
+roshaniS -- 2022-03-23 20:08
+    - Added a class for the image of the selected skin on the game page; it creates a shadow and increases the brightness of the image.
+
+justinZ -- 2022-03-23 20:19
+    - changed the font of all of the sprites
+    - fixed bug with coins earned
